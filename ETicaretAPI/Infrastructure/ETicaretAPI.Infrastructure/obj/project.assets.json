@@ -666,11 +666,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anild\\Desktop\\ETicaretUygulamasi\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj",
       "projectName": "ETicaretAPI.Infrastructure",
-      "projectPath": "C:\\Users\\anild\\Desktop\\ETicaretUygulamasi\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\anild\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anild\\Desktop\\ETicaretUygulamasi\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -691,8 +691,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\anild\\Desktop\\ETicaretUygulamasi\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj": {
-              "projectPath": "C:\\Users\\anild\\Desktop\\ETicaretUygulamasi\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj"
+            "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj": {
+              "projectPath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Core\\ETicaretAPI.Application\\ETicaretAPI.Application.csproj"
             }
           }
         }
