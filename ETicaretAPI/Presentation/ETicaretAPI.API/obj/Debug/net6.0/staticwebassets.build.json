@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p0iE9SwHRaomdH4onZYoWe/JPtlWDK9QL08Plz2VYbQ=",
+  "Hash": "a7RE/6NHFZ1qdHiyuwDJNc18WEKhy1vJBdYRFx4NLT0=",
   "Source": "ETicaretAPI.API",
   "BasePath": "_content/ETicaretAPI.API",
   "Mode": "Default",
@@ -15,5 +15,57 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\resource\\files\\wallhaven-4dydo4.png",
+      "SourceId": "ETicaretAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
+      "BasePath": "_content/ETicaretAPI.API",
+      "RelativePath": "resource/files/wallhaven-4dydo4.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resource\\files\\wallhaven-4dydo4.png"
+    },
+    {
+      "Identity": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\resource\\files\\wallhaven-5d5238.jpg",
+      "SourceId": "ETicaretAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
+      "BasePath": "_content/ETicaretAPI.API",
+      "RelativePath": "resource/files/wallhaven-5d5238.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resource\\files\\wallhaven-5d5238.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\resource\\files\\wallhaven-5w8ky5 - Copy.jpg",
+      "SourceId": "ETicaretAPI.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
+      "BasePath": "_content/ETicaretAPI.API",
+      "RelativePath": "resource/files/wallhaven-5w8ky5 - Copy.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resource\\files\\wallhaven-5w8ky5 - Copy.jpg"
+    }
+  ]
 }
