@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxFileDropEntry, FileSystemDirectoryEntry, FileSystemFileEntry } from 'ngx-file-drop';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { SpinnerType } from 'src/app/base/base.component';
 import { FileUploadDialogComponent, FileUploadDialogState } from 'src/app/dialogs/file-upload-dialog/file-upload-dialog.component';
 import { AlertifyService, MessageType, Position } from '../../admin/alertify.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
@@ -22,9 +23,10 @@ export class FileUploadComponent  {
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
     private dialogService: DialogService,
+    private spinner: NgxSpinnerService,
     
 
-  ) {}
+  ) { }
    public files: NgxFileDropEntry [];
 
    @Input() options: Partial<FileUploadOptions>;
@@ -43,6 +45,7 @@ export class FileUploadComponent  {
       componentType: FileUploadDialogComponent,
       data: FileUploadDialogState.Yes,
       afterClosed: () => {
+        this.spinner.show(SpinnerType.BallScaleMultiple)
           this.httpClientService.post({
             controller: this.options.controller,
             action: this.options.action,
@@ -51,7 +54,9 @@ export class FileUploadComponent  {
            }, fileData).subscribe(data => {
         
              const message: string = "Dosyalar Başariyla Yüklenmiştir.";
-
+       
+             this.spinner.hide(SpinnerType.BallScaleMultiple)
+               
               if(this.options.isAdminPage) {
                  this.alertifyService.message(message,
                   {
@@ -75,6 +80,9 @@ export class FileUploadComponent  {
            }, (errorResponse: HttpErrorResponse) => {
         
             const message: string = "Dosyalar Yüklenirken Bir Hata ile Karşilaşildi.";
+
+            this.spinner.hide(SpinnerType.BallScaleMultiple)
+
               if(this.options.isAdminPage) {
                  this.alertifyService.message(message,
                   {
