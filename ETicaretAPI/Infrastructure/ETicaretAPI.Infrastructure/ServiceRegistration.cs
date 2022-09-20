@@ -38,11 +38,9 @@ namespace ETicaretAPI.Infrastructure
                     break;
                 case StorageType.Azure:
                     serviceCollection.AddScoped<IStorage, AzureStorage>();
-
                     break;
                 default:
                     serviceCollection.AddScoped<IStorage, LocalStorage>();
-
                     break;
             }
 

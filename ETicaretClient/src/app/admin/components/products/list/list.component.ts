@@ -28,7 +28,7 @@ export class ListComponent extends BaseComponent implements OnInit {
    }
   
 
-  displayedColumns: string[] = ['name', 'stock', 'createdDate', 'updatedDate', 'edit', 'delete' ];
+  displayedColumns: string[] = ['name', 'stock', 'createdDate', 'updatedDate', 'photos', 'delete' ];
   dataSource: MatTableDataSource<List_Product> = null;
 
 
