@@ -14,5 +14,7 @@ namespace ETicaretAPI.Persistence.Repositories
         public ProductReadRepository(ETicaretAPIDbContext context) : base(context)
         {
         }
+
+      
     }
 }

@@ -18,7 +18,7 @@ namespace ETicaretAPI.Infrastructure.Services.Storage.Azure
 
         public AzureStorage(IConfiguration configuration)
         {
-            _blobServiceClient = new(configuration["storage:Azure"]);
+            _blobServiceClient = new(configuration["Storage:Azure"]);
 
         }
         public async Task DeleteAsync(string containerName, string fileName)
@@ -54,7 +54,7 @@ namespace ETicaretAPI.Infrastructure.Services.Storage.Azure
 
                 BlobClient blobClient = _blobContainerClient.GetBlobClient(fileNewName);
                 await blobClient.UploadAsync(file.OpenReadStream());
-                datas.Add((fileNewName, containerName));
+                datas.Add((fileNewName, $"{containerName}/{fileNewName}"));
 
             }
             return datas;

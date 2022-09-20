@@ -11,7 +11,7 @@ namespace ETicaretAPI.Infrastructure.Services.Storage
     public class StorageService : IStorageService
     {
 
-        private readonly IStorage _storage;
+        readonly IStorage _storage;
 
         public StorageService(IStorage storage)
         {
