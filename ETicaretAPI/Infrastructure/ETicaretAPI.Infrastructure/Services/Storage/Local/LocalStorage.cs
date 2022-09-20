@@ -21,7 +21,8 @@ namespace ETicaretAPI.Infrastructure.Services.Storage.Local
 
 
         public async Task DeleteAsync(string path, string fileName)
-           => File.Delete($"{path}\\{fileName}");
+          => File.Delete($"{path}\\{fileName}");
+        
 
         public List<string> GetFiles(string path)
         {
@@ -29,7 +30,7 @@ namespace ETicaretAPI.Infrastructure.Services.Storage.Local
             return directory.GetFiles().Select(f => f.Name).ToList();
         }
 
-        public bool HasFile(string path, string fileName)
+        public  bool HasFile(string path, string fileName)
            => File.Exists($"{path}\\{fileName}");
             
         
@@ -65,8 +66,8 @@ namespace ETicaretAPI.Infrastructure.Services.Storage.Local
                 string fileNewName = await FileRenameAsync(path, file.Name, HasFile);
 
 
-                await CopyFileAsync($"{uploadPath}//{fileNewName}", file);
-                datas.Add((fileNewName, $"{uploadPath}//{fileNewName}"));
+                await CopyFileAsync($"{uploadPath}\\{fileNewName}", file);
+                datas.Add((fileNewName, $"{uploadPath}\\{fileNewName}"));
                 
 
             }
