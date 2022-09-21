@@ -55,7 +55,13 @@ export class ProductService {
       await firstValueFrom(deleteObservable);
   }
 
-
+async readImages(id: string) {
+    const getObservable: Observable<any> = this.httpClientService.get({
+      action: "getproductimages",
+      controller: "prodcuts"
+    }, id);
+       await firstValueFrom(getObservable);
+  }
 
 }        
 
