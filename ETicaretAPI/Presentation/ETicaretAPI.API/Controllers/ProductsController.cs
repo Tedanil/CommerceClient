@@ -25,8 +25,9 @@ namespace ETicaretAPI.API.Controllers
         readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;   
         readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
         readonly IStorageService _storageService;
+        readonly IConfiguration _configuration;
 
-        public ProductsController(IProductWriteRepository productWriteRepository, IWebHostEnvironment webHostEnvironment, IProductReadRepository productReadRepository, IStorageService storageService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository)
+        public ProductsController(IProductWriteRepository productWriteRepository, IWebHostEnvironment webHostEnvironment, IProductReadRepository productReadRepository, IStorageService storageService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IConfiguration configuration)
         {
             _productWriteRepository = productWriteRepository;
             _webHostEnvironment = webHostEnvironment;
@@ -38,6 +39,7 @@ namespace ETicaretAPI.API.Controllers
             _invoiceFileWriteRepository = invoiceFileWriteRepository;
             _invoiceFileReadRepository = invoiceFileReadRepository;
             _storageService = storageService;
+            this._configuration = configuration;
         }
 
         [HttpGet]
@@ -158,7 +160,7 @@ namespace ETicaretAPI.API.Controllers
 
             return Ok(product.ProductImageFiles.Select(p => new
             {
-                p.Path,
+                Path = $"{_configuration["BaseStorageUrl"]}/{p.Path}",
                 p.FileName
 
 
