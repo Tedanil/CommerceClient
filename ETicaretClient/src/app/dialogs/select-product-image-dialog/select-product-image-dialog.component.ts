@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { extend } from 'jquery';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { Action } from 'rxjs/internal/scheduler/Action';
+import { SpinnerType } from 'src/app/base/base.component';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -18,7 +20,8 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
   constructor(dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
-    private productService: ProductService) 
+    private productService: ProductService,
+    private spinner: NgxSpinnerService) 
   {
      super(dialogRef)
    }
@@ -40,8 +43,9 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
 
 
 async ngOnInit() {
+  this.spinner.show(SpinnerType.SquareLoader);
 
-  this.images = await this.productService.readImages(this.data as string)
+  this.images = await this.productService.readImages(this.data as string, () => this.spinner.hide(SpinnerType.SquareLoader));
      
 }
 
