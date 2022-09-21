@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Inject, OnInit, Output } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { extend } from 'jquery';
@@ -5,9 +6,11 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { SpinnerType } from 'src/app/base/base.component';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
+import { DialogService } from 'src/app/services/common/dialog.service';
 import { FileUploadOptions } from 'src/app/services/common/file-upload/file-upload.component';
 import { ProductService } from 'src/app/services/common/models/product.service';
 import { BaseDialog } from '../base/base-dialog';
+import { DeleteDialogComponent, DeleteState } from '../delete-dialog/delete-dialog.component';
 
 declare var $: any
 
@@ -21,7 +24,8 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
   constructor(dialogRef: MatDialogRef<SelectProductImageDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
     private productService: ProductService,
-    private spinner: NgxSpinnerService) 
+    private spinner: NgxSpinnerService,
+    private dialogService: DialogService) 
   {
      super(dialogRef)
    }
@@ -48,8 +52,26 @@ async ngOnInit() {
   this.images = await this.productService.readImages(this.data as string, () => this.spinner.hide(SpinnerType.SquareLoader));
      
 }
+  async deleteImage(imageId: string, event: any) {
+     this.dialogService.openDialog({
+      componentType: DeleteDialogComponent,
+      data: DeleteState.Yes,
+      afterClosed: async () => {
+        this.spinner.show(SpinnerType.SquareLoader)
+        await this.productService.deleteImage(this.data as string, imageId, () => {
+           this.spinner.hide(SpinnerType.SquareLoader);
+           var card = $(event.srcElement).parent().parent();
+           card.fadeOut(500);
+      });
+
+      }
+     })
 
 
+
+
+
+}
 }
 
 export enum SelectProductImageState {

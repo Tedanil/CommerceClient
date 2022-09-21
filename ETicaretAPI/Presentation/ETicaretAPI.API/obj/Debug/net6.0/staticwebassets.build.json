@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YG0Y+DYtqBPnNRvKq+z5g/tYthpqf3c0YSwBa9tZQz8=",
+  "Hash": "p0iE9SwHRaomdH4onZYoWe/JPtlWDK9QL08Plz2VYbQ=",
   "Source": "ETicaretAPI.API",
   "BasePath": "_content/ETicaretAPI.API",
   "Mode": "Default",
@@ -15,40 +15,5 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\photo-images\\anildayioglu[56].JPG",
-      "SourceId": "ETicaretAPI.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
-      "BasePath": "_content/ETicaretAPI.API",
-      "RelativePath": "photo-images/anildayioglu[56].JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\photo-images\\anildayioglu[56].JPG"
-    },
-    {
-      "Identity": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\photo-images\\SS.PNG",
-      "SourceId": "ETicaretAPI.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Presentation\\ETicaretAPI.API\\wwwroot\\",
-      "BasePath": "_content/ETicaretAPI.API",
-      "RelativePath": "photo-images/SS.PNG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\photo-images\\SS.PNG"
-    }
-  ]
+  "Assets": []
 }

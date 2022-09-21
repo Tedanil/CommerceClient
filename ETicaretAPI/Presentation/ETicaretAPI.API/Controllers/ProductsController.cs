@@ -25,7 +25,7 @@ namespace ETicaretAPI.API.Controllers
         readonly IInvoiceFileWriteRepository _invoiceFileWriteRepository;   
         readonly IInvoiceFileReadRepository _invoiceFileReadRepository;
         readonly IStorageService _storageService;
-        readonly IConfiguration _configuration;
+        readonly IConfiguration configuration;
 
         public ProductsController(IProductWriteRepository productWriteRepository, IWebHostEnvironment webHostEnvironment, IProductReadRepository productReadRepository, IStorageService storageService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IConfiguration configuration)
         {
@@ -39,7 +39,7 @@ namespace ETicaretAPI.API.Controllers
             _invoiceFileWriteRepository = invoiceFileWriteRepository;
             _invoiceFileReadRepository = invoiceFileReadRepository;
             _storageService = storageService;
-            this._configuration = configuration;
+            this.configuration = configuration;
         }
 
         [HttpGet]
@@ -161,8 +161,9 @@ namespace ETicaretAPI.API.Controllers
 
             return Ok(product.ProductImageFiles.Select(p => new
             {
-                Path = $"{_configuration["BaseStorageUrl"]}/{p.Path}",
-                p.FileName
+                Path = $"{configuration["BaseStorageUrl"]}/{p.Path}",
+                p.FileName,
+                p.Id
 
 
             }));
@@ -171,7 +172,18 @@ namespace ETicaretAPI.API.Controllers
 
         }
 
+        [HttpDelete("[action]/{id}")]
+        public async Task<IActionResult> DeleteProductImage(string id, string imageId)
+        {
+            Product? product = await _productReadRepository.Table.Include(p => p.ProductImageFiles)
+                .FirstOrDefaultAsync(p => p.Id == Guid.Parse(id));
 
+            ProductImageFile productImageFile = product.ProductImageFiles.FirstOrDefault(p => p.Id == Guid.Parse(imageId));
+            product.ProductImageFiles.Remove(productImageFile);
+            await _productWriteRepository.SaveAsync();
+            return Ok();
+
+        }
     }
 }
  

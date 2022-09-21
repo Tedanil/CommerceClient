@@ -6,6 +6,8 @@ import { List_Product } from 'src/app/contracts/list_product';
 import { firstValueFrom, Observable } from 'rxjs';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
 
+declare var $: any
+
 
 @Injectable({
   providedIn: 'root'
@@ -66,7 +68,15 @@ async readImages(id: string, successCallBack?: () => void): Promise<List_Product
       successCallBack();
       return images;
   }
-
+async deleteImage(id: string, imageId: string, successCallBack?: () => void) {
+const deleteObservable =  this.httpClientService.delete({
+    action: "deleteproductimage",
+    controller: "products",
+    queryString: `imageId=${imageId}`
+  }, id)
+  await firstValueFrom(deleteObservable);
+  successCallBack();
+}
 }        
 
 
