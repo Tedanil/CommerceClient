@@ -1,9 +1,12 @@
 ﻿
 using ETicaretAPI.Application.Abstractions.Storage;
+using ETicaretAPI.Application.Features.Commands.CreateProduct;
+using ETicaretAPI.Application.Features.Queries.GetAllProduct;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Application.RequestParameters;
 using ETicaretAPI.Application.ViewModels.Products;
 using ETicaretAPI.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -27,11 +30,13 @@ namespace ETicaretAPI.API.Controllers
         readonly IStorageService _storageService;
         readonly IConfiguration configuration;
 
-        public ProductsController(IProductWriteRepository productWriteRepository, IWebHostEnvironment webHostEnvironment, IProductReadRepository productReadRepository, IStorageService storageService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IConfiguration configuration)
+        readonly IMediator _mediator;
+
+        public ProductsController(IProductWriteRepository productWriteRepository, IWebHostEnvironment webHostEnvironment, IProductReadRepository productReadRepository, IStorageService storageService, IFileReadRepository fileReadRepository, IFileWriteRepository fileWriteRepository, IProductImageFileReadRepository productImageFileReadRepository, IProductImageFileWriteRepository productImageFileWriteRepository, IInvoiceFileWriteRepository invoiceFileWriteRepository, IInvoiceFileReadRepository invoiceFileReadRepository, IConfiguration configuration, IMediator mediator)
         {
             _productWriteRepository = productWriteRepository;
             _webHostEnvironment = webHostEnvironment;
-            _productReadRepository = productReadRepository; 
+            _productReadRepository = productReadRepository;
             _fileReadRepository = fileReadRepository;
             _fileWriteRepository = fileWriteRepository;
             _productImageFileReadRepository = productImageFileReadRepository;
@@ -40,32 +45,15 @@ namespace ETicaretAPI.API.Controllers
             _invoiceFileReadRepository = invoiceFileReadRepository;
             _storageService = storageService;
             this.configuration = configuration;
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery]Pagination pagination)
+        public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
         {
 
-           var totalCount = _productReadRepository.GetAll(false).Count();
-            var products = _productReadRepository.GetAll(false).Skip(pagination.Page * pagination.Size).Take(pagination.Size).Select(p => new
-            {
-
-                p.Id,
-                p.Name,
-                p.Stock,
-                p.Price,
-                p.CreatedDate,
-                p.UpdatedDate
-
-            }).ToList();
-
-
-            return Ok(new
-            {
-                totalCount,
-                products
-            });
-
+          GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+            return Ok(response);
             
         }
 
@@ -84,22 +72,9 @@ namespace ETicaretAPI.API.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> Post(VM_Create_Product model)
+        public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
         {
-
-            
-
-
-            await _productWriteRepository.AddAsync(new()
-            {
-                Name = model.Name,
-                Price = (long)model.Price,
-                Stock = model.Stock
-
-
-
-            });
-            await _productWriteRepository.SaveAsync();
+            CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
             return StatusCode((int)HttpStatusCode.Created);
 
         }
