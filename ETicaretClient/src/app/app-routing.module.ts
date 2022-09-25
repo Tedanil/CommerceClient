@@ -5,19 +5,21 @@ import { CustomerModule } from './admin/components/customer/customer.module';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { DashboardModule } from './admin/components/dashboard/dashboard.module';
 import { LayoutComponent } from './admin/layout/layout.component';
+import { AuthGuard } from './guards/common/auth.guard';
 import { HomeComponent } from './ui/components/home/home.component';
 
 const routes: Routes = [
  {
    path:"admin", component:LayoutComponent, children:[
-      {path:"customers", loadChildren: () => import("./admin/components/customer/customer.module").then (module => module.CustomerModule)
+    {path:"", component: DashboardComponent, canActivate: [AuthGuard]},
+      {path:"customers", loadChildren: () => import("./admin/components/customer/customer.module").then (module => module.CustomerModule), canActivate: [AuthGuard]
       },
-      {path:"products", loadChildren: () => import("./admin/components/products/products.module").then (module => module.ProductsModule)
+      {path:"products", loadChildren: () => import("./admin/components/products/products.module").then (module => module.ProductsModule), canActivate: [AuthGuard]
       },
-      {path:"orders", loadChildren: () => import("./admin/components/order/order.module").then (module => module.OrderModule)
+      {path:"orders", loadChildren: () => import("./admin/components/order/order.module").then (module => module.OrderModule), canActivate: [AuthGuard]
       },
-      {path:"", component: DashboardComponent}
-   ]
+      
+   ], canActivate: [AuthGuard]
  },
   {path: "", component: HomeComponent},
   {path: "baskets", loadChildren: () => import("./ui/components/baskets/baskets.module").then (module => module.BasketsModule)},
