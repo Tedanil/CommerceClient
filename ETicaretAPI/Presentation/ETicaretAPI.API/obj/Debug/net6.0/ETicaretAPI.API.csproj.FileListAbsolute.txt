@@ -116,3 +116,8 @@ C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Google.Apis.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Google.Apis.Auth.PlatformServices.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Google.Apis.Auth.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Google.Apis.Core.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Newtonsoft.Json.dll

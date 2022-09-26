@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminModule } from './admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,7 @@ import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upl
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
 import {GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import {GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@ab
         allowedDomains: ["localhost:7249"]
       }
     }),
-    SocialLoginModule
+    SocialLoginModule, RouterModule
    
 
   ],
@@ -58,6 +59,7 @@ import {GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@ab
     } as SocialAuthServiceConfig
   }
 ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
