@@ -15,7 +15,7 @@ import { FileUploadComponent } from './services/common/file-upload/file-upload.c
 import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
-import {GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
+import {FacebookLoginProvider, GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
 import { RouterModule } from '@angular/router';
 
 
@@ -37,14 +37,14 @@ import { RouterModule } from '@angular/router';
     JwtModule.forRoot({
       config:{
         tokenGetter: () => localStorage.getItem("accessToken"),
-        allowedDomains: ["localhost:7249"]
+        allowedDomains: ["https://localhost:7249"]
       }
     }),
     SocialLoginModule, RouterModule
    
 
   ],
-  providers: [{provide:"baseUrl", useValue: " https://localhost:7249/api", multi: true},
+  providers: [{provide:"baseUrl", useValue: "https://localhost:7249/api", multi: true},
   {
     provide: "SocialAuthServiceConfig",
     useValue: {
@@ -53,6 +53,10 @@ import { RouterModule } from '@angular/router';
         {
           id: GoogleLoginProvider.PROVIDER_ID,
           provider: new GoogleLoginProvider("459574702655-m7cdesbsfi14e1u2vrvsuqhhgi6shdc6.apps.googleusercontent.com")
+        },
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("613848920220927")
         }
       ],
       onError: err => console.log(err)
