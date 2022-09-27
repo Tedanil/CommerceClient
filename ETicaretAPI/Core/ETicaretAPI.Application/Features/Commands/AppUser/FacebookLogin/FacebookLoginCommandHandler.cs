@@ -37,7 +37,7 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.FacebookLogin
 
             FacebookUserAccessTokenValidation_DTO validation_DTO = JsonSerializer.Deserialize<FacebookUserAccessTokenValidation_DTO>(userAccessTokenValidation);    
 
-            if(validation_DTO.Data.IsValid)
+            if(validation_DTO?.Data.IsValid !=null)
             {
                 string userInfoResponse = await _httpClient.GetStringAsync($"https://graph.facebook.com/me?fields=email,name&access_token={request.AuthToken}");
 
