@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { async } from '@angular/core/testing';
+import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ import { async } from '@angular/core/testing';
 })
 export class LoginComponent extends BaseComponent implements OnInit {
 
-  constructor(private userService: UserService,
+  constructor(private userAuthService: UserAuthService,
     spinner: NgxSpinnerService, private authService: AuthService, private activatedRoute: ActivatedRoute,
     private router: Router, private socialAuthService: SocialAuthService) {
     super(spinner)
@@ -23,14 +24,14 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.showSpinner(SpinnerType.BallScaleMultiple);
       switch (user.provider) {
         case "GOOGLE":
-          await userService.googleLogin(user, () => {
+          await userAuthService.googleLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallScaleMultiple)
 
           })
           break;
         case "FACEBOOK":
-          await userService.facebookLogin(user, () => {
+          await userAuthService.facebookLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallScaleMultiple)
 
@@ -47,8 +48,9 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   async login(usernameOrEmail: string, password: string) {
     this.showSpinner(SpinnerType.SquareLoader);
-    await this.userService.login(usernameOrEmail, password, () => {
+    await this.userAuthService.login(usernameOrEmail, password, () => {
       this.authService.identityCheck();
+      
       this.activatedRoute.queryParams.subscribe(params => {
         const returnUrl: string = params["returnUrl"];
         if (returnUrl)
