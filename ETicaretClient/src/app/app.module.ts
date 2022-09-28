@@ -15,7 +15,7 @@ import { FileUploadComponent } from './services/common/file-upload/file-upload.c
 import { FileUploadDialogComponent } from './dialogs/file-upload-dialog/file-upload-dialog.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { LoginComponent } from './ui/components/login/login.component';
-import {FacebookLoginProvider, GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
 import { RouterModule } from '@angular/router';
 import { HttpErrorHandlerInterceptionService } from './services/common/http-error-handler-interception.service';
 
@@ -38,10 +38,10 @@ import { HttpErrorHandlerInterceptionService } from './services/common/http-erro
     JwtModule.forRoot({
       config:{
         tokenGetter: () => localStorage.getItem("accessToken"),
-        allowedDomains: ["https://localhost:7249"]
+        allowedDomains: ["localhost:7249"]
       }
     }),
-    SocialLoginModule, RouterModule
+    SocialLoginModule
    
 
   ],
