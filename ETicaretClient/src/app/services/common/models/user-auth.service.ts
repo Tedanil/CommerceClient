@@ -1,5 +1,4 @@
 import { SocialUser } from '@abacritt/angularx-social-login';
-import { Token } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
 import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
@@ -47,11 +46,13 @@ export class UserAuthService {
     }, { resfreshToken: refreshToken });
 
     const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
+    
 
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
       localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
     }
+    
     callBackFunction();
   }
 
@@ -98,3 +99,7 @@ export class UserAuthService {
     callBackFunction();
   }
 }
+function next(observable: Observable<SocialUser | TokenResponse>): TokenResponse | PromiseLike<TokenResponse> {
+  throw new Error('Function not implemented.');
+}
+

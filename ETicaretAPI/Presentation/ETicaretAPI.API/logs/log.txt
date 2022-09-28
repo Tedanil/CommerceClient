@@ -1,0 +1,289 @@
+2022-09-29 00:51:17.793 +03:00 [INF] User profile is available. Using 'C:\Users\anild\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 00:51:18.239 +03:00 [INF] Now listening on: https://localhost:7249
+2022-09-29 00:51:18.240 +03:00 [INF] Now listening on: http://localhost:5249
+2022-09-29 00:51:18.247 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 00:51:18.249 +03:00 [INF] Hosting environment: Development
+2022-09-29 00:51:18.251 +03:00 [INF] Content root path: C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\
+2022-09-29 00:52:55.378 +03:00 [INF] User profile is available. Using 'C:\Users\anild\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 00:52:55.961 +03:00 [INF] Now listening on: https://localhost:7249
+2022-09-29 00:52:55.963 +03:00 [INF] Now listening on: http://localhost:5249
+2022-09-29 00:52:55.970 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 00:52:55.971 +03:00 [INF] Hosting environment: Development
+2022-09-29 00:52:55.972 +03:00 [INF] Content root path: C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\
+2022-09-29 01:04:52.952 +03:00 [INF] User profile is available. Using 'C:\Users\anild\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 01:04:53.513 +03:00 [INF] Now listening on: https://localhost:7249
+2022-09-29 01:04:53.514 +03:00 [INF] Now listening on: http://localhost:5249
+2022-09-29 01:04:53.519 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 01:04:53.520 +03:00 [INF] Hosting environment: Development
+2022-09-29 01:04:53.521 +03:00 [INF] Content root path: C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\
+2022-09-29 01:05:09.355 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/auth/google-login - -
+2022-09-29 01:05:09.574 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/auth/google-login
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:09.588 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:09.599 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-29 01:05:09.623 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/auth/google-login - - - 204 - - 278.8586ms
+2022-09-29 01:05:09.625 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/api/auth/google-login application/json 1379
+2022-09-29 01:05:09.644 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /api/auth/google-login
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 1379
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:09.648 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:09.699 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.AuthController.GoogleLogin (ETicaretAPI.API)'
+2022-09-29 01:05:09.795 +03:00 [INF] Route matched with {action = "GoogleLogin", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GoogleLogin(ETicaretAPI.Application.Features.Commands.AppUser.GoogleLogin.GoogleLoginCommandRequest) on controller ETicaretAPI.API.Controllers.AuthController (ETicaretAPI.API).
+2022-09-29 01:05:09.886 +03:00 [INF] RequestBody: {"idToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6ImVkMzZjMjU3YzQ3ZWJhYmI0N2I0NTY4MjhhODU4YWE1ZmNkYTEyZGQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2NjQ0MDI0MDgsImF1ZCI6IjQ1OTU3NDcwMjY1NS1tN2NkZXNic2ZpMTRlMXUydnJ2c3VxaGhnaTZzaGRjNi5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjEwNzkwNTIzNjU1NzExNjU1NTAwMyIsImVtYWlsIjoiYW5pbGRheWkxNTU5MzU3QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJhenAiOiI0NTk1NzQ3MDI2NTUtbTdjZGVzYnNmaTE0ZTF1MnZydnN1cWhoZ2k2c2hkYzYuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJuYW1lIjoiVGVkWCIsInBpY3R1cmUiOiJodHRwczovL2xoMy5nb29nbGV1c2VyY29udGVudC5jb20vYS0vQUNOUEV1X3FaN0RwaloxQldWeHhPRThqSHlKbU1lU05RUUpLbzM3WVRTamNPZz1zOTYtYyIsImdpdmVuX25hbWUiOiJUZWRYIiwiaWF0IjoxNjY0NDAyNzA4LCJleHAiOjE2NjQ0MDYzMDgsImp0aSI6Ijk0Y2E4MTdlZjM1YjYyOWUzZTVmYzRlMjIxMzJhMDI0MDM4MWE0N2EifQ.q7kykQP-PhJbUc_HpVXbE300-3lbIRlYfGCvPuPfYOEU2CF00ByOCL5SFu2AlLklpLO4Ew3RL2qXGHzOngV5rwu7okHTgIsOJ-dRQgr-jOayMjrTnTPgMpDmYkkfvbAS44jZ8SBWEvHN4XWgMPga3-3A3ECJ8IgQF_U-S6Qwzvdq_LySms9QC4RMJdPZ7xdmz21P8DPDJekB6cOOfm7hAeIjXd7Tk_eP2TrxvuYST7MnytHqTjqumBCsVP7z0usLArMl2B-1CdXzX-J8u7zYZjMh3KX9W4NyppBlxurXmquYfeFKj96KiLkaVeerJkUmiGPr6AsnekGyDgVxgcSgFg","id":"107905236557116555003","name":"TedX","email":"anildayi1559357@gmail.com","photoUrl":"https://lh3.googleusercontent.com/a-/ACNPEu_qZ7DpjZ1BWVxxOE8jHyJmMeSNQQJKo37YTSjcOg=s96-c","firstName":"TedX","provider":"GOOGLE"}
+2022-09-29 01:05:10.021 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+2022-09-29 01:05:10.085 +03:00 [INF] Response:
+StatusCode: 400
+Content-Type: application/json; charset=utf-8
+2022-09-29 01:05:10.113 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.AuthController.GoogleLogin (ETicaretAPI.API) in 288.0884ms
+2022-09-29 01:05:10.131 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.AuthController.GoogleLogin (ETicaretAPI.API)'
+2022-09-29 01:05:10.136 +03:00 [INF] ResponseBody: [{"key":"LastName","value":["The LastName field is required."]}]
+2022-09-29 01:05:10.140 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/api/auth/google-login application/json 1379 - 400 - application/json;+charset=utf-8 514.4883ms
+2022-09-29 01:05:17.829 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/auth/login - -
+2022-09-29 01:05:17.834 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/auth/login
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:17.880 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:17.883 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-29 01:05:17.891 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/auth/login - - - 204 - - 62.7220ms
+2022-09-29 01:05:17.904 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/api/auth/login application/json 49
+2022-09-29 01:05:17.909 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /api/auth/login
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 49
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:17.924 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:17.929 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API)'
+2022-09-29 01:05:17.946 +03:00 [INF] Route matched with {action = "login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] login(ETicaretAPI.Application.Features.Commands.AppUser.LoginUser.LoginUserCommandRequest) on controller ETicaretAPI.API.Controllers.AuthController (ETicaretAPI.API).
+2022-09-29 01:05:17.958 +03:00 [INF] RequestBody: {"usernameOrEmail":"TEDX","password":"malmaho31"}
+2022-09-29 01:05:23.103 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: None
+2022-09-29 01:05:24.748 +03:00 [INF] Executed DbCommand (72ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NameSurname", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-09-29 01:05:26.720 +03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NameSurname", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-09-29 01:05:27.191 +03:00 [INF] Executed DbCommand (34ms) [Parameters=[@p17='?', @p0='?' (DbType = Int32), @p1='?', @p18='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime), @p6='?', @p7='?', @p8='?', @p9='?', @p10='?', @p11='?' (DbType = Boolean), @p12='?', @p13='?' (DbType = DateTime), @p14='?', @p15='?' (DbType = Boolean), @p16='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "LockoutEnabled" = @p4, "LockoutEnd" = @p5, "NameSurname" = @p6, "NormalizedEmail" = @p7, "NormalizedUserName" = @p8, "PasswordHash" = @p9, "PhoneNumber" = @p10, "PhoneNumberConfirmed" = @p11, "RefreshToken" = @p12, "RefreshTokenEndDate" = @p13, "SecurityStamp" = @p14, "TwoFactorEnabled" = @p15, "UserName" = @p16
+WHERE "Id" = @p17 AND "ConcurrencyStamp" = @p18;
+2022-09-29 01:05:27.367 +03:00 [INF] Executing OkObjectResult, writing value of type 'ETicaretAPI.Application.Features.Commands.AppUser.LoginUser.LoginUserSuccessCommandResponse'.
+2022-09-29 01:05:27.381 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+2022-09-29 01:05:27.388 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API) in 9432.7052ms
+2022-09-29 01:05:27.395 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API)'
+2022-09-29 01:05:27.400 +03:00 [INF] ResponseBody: {"token":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiVEVEWCIsIm5iZiI6MTY2NDQwMjcyNSwiZXhwIjoxNjY0NDAyNzQwLCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3Lmdhc2RmZ2FzLmNvbSJ9.gnOUxJR3Z6qF2aWmDVZ2L6-eBm_8CEDGAgpwaz02R0g","expiration":"2022-09-28T22:05:40.9969815Z","refreshToken":"L+UCdW7APUlxGZNUhR4BE3kzuLFfdBv6l/b+8Yhz0t4="}}
+2022-09-29 01:05:27.428 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/api/auth/login application/json 49 - 200 - application/json;+charset=utf-8 9524.0641ms
+2022-09-29 01:05:31.561 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/products?page=0&size=5 - -
+2022-09-29 01:05:31.563 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/products
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:31.567 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:31.568 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-29 01:05:31.570 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/products?page=0&size=5 - - - 204 - - 9.1849ms
+2022-09-29 01:05:31.572 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7249/api/products?page=0&size=5 - -
+2022-09-29 01:05:31.580 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /api/products
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:31.588 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:32.230 +03:00 [INF] Failed to validate the token.
+Microsoft.IdentityModel.Tokens.SecurityTokenInvalidAudienceException: IDX10208: Unable to validate audience. validationParameters.ValidAudience is null or whitespace and validationParameters.ValidAudiences is null.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateAudience(IEnumerable`1 audiences, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwtToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2022-09-29 01:05:32.369 +03:00 [INF] Admin was not authenticated. Failure message: IDX10208: Unable to validate audience. validationParameters.ValidAudience is null or whitespace and validationParameters.ValidAudiences is null.
+2022-09-29 01:05:32.387 +03:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2022-09-29 01:05:32.412 +03:00 [INF] AuthenticationScheme: Admin was challenged.
+2022-09-29 01:05:32.417 +03:00 [INF] Response:
+StatusCode: 401
+WWW-Authenticate: [Redacted]
+2022-09-29 01:05:32.423 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7249/api/products?page=0&size=5 - - - 401 0 - 850.5857ms
+2022-09-29 01:05:32.435 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/auth/refreshtokenlogin - -
+2022-09-29 01:05:32.440 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/auth/refreshtokenlogin
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:32.452 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:32.456 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-29 01:05:32.462 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/auth/refreshtokenlogin - - - 204 - - 27.5856ms
+2022-09-29 01:05:32.466 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/api/auth/refreshtokenlogin application/json 64
+2022-09-29 01:05:32.477 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /api/auth/refreshtokenlogin
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: [Redacted]
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 64
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-29 01:05:32.491 +03:00 [INF] CORS policy execution successful.
+2022-09-29 01:05:32.498 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.AuthController.RefreshTokenLogin (ETicaretAPI.API)'
+2022-09-29 01:05:32.509 +03:00 [INF] Route matched with {action = "RefreshTokenLogin", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RefreshTokenLogin(ETicaretAPI.Application.Features.Commands.AppUser.RefreshTokenLogin.RefreshTokenLoginCommandRequest) on controller ETicaretAPI.API.Controllers.AuthController (ETicaretAPI.API).
+2022-09-29 01:05:32.518 +03:00 [INF] RequestBody: {"resfreshToken":"L+UCdW7APUlxGZNUhR4BE3kzuLFfdBv6l/b+8Yhz0t4="}
+2022-09-29 01:05:32.525 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+2022-09-29 01:05:32.533 +03:00 [INF] Response:
+StatusCode: 400
+Content-Type: application/json; charset=utf-8
+2022-09-29 01:05:32.541 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.AuthController.RefreshTokenLogin (ETicaretAPI.API) in 24.0455ms
+2022-09-29 01:05:32.544 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.AuthController.RefreshTokenLogin (ETicaretAPI.API)'
+2022-09-29 01:05:32.546 +03:00 [INF] ResponseBody: [{"key":"RefreshToken","value":["The RefreshToken field is required."]}]
+2022-09-29 01:05:32.547 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/api/auth/refreshtokenlogin application/json 64 - 400 - application/json;+charset=utf-8 81.5855ms
+2022-09-29 01:31:32.679 +03:00 [INF] User profile is available. Using 'C:\Users\anild\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-29 01:31:33.086 +03:00 [INF] Now listening on: https://localhost:7249
+2022-09-29 01:31:33.087 +03:00 [INF] Now listening on: http://localhost:5249
+2022-09-29 01:31:33.092 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-29 01:31:33.093 +03:00 [INF] Hosting environment: Development
+2022-09-29 01:31:33.094 +03:00 [INF] Content root path: C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\
