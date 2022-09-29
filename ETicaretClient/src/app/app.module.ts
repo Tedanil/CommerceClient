@@ -36,7 +36,7 @@ import { HttpErrorHandlerInterceptionService } from './services/common/http-erro
     NgxSpinnerModule,
     HttpClientModule,
     JwtModule.forRoot({
-      config:{
+      config: {
         tokenGetter: () => localStorage.getItem("accessToken"),
         allowedDomains: ["localhost:7249"]
       }

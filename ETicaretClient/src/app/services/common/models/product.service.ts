@@ -6,6 +6,7 @@ import { List_Product } from 'src/app/contracts/list_product';
 import { firstValueFrom, Observable } from 'rxjs';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
 
+
 declare var $: any
 
 
@@ -36,8 +37,8 @@ export class ProductService {
 
   }
    
- async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{totalCount: number;   products: List_Product[] }> {
-    const promiseData: Promise<{totalCount: number;   products: List_Product[] }> = this.httpClientService.get< {totalCount: number;   products: List_Product[] }>({
+ async read(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{totalProductCount: number;   products: List_Product[] }> {
+    const promiseData: Promise<{totalProductCount: number;   products: List_Product[] }> = this.httpClientService.get< {totalProductCount: number;   products: List_Product[] }>({
       controller: "products",
       queryString: `page=${page}&size=${size}`
 
