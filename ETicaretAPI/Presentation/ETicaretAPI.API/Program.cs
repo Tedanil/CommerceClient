@@ -19,6 +19,8 @@ using ETicaretAPI.API.Configurations.ColumnWriters;
 using Microsoft.AspNetCore.HttpLogging;
 using NpgsqlTypes;
 using ETicaretAPI.API.Extensions;
+using ETicaretAPI.SignalR;
+using ETicaretAPI.SignalR.Hubs;
 
 namespace ETicaretAPI.API
 {
@@ -32,6 +34,7 @@ namespace ETicaretAPI.API
             builder.Services.AddPersistenceServices();
             builder.Services.AddInfrastructureServices();
             builder.Services.AddAplicationServices();
+            builder.Services.AddSignalRServices();
 
             //builder.Services.AddStorage<LocalStorage>();
             builder.Services.AddStorage<AzureStorage>();
@@ -127,6 +130,7 @@ namespace ETicaretAPI.API
 
 
             app.MapControllers();
+            app.MapHubs();
 
             app.Run();
         }

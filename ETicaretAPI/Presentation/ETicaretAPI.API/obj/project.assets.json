@@ -1683,6 +1683,22 @@
         "runtime": {
           "bin/placeholder/ETicaretAPI.Persistence.dll": {}
         }
+      },
+      "ETicaretAPI.SignalR/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "ETicaretAPI.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ETicaretAPI.SignalR.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ETicaretAPI.SignalR.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -5060,6 +5076,11 @@
       "type": "project",
       "path": "../../Infrastructure/ETicaretAPI.Persistence/ETicaretAPI.Persistence.csproj",
       "msbuildProject": "../../Infrastructure/ETicaretAPI.Persistence/ETicaretAPI.Persistence.csproj"
+    },
+    "ETicaretAPI.SignalR/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/ETicaretAPI.SignalR/ETicaretAPI.SignalR.csproj",
+      "msbuildProject": "../../Infrastructure/ETicaretAPI.SignalR/ETicaretAPI.SignalR.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5067,6 +5088,7 @@
       "ETicaretAPI.Application >= 1.0.0",
       "ETicaretAPI.Infrastructure >= 1.0.0",
       "ETicaretAPI.Persistence >= 1.0.0",
+      "ETicaretAPI.SignalR >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.9",
       "Serilog >= 2.12.0",
@@ -5115,6 +5137,9 @@
             },
             "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Persistence\\ETicaretAPI.Persistence.csproj": {
               "projectPath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Persistence\\ETicaretAPI.Persistence.csproj"
+            },
+            "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.SignalR\\ETicaretAPI.SignalR.csproj": {
+              "projectPath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.SignalR\\ETicaretAPI.SignalR.csproj"
             }
           }
         }

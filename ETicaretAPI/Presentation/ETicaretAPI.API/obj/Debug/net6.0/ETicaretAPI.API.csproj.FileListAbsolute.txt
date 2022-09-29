@@ -133,3 +133,5 @@ C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Serilog.Sinks.Console.dll
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
 C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\Serilog.Sinks.File.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.SignalR.dll
+C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\bin\Debug\net6.0\ETicaretAPI.SignalR.pdb
