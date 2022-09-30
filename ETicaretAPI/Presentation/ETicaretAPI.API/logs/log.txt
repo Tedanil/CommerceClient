@@ -41193,3 +41193,486 @@ Upgrade: websocket
 Vary: [Redacted]
 Sec-WebSocket-Accept: [Redacted]
 2022-09-30 01:54:54.874 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7249/products-hub?id=DJME1OsEtYpL5adGuTXa4g - - - 101 - - 60333.2769ms
+2022-09-30 15:18:03.195 +03:00 [INF] User profile is available. Using 'C:\Users\anild\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-30 15:18:04.062 +03:00 [INF] Now listening on: https://localhost:7249
+2022-09-30 15:18:04.064 +03:00 [INF] Now listening on: http://localhost:5249
+2022-09-30 15:18:04.069 +03:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-30 15:18:04.071 +03:00 [INF] Hosting environment: Development
+2022-09-30 15:18:04.072 +03:00 [INF] Content root path: C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Presentation\ETicaretAPI.API\
+2022-09-30 15:18:11.279 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/auth/login - -
+2022-09-30 15:18:11.440 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/auth/login
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:11.448 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:11.453 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:11.475 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/auth/login - - - 204 - - 205.1415ms
+2022-09-30 15:18:11.478 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/api/auth/login application/json 49
+2022-09-30 15:18:11.488 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /api/auth/login
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Content-Type: application/json
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 49
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:11.492 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:11.570 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API)'
+2022-09-30 15:18:11.627 +03:00 [INF] Route matched with {action = "login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] login(ETicaretAPI.Application.Features.Commands.AppUser.LoginUser.LoginUserCommandRequest) on controller ETicaretAPI.API.Controllers.AuthController (ETicaretAPI.API).
+2022-09-30 15:18:11.710 +03:00 [INF] RequestBody: {"usernameOrEmail":"TEDX","password":"malmaho31"}
+2022-09-30 15:18:14.332 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: None
+2022-09-30 15:18:15.202 +03:00 [INF] Executed DbCommand (48ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NameSurname", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-09-30 15:18:16.338 +03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedUserName_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."AccessFailedCount", a."ConcurrencyStamp", a."Email", a."EmailConfirmed", a."LockoutEnabled", a."LockoutEnd", a."NameSurname", a."NormalizedEmail", a."NormalizedUserName", a."PasswordHash", a."PhoneNumber", a."PhoneNumberConfirmed", a."RefreshToken", a."RefreshTokenEndDate", a."SecurityStamp", a."TwoFactorEnabled", a."UserName"
+FROM "AspNetUsers" AS a
+WHERE a."NormalizedUserName" = @__normalizedUserName_0
+LIMIT 1
+2022-09-30 15:18:16.585 +03:00 [INF] Executed DbCommand (20ms) [Parameters=[@p17='?', @p0='?' (DbType = Int32), @p1='?', @p18='?', @p2='?', @p3='?' (DbType = Boolean), @p4='?' (DbType = Boolean), @p5='?' (DbType = DateTime), @p6='?', @p7='?', @p8='?', @p9='?', @p10='?', @p11='?' (DbType = Boolean), @p12='?', @p13='?' (DbType = DateTime), @p14='?', @p15='?' (DbType = Boolean), @p16='?'], CommandType='"Text"', CommandTimeout='30']
+UPDATE "AspNetUsers" SET "AccessFailedCount" = @p0, "ConcurrencyStamp" = @p1, "Email" = @p2, "EmailConfirmed" = @p3, "LockoutEnabled" = @p4, "LockoutEnd" = @p5, "NameSurname" = @p6, "NormalizedEmail" = @p7, "NormalizedUserName" = @p8, "PasswordHash" = @p9, "PhoneNumber" = @p10, "PhoneNumberConfirmed" = @p11, "RefreshToken" = @p12, "RefreshTokenEndDate" = @p13, "SecurityStamp" = @p14, "TwoFactorEnabled" = @p15, "UserName" = @p16
+WHERE "Id" = @p17 AND "ConcurrencyStamp" = @p18;
+2022-09-30 15:18:16.682 +03:00 [INF] Executing OkObjectResult, writing value of type 'ETicaretAPI.Application.Features.Commands.AppUser.LoginUser.LoginUserSuccessCommandResponse'.
+2022-09-30 15:18:16.701 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+2022-09-30 15:18:16.713 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API) in 5077.1743ms
+2022-09-30 15:18:16.716 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.AuthController.login (ETicaretAPI.API)'
+2022-09-30 15:18:16.721 +03:00 [INF] ResponseBody: {"token":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiVEVEWCIsIm5iZiI6MTY2NDU0MDI5NSwiZXhwIjoxNjY0NTQxMTk1LCJpc3MiOiJ3d3cubXlhcGkuY29tIiwiYXVkIjoid3d3Lmdhc2RmZ2FzLmNvbSJ9.3aIj8xCMS7npp_QElNvhkkNnTO3BZBTOx5gQgqUh9yM","expiration":"2022-09-30T12:33:15.9089197Z","refreshToken":"jajhqnFvcKEc0Q82CVQqkWrgT/rMdjTI9MxC526vjyU="}}
+2022-09-30 15:18:16.742 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/api/auth/login application/json 49 - 200 - application/json;+charset=utf-8 5264.4032ms
+2022-09-30 15:18:17.862 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/products-hub/negotiate?negotiateVersion=1 - -
+2022-09-30 15:18:17.865 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /products-hub/negotiate
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Cache-Control: max-age=0
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:17.869 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:17.870 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:17.872 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/products-hub/negotiate?negotiateVersion=1 - - - 204 - - 10.1062ms
+2022-09-30 15:18:17.952 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/products-hub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-09-30 15:18:17.959 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /products-hub/negotiate
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Cache-Control: max-age=0
+Content-Type: text/plain;charset=UTF-8
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 0
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+x-signalr-user-agent: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:17.963 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:17.966 +03:00 [INF] Executing endpoint '/products-hub/negotiate'
+2022-09-30 15:18:17.990 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json
+Content-Length: 316
+2022-09-30 15:18:17.992 +03:00 [INF] Executed endpoint '/products-hub/negotiate'
+2022-09-30 15:18:17.994 +03:00 [INF] RequestBody: 
+2022-09-30 15:18:17.995 +03:00 [INF] ResponseBody: {"negotiateVersion":1,"connectionId":"gFB1hdgyc5I8xll7dRLfdw","connectionToken":"gKaO2ij0XUiiGgwRPQFBmw","availableTransports":[{"transport":"WebSockets","transferFormats":["Text","Binary"]},{"transport":"ServerSentEvents","transferFormats":["Text"]},{"transport":"LongPolling","transferFormats":["Text","Binary"]}]}
+2022-09-30 15:18:17.996 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/products-hub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 45.0172ms
+2022-09-30 15:18:18.014 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7249/products-hub?id=gKaO2ij0XUiiGgwRPQFBmw - -
+2022-09-30 15:18:18.024 +03:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: https
+PathBase: 
+Path: /products-hub
+Connection: Upgrade
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Cache-Control: no-cache
+Cookie: [Redacted]
+Origin: [Redacted]
+Pragma: [Redacted]
+Upgrade: websocket
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: [Redacted]
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2022-09-30 15:18:18.028 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:18.031 +03:00 [INF] Executing endpoint '/products-hub'
+2022-09-30 15:18:19.087 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/products?page=0&size=5 - -
+2022-09-30 15:18:19.089 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/products
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:19.091 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:19.092 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:19.093 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/products?page=0&size=5 - - - 204 - - 5.4739ms
+2022-09-30 15:18:19.095 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7249/api/products?page=0&size=5 - -
+2022-09-30 15:18:19.096 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /api/products
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:19.098 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:19.099 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.ProductsController.Get (ETicaretAPI.API)'
+2022-09-30 15:18:19.106 +03:00 [INF] Route matched with {action = "Get", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get(ETicaretAPI.Application.Features.Queries.Product.GetAllProduct.GetAllProductQueryRequest) on controller ETicaretAPI.API.Controllers.ProductsController (ETicaretAPI.API).
+2022-09-30 15:18:19.119 +03:00 [INF] get all productss!!
+2022-09-30 15:18:19.167 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: None
+2022-09-30 15:18:19.262 +03:00 [INF] Executed DbCommand (25ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)::INT
+FROM "Products" AS p
+2022-09-30 15:18:19.291 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-30 15:18:19.293 +03:00 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2022-09-30 15:18:19.325 +03:00 [INF] Executed DbCommand (8ms) [Parameters=[@__p_1='?' (DbType = Int32), @__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT p."Id", p."Name", p."Stock", p."Price", p."CreatedDate", p."UpdatedDate"
+FROM "Products" AS p
+LIMIT @__p_1 OFFSET @__p_0
+2022-09-30 15:18:19.336 +03:00 [INF] Executing OkObjectResult, writing value of type 'ETicaretAPI.Application.Features.Queries.Product.GetAllProduct.GetAllProductQueryResponse'.
+2022-09-30 15:18:19.350 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+2022-09-30 15:18:19.352 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.ProductsController.Get (ETicaretAPI.API) in 243.9296ms
+2022-09-30 15:18:19.356 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.ProductsController.Get (ETicaretAPI.API)'
+2022-09-30 15:18:19.359 +03:00 [INF] ResponseBody: {"totalProductCount":243,"products":[{"id":"aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58","name":"1234","stock":123,"price":1234,"createdDate":"2022-09-19T13:22:05.656559Z","updatedDate":"0001-01-01T00:00:00"},{"id":"91369107-edfb-4733-813b-97f055e57466","name":"1234as","stock":13,"price":54,"createdDate":"2022-09-20T18:25:06.143481Z","updatedDate":"0001-01-01T00:00:00"},{"id":"21631609-3463-4c78-85a7-fb87b76e480b","name":"retettetet","stock":13,"price":54,"createdDate":"2022-09-20T18:25:16.91867Z","updatedDate":"0001-01-01T00:00:00"},{"id":"7b218cd2-89f9-47c5-930c-096d66b806d7","name":"operatati","stock":1254,"price":12,"createdDate":"2022-09-20T18:42:51.839974Z","updatedDate":"0001-01-01T00:00:00"},{"id":"2d64aa27-34f4-4d66-b2e0-dfe87d9d208e","name":"3463aaa","stock":123,"price":12,"createdDate":"2022-09-20T23:08:41.866679Z","updatedDate":"0001-01-01T00:00:00"}]}
+2022-09-30 15:18:19.361 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7249/api/products?page=0&size=5 - - - 200 - application/json;+charset=utf-8 266.6331ms
+2022-09-30 15:18:20.735 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58 - -
+2022-09-30 15:18:20.738 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:20.742 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:20.747 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:20.749 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58 - - - 204 - - 13.3585ms
+2022-09-30 15:18:20.753 +03:00 [INF] Request starting HTTP/2 GET https://localhost:7249/api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58 - -
+2022-09-30 15:18:20.757 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: GET
+Scheme: https
+PathBase: 
+Path: /api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:20.760 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:20.762 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.ProductsController.GetProductImages (ETicaretAPI.API)'
+2022-09-30 15:18:20.773 +03:00 [INF] Route matched with {action = "GetProductImages", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetProductImages(ETicaretAPI.Application.Features.Queries.ProductImageFile.GetProductImages.GetProductImagesQueryRequest) on controller ETicaretAPI.API.Controllers.ProductsController (ETicaretAPI.API).
+2022-09-30 15:18:20.798 +03:00 [INF] Entity Framework Core 6.0.9 initialized 'ETicaretAPIDbContext' using provider 'Npgsql.EntityFrameworkCore.PostgreSQL:6.0.6+6fa8f3c27a7c241a66e72a6c09e0b252509215d0' with options: None
+2022-09-30 15:18:21.380 +03:00 [INF] Executed DbCommand (16ms) [Parameters=[@__Parse_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT t."Id", t."CreatedDate", t."Name", t."Price", t."Stock", t."UpdatedDate", t0."ProductImageFilesId", t0."ProductsId", t0."Id", t0."CreatedDate", t0."Discriminator", t0."FileName", t0."Path", t0."Storage", t0."Showcase"
+FROM (
+    SELECT p."Id", p."CreatedDate", p."Name", p."Price", p."Stock", p."UpdatedDate"
+    FROM "Products" AS p
+    WHERE p."Id" = @__Parse_0
+    LIMIT 1
+) AS t
+LEFT JOIN (
+    SELECT p0."ProductImageFilesId", p0."ProductsId", t1."Id", t1."CreatedDate", t1."Discriminator", t1."FileName", t1."Path", t1."Storage", t1."Showcase"
+    FROM "ProductProductImageFile" AS p0
+    INNER JOIN (
+        SELECT f."Id", f."CreatedDate", f."Discriminator", f."FileName", f."Path", f."Storage", f."Showcase"
+        FROM "Files" AS f
+        WHERE f."Discriminator" = 'ProductImageFile'
+    ) AS t1 ON p0."ProductImageFilesId" = t1."Id"
+) AS t0 ON t."Id" = t0."ProductsId"
+ORDER BY t."Id", t0."ProductImageFilesId", t0."ProductsId"
+2022-09-30 15:18:21.479 +03:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[ETicaretAPI.Application.Features.Queries.ProductImageFile.GetProductImages.GetProductImagesQueryResponse, ETicaretAPI.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-09-30 15:18:21.481 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json; charset=utf-8
+2022-09-30 15:18:21.483 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.ProductsController.GetProductImages (ETicaretAPI.API) in 706.0057ms
+2022-09-30 15:18:21.484 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.ProductsController.GetProductImages (ETicaretAPI.API)'
+2022-09-30 15:18:21.487 +03:00 [INF] ResponseBody: [{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-m9lmg9.jpg","fileName":"wallhaven-m9lmg9.jpg","id":"050601eb-cd21-4d40-8900-03629ad702b2"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-pkjdrp.jpg","fileName":"wallhaven-pkjdrp.jpg","id":"556c80ae-b8cd-4eab-afef-93fbf819e0c5"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/SQLFiRST.PNG","fileName":"SQLFiRST.PNG","id":"5e165ae6-f10d-4e96-9681-69826f1c0fea"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-3kg5md.jpg","fileName":"wallhaven-3kg5md.jpg","id":"752e5993-5d4a-40d5-bc18-6cdc7665dd1e"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/2984873577698255943304063088220294420055154n.png","fileName":"2984873577698255943304063088220294420055154n.png","id":"b7a815e8-d145-4109-bb9f-2ae3bd01b769"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-4dydo4.png","fileName":"wallhaven-4dydo4.png","id":"dc220ccb-fb71-4247-91eb-61df759655bd"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-zmyl6o-2.jpg","fileName":"wallhaven-zmyl6o-2.jpg","id":"e6461f4f-b543-4f20-97d3-0d0bfa3317cb"},{"path":"https://erbasticaret.blob.core.windows.net/photo-images/wallhaven-5d5238.jpg","fileName":"wallhaven-5d5238.jpg","id":"f4bc66fd-81c5-47eb-8f94-a8b291556809"}]
+2022-09-30 15:18:21.489 +03:00 [INF] Request finished HTTP/2 GET https://localhost:7249/api/products/getproductimages/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58 - - - 200 - application/json;+charset=utf-8 736.3080ms
+2022-09-30 15:18:33.703 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58?%20imageId=5e165ae6-f10d-4e96-9681-69826f1c0fea - -
+2022-09-30 15:18:33.706 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:33.709 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:33.710 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:33.711 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58?%20imageId=5e165ae6-f10d-4e96-9681-69826f1c0fea - - - 204 - - 8.0707ms
+2022-09-30 15:18:33.713 +03:00 [INF] Request starting HTTP/2 DELETE https://localhost:7249/api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58?%20imageId=5e165ae6-f10d-4e96-9681-69826f1c0fea - -
+2022-09-30 15:18:33.714 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: DELETE
+Scheme: https
+PathBase: 
+Path: /api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58
+Accept: application/json, text/plain, */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+sec-ch-ua-mobile: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:33.717 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:33.719 +03:00 [INF] Executing endpoint 'ETicaretAPI.API.Controllers.ProductsController.DeleteProductImage (ETicaretAPI.API)'
+2022-09-30 15:18:33.723 +03:00 [INF] Route matched with {action = "DeleteProductImage", controller = "Products"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] DeleteProductImage(ETicaretAPI.Application.Features.Commands.ProductImageFile.RemoveProductImage.RemoveProductImageCommandRequest, System.String) on controller ETicaretAPI.API.Controllers.ProductsController (ETicaretAPI.API).
+2022-09-30 15:18:33.735 +03:00 [INF] Executing BadRequestObjectResult, writing value of type 'System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]][]'.
+2022-09-30 15:18:33.760 +03:00 [INF] Response:
+StatusCode: 400
+Content-Type: application/json; charset=utf-8
+2022-09-30 15:18:33.763 +03:00 [INF] Executed action ETicaretAPI.API.Controllers.ProductsController.DeleteProductImage (ETicaretAPI.API) in 38.1468ms
+2022-09-30 15:18:33.767 +03:00 [INF] Executed endpoint 'ETicaretAPI.API.Controllers.ProductsController.DeleteProductImage (ETicaretAPI.API)'
+2022-09-30 15:18:33.771 +03:00 [INF] ResponseBody: [{"key":"imageId","value":["The imageId field is required."]}]
+2022-09-30 15:18:33.775 +03:00 [INF] Request finished HTTP/2 DELETE https://localhost:7249/api/products/deleteproductimage/aecc4bd7-6b9e-4b0b-8dc7-c021e0738c58?%20imageId=5e165ae6-f10d-4e96-9681-69826f1c0fea - - - 400 - application/json;+charset=utf-8 61.6356ms
+2022-09-30 15:18:45.467 +03:00 [INF] Executed endpoint '/products-hub'
+2022-09-30 15:18:45.471 +03:00 [INF] Response:
+StatusCode: 101
+Connection: Upgrade
+Date: Fri, 30 Sep 2022 12:18:17 GMT
+Server: Kestrel
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Upgrade: websocket
+Vary: [Redacted]
+Sec-WebSocket-Accept: [Redacted]
+2022-09-30 15:18:45.473 +03:00 [INF] Request finished HTTP/1.1 GET https://localhost:7249/products-hub?id=gKaO2ij0XUiiGgwRPQFBmw - - - 101 - - 27459.2756ms
+2022-09-30 15:18:47.496 +03:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7249/products-hub/negotiate?negotiateVersion=1 - -
+2022-09-30 15:18:47.497 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: OPTIONS
+Scheme: https
+PathBase: 
+Path: /products-hub/negotiate
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Access-Control-Request-Headers: [Redacted]
+Access-Control-Request-Method: [Redacted]
+Cache-Control: max-age=0
+Origin: [Redacted]
+Referer: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:47.499 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:47.500 +03:00 [INF] Response:
+StatusCode: 204
+Access-Control-Allow-Credentials: [Redacted]
+Access-Control-Allow-Headers: [Redacted]
+Access-Control-Allow-Methods: [Redacted]
+Access-Control-Allow-Origin: [Redacted]
+Vary: [Redacted]
+2022-09-30 15:18:47.501 +03:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7249/products-hub/negotiate?negotiateVersion=1 - - - 204 - - 5.5838ms
+2022-09-30 15:18:47.505 +03:00 [INF] Request starting HTTP/2 POST https://localhost:7249/products-hub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-09-30 15:18:47.506 +03:00 [INF] Request:
+Protocol: HTTP/2
+Method: POST
+Scheme: https
+PathBase: 
+Path: /products-hub/negotiate
+Accept: */*
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+:method: [Redacted]
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Cache-Control: max-age=0
+Content-Type: text/plain;charset=UTF-8
+Cookie: [Redacted]
+Origin: [Redacted]
+Referer: [Redacted]
+Content-Length: 0
+sec-ch-ua: "Google Chrome";v="105", "Not)A;Brand";v="8", "Chromium";v="105"
+X-Requested-With: XMLHttpRequest
+sec-ch-ua-mobile: [Redacted]
+x-signalr-user-agent: [Redacted]
+sec-ch-ua-platform: [Redacted]
+sec-fetch-site: [Redacted]
+sec-fetch-mode: [Redacted]
+sec-fetch-dest: [Redacted]
+2022-09-30 15:18:47.510 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:47.511 +03:00 [INF] Executing endpoint '/products-hub/negotiate'
+2022-09-30 15:18:47.512 +03:00 [INF] Response:
+StatusCode: 200
+Content-Type: application/json
+Content-Length: 316
+2022-09-30 15:18:47.514 +03:00 [INF] Executed endpoint '/products-hub/negotiate'
+2022-09-30 15:18:47.515 +03:00 [INF] RequestBody: 
+2022-09-30 15:18:47.517 +03:00 [INF] ResponseBody: {"negotiateVersion":1,"connectionId":"tdMtVK-BzUgN6caAYXFEYQ","connectionToken":"gtEyCLuTW1xoID2x1xLSng","availableTransports":[{"transport":"WebSockets","transferFormats":["Text","Binary"]},{"transport":"ServerSentEvents","transferFormats":["Text"]},{"transport":"LongPolling","transferFormats":["Text","Binary"]}]}
+2022-09-30 15:18:47.518 +03:00 [INF] Request finished HTTP/2 POST https://localhost:7249/products-hub/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 13.5028ms
+2022-09-30 15:18:47.536 +03:00 [INF] Request starting HTTP/1.1 GET https://localhost:7249/products-hub?id=gtEyCLuTW1xoID2x1xLSng - -
+2022-09-30 15:18:47.538 +03:00 [INF] Request:
+Protocol: HTTP/1.1
+Method: GET
+Scheme: https
+PathBase: 
+Path: /products-hub
+Connection: Upgrade
+Host: localhost:7249
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36
+Accept-Encoding: gzip, deflate, br
+Accept-Language: tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7
+Cache-Control: no-cache
+Cookie: [Redacted]
+Origin: [Redacted]
+Pragma: [Redacted]
+Upgrade: websocket
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: [Redacted]
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+2022-09-30 15:18:47.540 +03:00 [INF] CORS policy execution successful.
+2022-09-30 15:18:47.541 +03:00 [INF] Executing endpoint '/products-hub'
