@@ -1,5 +1,4 @@
 ﻿using ETicaretAPI.Application.Repositories;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ETicaretAPI.Application.Features.Commands.ProductImageFile.ChangeShowcaseImage
 {
-    public class ChangeShowcaseImageCommandHandler : IRequestHandler<ChangeShowcaseImageCommandRequest, ChangeShowcaseImageCommandResponse>
+    public class ChangeShowcaseImageCommandHandler : MediatR.IRequestHandler<ChangeShowcaseImageCommandRequest, ChangeShowcaseImageCommandResponse>
     {
         readonly IProductImageFileWriteRepository _productImageFileWriteRepository;
 
@@ -40,7 +39,6 @@ namespace ETicaretAPI.Application.Features.Commands.ProductImageFile.ChangeShowc
             await _productImageFileWriteRepository.SaveAsync();
 
             return new();
-        
         }
     }
 }
