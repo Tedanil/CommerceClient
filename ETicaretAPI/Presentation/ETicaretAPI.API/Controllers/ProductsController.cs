@@ -52,7 +52,7 @@ namespace ETicaretAPI.API.Controllers
 
        
         [HttpPost]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> Post(CreateProductCommandRequest createProductCommandRequest)
         {
             CreateProductCommandResponse response = await _mediator.Send(createProductCommandRequest);
@@ -69,7 +69,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpDelete("{Id}")]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> Delete([FromRoute] RemoveProductCommandRequest removeProductCommandRequest)
         {
             RemoveProductCommandResponse response = await _mediator.Send(removeProductCommandRequest);
@@ -77,7 +77,7 @@ namespace ETicaretAPI.API.Controllers
          }
 
         [HttpPost("[action]")]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> Upload([FromQuery] UploadProductImageCommandRequest uploadProductImageCommandRequest)
         {
             uploadProductImageCommandRequest.Files = Request.Form.Files;
@@ -86,7 +86,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]/{id}")]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> GetProductImages([FromRoute] GetProductImagesQueryRequest getProductImagesQueryRequest)
         {
             List<GetProductImagesQueryResponse> responses = await _mediator.Send(getProductImagesQueryRequest);
@@ -95,7 +95,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpDelete("[action]/{id}")]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task<IActionResult> DeleteProductImage([FromRoute] RemoveProductImageCommandRequest removeProductImageCommandRequest, [FromQuery] string imageId)
         {
             removeProductImageCommandRequest.ImageId = imageId;
@@ -105,7 +105,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]")]
-        //[Authorize(AuthenticationSchemes = "Admin")]
+        [Authorize(AuthenticationSchemes = "Admin")]
         public async Task <IActionResult> ChangeShowcaseImage([FromQuery]
         ChangeShowcaseImageCommandRequest changeShowcaseImageCommandRequest)
         {
