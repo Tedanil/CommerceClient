@@ -18,11 +18,12 @@ import { LoginComponent } from './ui/components/login/login.component';
 import { FacebookLoginProvider, GoogleLoginProvider,SocialAuthServiceConfig,SocialLoginModule} from '@abacritt/angularx-social-login';
 import { RouterModule } from '@angular/router';
 import { HttpErrorHandlerInterceptionService } from './services/common/http-error-handler-interception.service';
+import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent
+    AppComponent, LoginComponent, DynamicLoadComponentDirective
     
     
     

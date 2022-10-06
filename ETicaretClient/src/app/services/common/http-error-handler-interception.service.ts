@@ -18,7 +18,6 @@ export class HttpErrorHandlerInterceptionService implements HttpInterceptor {
       switch (error.status) {
         case HttpStatusCode.Unauthorized:
           this.userAuthService.refreshTokenLogin(localStorage.getItem("refreshToken"), (state) => {
-            debugger;
             if (!state) {
               const url = this.router.url;
               if (url == "/products")

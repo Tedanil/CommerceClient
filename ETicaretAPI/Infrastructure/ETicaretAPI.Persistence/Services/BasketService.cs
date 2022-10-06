@@ -43,7 +43,7 @@ namespace ETicaretAPI.Persistence.Services
                          .Include(u => u.Baskets)
                          .FirstOrDefaultAsync(u => u.UserName == username);
 
-                var _basket = from basket in user.Baskets
+                var _basket = from basket in user?.Baskets
                               join order in _orderReadRepository.Table
                               on basket.Id equals order.Id into BasketOrders
                               from order in BasketOrders.DefaultIfEmpty()
@@ -59,7 +59,7 @@ namespace ETicaretAPI.Persistence.Services
                 else
                 {
                     targetBasket = new();
-                    user.Baskets.Add(targetBasket);
+                    user?.Baskets.Add(targetBasket);
                 }
 
                 await _basketWriteRepository.SaveAsync();

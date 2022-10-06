@@ -91,6 +91,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.customToastrService.message("Ürün sepete eklenmiştir.", "Sepete Eklendi", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
+      
     });
+    debugger;
   }
 }
