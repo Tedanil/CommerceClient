@@ -15,6 +15,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
+
 namespace ETicaretAPI.Persistence.Services
 {
     public class AuthService : IAuthService
@@ -67,7 +68,7 @@ namespace ETicaretAPI.Persistence.Services
                 return token;
 
             }
-            throw new Exception("Invalid external authentication!");
+            throw new Exception("Invalid external authentication!"); //Zaten bir hesabınız var uyarısı gelebilir!
         }
 
         public async Task<Token> FacebookLoginAsync(string authToken, int accessTokenLifeTime)
@@ -138,6 +139,7 @@ namespace ETicaretAPI.Persistence.Services
 
             throw new AuthenticationErrorException();
         }
+        
 
         public async Task<Token> RefreshTokenLoginAsync(string refreshToken)
         {
@@ -152,7 +154,7 @@ namespace ETicaretAPI.Persistence.Services
                 return token;
             }
             else
-            throw new AuthenticationErrorException();
+                throw new NotFoundUserException();
         }
     }
 }

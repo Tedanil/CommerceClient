@@ -82,17 +82,15 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
 
   async addToBasket(product: List_Product) {
-    this.showSpinner(SpinnerType.SquareLoader);
+    this.showSpinner(SpinnerType.Pacman);
     let _basketItem: Create_Basket_Item = new Create_Basket_Item();
     _basketItem.productId = product.id;
     _basketItem.quantity = 1;
     await this.basketService.add(_basketItem);
-    this.hideSpinner(SpinnerType.SquareLoader);
+    this.hideSpinner(SpinnerType.Pacman);
     this.customToastrService.message("Ürün sepete eklenmiştir.", "Sepete Eklendi", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
-      
     });
-    debugger;
   }
 }
