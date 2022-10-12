@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
+import { BasketItemDeleteState, BasketItemRemoveDialogComponent } from 'src/app/dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
+import { DialogService } from 'src/app/services/common/dialog.service';
 import { List_Basket_Item } from '../../../contracts/basket/list_basket_item';
 import { Update_Basket_Item } from '../../../contracts/basket/update_basket_item';
 import { Create_Order } from '../../../contracts/order/create_order';
@@ -17,7 +20,8 @@ declare var $: any;
   styleUrls: ['./baskets.component.scss']
 })
 export class BasketsComponent extends BaseComponent implements OnInit {
-  constructor(spinner: NgxSpinnerService, private basketService: BasketService, private orderService: OrderService, private toastrService: CustomToastrService, private router: Router) {
+  constructor(spinner: NgxSpinnerService, private basketService: BasketService, private orderService: OrderService, private toastrService: CustomToastrService, private router: Router,
+    private dialogService: DialogService) {
     super(spinner)
   }
   basketItems: List_Basket_Item[];
@@ -38,13 +42,21 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     await this.basketService.updateQuantity(basketItem);
     this.hideSpinner(SpinnerType.SquareLoader)
   }
+  removeBasketItem(basketItemId: string) {
+    $("#basketModal").modal("hide");
 
-  async removeBasketItem(basketItemId: string) {
-    this.showSpinner(SpinnerType.SquareLoader);
-    await this.basketService.remove(basketItemId);
+    this.dialogService.openDialog({
+      componentType: BasketItemRemoveDialogComponent,
+      data: BasketItemDeleteState.Yes,
+      afterClosed: async () => {
+        this.showSpinner(SpinnerType.SquareLoader);
+        await this.basketService.remove(basketItemId);
 
-    var a = $("." + basketItemId)
-    $("." + basketItemId).fadeOut(500, () => this.hideSpinner(SpinnerType.SquareLoader));
+        var a = $("." + basketItemId)
+        $("." + basketItemId).fadeOut(500, () => this.hideSpinner(SpinnerType.SquareLoader));
+        $("basketModal").modal("show");
+      }
+    });
   }
 
   async shoppingComplete() {
@@ -61,6 +73,6 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     this.router.navigate(["/"]);
   }
 
-  
+
 
 }

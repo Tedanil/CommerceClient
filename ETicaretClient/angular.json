@@ -41,17 +41,11 @@
               "node_modules/ngx-spinner/animations/square-loader.css",
               "node_modules/ngx-spinner/animations/ball-square-spin.css",
               "node_modules/ngx-spinner/animations/square-jelly-box.css"
-
-
-
-
-
-
             ],
             "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
-              "node_modules/jquery/dist/jquery.min.js",
               "node_modules/alertifyjs/build/alertify.min.js"
         
             ]
