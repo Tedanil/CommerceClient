@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { async } from 'rxjs';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
-import { BasketItemDeleteState, BasketItemRemoveDialogComponent } from 'src/app/dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
-import { DialogService } from 'src/app/services/common/dialog.service';
 import { List_Basket_Item } from '../../../contracts/basket/list_basket_item';
 import { Update_Basket_Item } from '../../../contracts/basket/update_basket_item';
 import { Create_Order } from '../../../contracts/order/create_order';
+import { BasketItemDeleteState, BasketItemRemoveDialogComponent } from '../../../dialogs/basket-item-remove-dialog/basket-item-remove-dialog.component';
+import { ShoppingCompleteDialogComponent, ShoppingCompleteState } from '../../../dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
+import { DialogService } from '../../../services/common/dialog.service';
 import { BasketService } from '../../../services/common/models/basket.service';
 import { OrderService } from '../../../services/common/models/order.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../../services/ui/custom-toastr.service';
@@ -20,10 +21,11 @@ declare var $: any;
   styleUrls: ['./baskets.component.scss']
 })
 export class BasketsComponent extends BaseComponent implements OnInit {
-  constructor(spinner: NgxSpinnerService, private basketService: BasketService, private orderService: OrderService, private toastrService: CustomToastrService, private router: Router,
-    private dialogService: DialogService) {
+
+  constructor(spinner: NgxSpinnerService, private basketService: BasketService, private orderService: OrderService, private toastrService: CustomToastrService, private router: Router, private dialogService: DialogService) {
     super(spinner)
   }
+
   basketItems: List_Basket_Item[];
 
   async ngOnInit(): Promise<void> {
@@ -42,6 +44,7 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     await this.basketService.updateQuantity(basketItem);
     this.hideSpinner(SpinnerType.SquareLoader)
   }
+
   removeBasketItem(basketItemId: string) {
     $("#basketModal").modal("hide");
 
@@ -54,25 +57,32 @@ export class BasketsComponent extends BaseComponent implements OnInit {
 
         var a = $("." + basketItemId)
         $("." + basketItemId).fadeOut(500, () => this.hideSpinner(SpinnerType.SquareLoader));
-        $("basketModal").modal("show");
+        $("#basketModal").modal("show");
       }
     });
   }
 
-  async shoppingComplete() {
-    this.showSpinner(SpinnerType.SquareLoader);
-    const order: Create_Order = new Create_Order();
-    order.address = "Yenimahalle";
-    order.description = "Falanca filanca...";
-    await this.orderService.create(order);
-    this.hideSpinner(SpinnerType.SquareLoader);
-    this.toastrService.message("Sipariş alınmıştır!", "Sipariş Oluşturuldu!", {
-      messageType: ToastrMessageType.Info,
-      position: ToastrPosition.TopRight
-    })
-    this.router.navigate(["/"]);
+  shoppingComplete() {
+    $("#basketModal").modal("hide");
+
+    this.dialogService.openDialog({
+      componentType: ShoppingCompleteDialogComponent,
+      data: ShoppingCompleteState.Yes,
+      afterClosed: async () => {
+        this.showSpinner(SpinnerType.SquareLoader);
+        const order: Create_Order = new Create_Order();
+        order.address = "Yenimahalle";
+        order.description = "Falanca filanca...";
+        await this.orderService.create(order);
+        this.hideSpinner(SpinnerType.SquareLoader);
+        this.toastrService.message("Sipariş alınmıştır!", "Sipariş Oluşturuldu!", {
+          messageType: ToastrMessageType.Info,
+          position: ToastrPosition.TopRight
+        })
+        this.router.navigate(["/"]);
+      }
+    });
+
+
   }
-
-
-
 }
