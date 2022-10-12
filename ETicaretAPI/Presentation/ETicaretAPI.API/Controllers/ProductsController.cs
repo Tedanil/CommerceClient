@@ -106,12 +106,12 @@ namespace ETicaretAPI.API.Controllers
 
         [HttpGet("[action]")]
         [Authorize(AuthenticationSchemes = "Admin")]
-        public async Task <IActionResult> ChangeShowcaseImage([FromQuery]
-        ChangeShowcaseImageCommandRequest changeShowcaseImageCommandRequest)
+        public async Task<IActionResult> ChangeShowcaseImage([FromQuery] ChangeShowcaseImageCommandRequest changeShowcaseImageCommandRequest)
         {
-            ChangeShowcaseImageCommandResponse response = await _mediator.Send(changeShowcaseImageCommandRequest);  
+            ChangeShowcaseImageCommandResponse response = await _mediator.Send(changeShowcaseImageCommandRequest);
             return Ok(response);
         }
+
 
     }
 }
