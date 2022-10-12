@@ -1,0 +1,6 @@
+export class List_Order {
+    orderCode: string;
+    userName: string;
+    totalPrice: Number;
+    createdDate: Date;
+}
