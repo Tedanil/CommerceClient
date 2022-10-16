@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
-import { FacebookLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { async } from '@angular/core/testing';
 import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
 
@@ -17,7 +17,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   constructor(private userAuthService: UserAuthService,
     spinner: NgxSpinnerService, private authService: AuthService, private activatedRoute: ActivatedRoute,
-    private router: Router, private socialAuthService: SocialAuthService) {
+    private router: Router, private socialAuthService: SocialAuthService,) {
     super(spinner)
     socialAuthService.authState.subscribe(async (user: SocialUser) => {
       console.log(user)
@@ -64,4 +64,11 @@ export class LoginComponent extends BaseComponent implements OnInit {
   facebookLogin() {
     this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
+  googleLogin() {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+
+  
 }
+

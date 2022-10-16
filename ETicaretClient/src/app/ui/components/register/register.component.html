@@ -1,9 +1,10 @@
-<div class="row">
+<body>
+  <div class="row">
    <div class="col-md-3"></div>
    <div class="col-md-6">
     <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
         <div class="mb-3">
-            <label for="nameSurname" class="form-label">Ad Soyad*</label>
+            <label for="nameSurname" class="form-label" style="margin-top:15px;">Ad Soyad*</label>
             <input type="text" formControlName="nameSurname" class="form-control" id="nameSurname" placeholder="Name Surname" [ngClass]=
             "{'is-invalid': submitted && component.nameSurname.errors}">
             <div class="form-text invalid-feedback" *ngIf="submitted && component.nameSurname.errors?.required">Lütfen Ad Soyad kısmını boş geçmeyiniz..</div>
@@ -39,8 +40,12 @@
 
           </div>
         <br>
-        <button type="submit" class="btn btn-primary">KAYIT OL</button>
-      </form> </div>
+        <button type="submit" class="btn">KAYIT OL</button>
+      </form>
+      <a href="">Zaten Bir Hesabınız Mı Var?</a>
+     </div>
       <div class="col-md-3"></div>
 
 </div>
+
+</body>
