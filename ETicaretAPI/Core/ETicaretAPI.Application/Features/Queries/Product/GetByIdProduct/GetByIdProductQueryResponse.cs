@@ -13,8 +13,18 @@ namespace ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct
         public int Stock { get; set; }
 
         public long Price { get; set; }
+        public DateTime CreatedDate { get; set; }
 
-      
+        public DateTime UpdatedDate { get; set; }
+
+        public ICollection<Domain.Entities.ProductImageFile>? ProductImageFiles { get; set; }
+
+        
+
+
+
+
+
 
     }
 }

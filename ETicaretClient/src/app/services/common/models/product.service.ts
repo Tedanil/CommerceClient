@@ -17,6 +17,21 @@ export class ProductService {
 
   constructor(private httpClientService: HttpClientService) { }
 
+
+  async getProductById(id: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
+    const observable: Observable<List_Product> = this.httpClientService.get<List_Product>({
+      controller: "products"
+    }, id);
+
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(value => successCallBack())
+      .catch(error => errorCallBack(error))
+      
+
+    return await promiseData;
+    
+  }
+
   create(product: Create_Product, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
     this.httpClientService.post({
       controller: "products"
@@ -47,8 +62,9 @@ export class ProductService {
     promiseData.then(d => successCallBack())
        .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
        
-
-    return await promiseData;   
+       
+    return await promiseData;
+     
   }
 
   async delete(id: string) {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { List_Product_Image } from 'src/app/contracts/list_product_image';
 import { BaseComponent, SpinnerType } from '../../../../base/base.component';
 import { BaseUrl } from '../../../../contracts/base_url';
 import { Create_Basket_Item } from '../../../../contracts/basket/create_basket_item';
@@ -17,16 +18,20 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../..
 })
 export class ListComponent extends BaseComponent implements OnInit {
 
-  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute, private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService, private customToastrService: CustomToastrService) {
+  constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
+     private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService,
+     private customToastrService: CustomToastrService, private router: Router) {
     super(spinner)
   }
 
+  
   currentPageNo: number;
   totalProductCount: number;
   totalPageCount: number;
   pageSize: number = 12;
   pageList: number[] = [];
   baseUrl: BaseUrl;
+  selectedProduct: List_Product;
 
   products: List_Product[];
   async ngOnInit() {
@@ -36,7 +41,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.activatedRoute.params.subscribe(async params => {
       this.currentPageNo = parseInt(params["pageNo"] ?? 1);
 
-      const data: { totalProductCount: number, products: List_Product[] } = await this.productService.read(this.currentPageNo - 1, this.pageSize,
+      const data: { totalProductCount: number, products: List_Product[] } = await this.productService
+      .read(this.currentPageNo - 1, this.pageSize,
         () => {
 
         },
@@ -45,6 +51,10 @@ export class ListComponent extends BaseComponent implements OnInit {
         });
 
       this.products = data.products;
+
+      console.log( this.products)
+      
+      
 
       this.products = this.products.map<List_Product>(p => {
         const listProduct: List_Product = {
@@ -63,6 +73,8 @@ export class ListComponent extends BaseComponent implements OnInit {
 
         return listProduct;
       });
+
+      
 
       this.totalProductCount = data.totalProductCount;
       this.totalPageCount = Math.ceil(this.totalProductCount / this.pageSize);
@@ -96,4 +108,11 @@ export class ListComponent extends BaseComponent implements OnInit {
       position: ToastrPosition.TopRight
     });
   }
+
+  productView(product: List_Product) {
+    //console.log(id);
+    this.selectedProduct = product;
+     this.router.navigateByUrl(`products/${product.id}`);
+  }
+  
 }
