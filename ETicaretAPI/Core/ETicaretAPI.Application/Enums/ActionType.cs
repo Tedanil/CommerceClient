@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ETicaretAPI.Application.Enums
 {
-    internal class ActionType
+    public enum ActionType
     {
+        Reading,
+        Writing,
+        Updating,
+        Deleting
     }
 }
