@@ -14,7 +14,8 @@ import { ShoppingCompleteDialogComponent } from './shopping-complete-dialog/shop
 import { OrderDetailDialogComponent } from './order-detail-dialog/order-detail-dialog.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -22,13 +23,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   SelectProductImageDialogComponent,
   BasketItemRemoveDialogComponent,
   ShoppingCompleteDialogComponent,
-  OrderDetailDialogComponent],
+  OrderDetailDialogComponent,
+  AuthorizeMenuDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule, MatButtonModule, MatCardModule,
     FileUploadModule,
     FormsModule,
-    MatTableModule, MatToolbarModule,
+    MatTableModule, MatToolbarModule,MatBadgeModule
   ]
 })
 export class DialogModule { }

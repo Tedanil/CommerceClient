@@ -1,0 +1,33 @@
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BaseDialog } from '../base/base-dialog';
+
+declare var $: any;
+
+@Component({
+  selector: 'app-authorize-menu-dialog',
+  templateUrl: './authorize-menu-dialog.component.html',
+  styleUrls: ['./authorize-menu-dialog.component.scss']
+})
+export class AuthorizeMenuDialogComponent extends BaseDialog<AuthorizeMenuDialogComponent> implements OnDestroy {
+
+  constructor(dialogRef: MatDialogRef<AuthorizeMenuDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+    super(dialogRef)
+  }
+
+ // show: boolean = false;
+  complete() {
+    //this.show = true;
+  }
+
+  ngOnDestroy(): void {
+    // if (!this.show)
+    //   $("#basketModal").modal("show");
+  }
+}
+
+export enum AuthorizeMenuState {
+  Yes,
+  No
+}

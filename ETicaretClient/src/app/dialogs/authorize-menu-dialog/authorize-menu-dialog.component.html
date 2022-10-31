@@ -1,0 +1,9 @@
+<h1 mat-dialog-title> {{data.name}} Endpoint'ine Rol Atama!</h1>
+<div mat-dialog-content>
+  <p> İlgili Sayfaya Rol atamak ister misiniz? </p>
+</div>
+<div matBadge="4" matBadgeOverlap="false" class="demo-section">Text with a badge</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="close()">İptal</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial >Evet</button>
+</div>
