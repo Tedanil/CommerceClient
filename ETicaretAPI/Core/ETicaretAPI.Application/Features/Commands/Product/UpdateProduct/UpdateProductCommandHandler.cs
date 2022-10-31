@@ -28,6 +28,8 @@ namespace ETicaretAPI.Application.Features.Commands.Product.UpdateProduct
             product.Stock = request.Stock;
             product.Price = (long)request.Price;
             product.Name = request.Name;
+            product.Description = request.Description;
+            product.CategoryName = request.CategoryName;
             await _productWriteRepository.SaveAsync();
             _logger.LogInformation("Ürün güncellendi.!");
             return new();

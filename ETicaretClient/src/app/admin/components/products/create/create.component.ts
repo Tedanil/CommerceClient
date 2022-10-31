@@ -20,12 +20,15 @@ export class CreateComponent extends BaseComponent implements OnInit {
   ngOnInit(): void {}
 
   @Output() createdProduct: EventEmitter<Create_Product> = new EventEmitter;
-  create(name:HTMLInputElement, stock:HTMLInputElement, price:HTMLInputElement) {
+  create(name:HTMLInputElement, stock:HTMLInputElement, price:HTMLInputElement, categoryName:HTMLSelectElement, description:HTMLInputElement) {
     this.showSpinner(SpinnerType.SquareJellyBox);
      const create_product: Create_Product = new Create_Product();
      create_product.name = name.value;
      create_product.stock = parseInt(stock.value);
      create_product.price = parseFloat(price.value);
+     create_product.categoryName = categoryName.value;
+     create_product.description = description.value;
+
 
      this.productService.create(create_product, () => {
         this.hideSpinner(SpinnerType.SquareJellyBox);

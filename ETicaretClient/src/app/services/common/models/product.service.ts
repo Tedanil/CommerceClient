@@ -17,6 +17,8 @@ export class ProductService {
 
   constructor(private httpClientService: HttpClientService) { }
 
+  
+
 
   async getProductById(id: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
     const observable: Observable<List_Product> = this.httpClientService.get<List_Product>({

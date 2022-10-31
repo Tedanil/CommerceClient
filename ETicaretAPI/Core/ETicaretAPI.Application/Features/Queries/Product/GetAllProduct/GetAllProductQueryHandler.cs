@@ -34,6 +34,8 @@ namespace ETicaretAPI.Application.Features.Queries.Product.GetAllProduct
 
                 p.Id,
                 p.Name,
+                p.CategoryName,
+                p.Description,
                 p.Stock,
                 p.Price,
                 p.CreatedDate,

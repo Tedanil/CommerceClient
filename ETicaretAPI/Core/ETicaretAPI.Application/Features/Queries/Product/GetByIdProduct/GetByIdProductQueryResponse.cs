@@ -9,6 +9,8 @@ namespace ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct
     public class GetByIdProductQueryResponse
     {
         public string Name { get; set; }
+        public string? Description { get; set; }
+        public string CategoryName { get; set; }
 
         public int Stock { get; set; }
 

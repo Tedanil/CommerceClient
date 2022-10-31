@@ -19,12 +19,12 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../..
 export class ListComponent extends BaseComponent implements OnInit {
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
-     private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService,
-     private customToastrService: CustomToastrService, private router: Router) {
+    private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService,
+    private customToastrService: CustomToastrService, private router: Router) {
     super(spinner)
   }
 
-  
+
   currentPageNo: number;
   totalProductCount: number;
   totalPageCount: number;
@@ -38,23 +38,31 @@ export class ListComponent extends BaseComponent implements OnInit {
 
     this.baseUrl = await this.fileService.getBaseStorageUrl();
 
+
+
     this.activatedRoute.params.subscribe(async params => {
       this.currentPageNo = parseInt(params["pageNo"] ?? 1);
 
       const data: { totalProductCount: number, products: List_Product[] } = await this.productService
-      .read(this.currentPageNo - 1, this.pageSize,
-        () => {
+        .read(this.currentPageNo - 1, this.pageSize,
+          () => {
 
-        },
-        errorMessage => {
+          },
+          errorMessage => {
 
-        });
+          });
 
       this.products = data.products;
 
-      console.log( this.products)
+      console.log(this.products)
+
+     // alttakini categorylistte kullan products/:categoryName burdaki name neye eşitse dinamik olarak o sayfayı çağırsın
+        this.products =  this.products.filter(p=> p.categoryName == "vacuum");
+         
+
       
-      
+
+       
 
       this.products = this.products.map<List_Product>(p => {
         const listProduct: List_Product = {
@@ -65,16 +73,18 @@ export class ListComponent extends BaseComponent implements OnInit {
           price: p.price,
           stock: p.stock,
           updatedDate: p.updatedDate,
-          productImageFiles: p.productImageFiles
+          productImageFiles: p.productImageFiles,
+          description: p.description,
+          categoryName: p.categoryName
         };
-        
-        
-        
+
+
+
 
         return listProduct;
       });
 
-      
+
 
       this.totalProductCount = data.totalProductCount;
       this.totalPageCount = Math.ceil(this.totalProductCount / this.pageSize);
@@ -112,7 +122,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   productView(product: List_Product) {
     //console.log(id);
     this.selectedProduct = product;
-     this.router.navigateByUrl(`products/${product.id}`);
+    this.router.navigateByUrl(`products/${product.id}`);
   }
-  
+
 }

@@ -29,6 +29,9 @@ namespace ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct
                 Price = product.Price,
                 CreatedDate = product.CreatedDate,
                 UpdatedDate = product.UpdatedDate,
+                CategoryName = product.CategoryName,
+                Description = product.Description,
+
                 ProductImageFiles =  product.ProductImageFiles 
 
 

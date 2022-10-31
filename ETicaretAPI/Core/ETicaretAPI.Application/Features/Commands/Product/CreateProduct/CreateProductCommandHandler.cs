@@ -25,6 +25,8 @@ namespace ETicaretAPI.Application.Features.Commands.Product.CreateProduct
             await _productWriteRepository.AddAsync(new()
             {
                 Name = request.Name,
+                Description = request.Description,
+                CategoryName = request.CategoryName,
                 Price = (long)request.Price,
                 Stock = request.Stock
 
