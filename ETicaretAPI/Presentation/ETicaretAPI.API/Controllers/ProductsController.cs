@@ -37,14 +37,14 @@ namespace ETicaretAPI.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
-        {
+        //[HttpGet]
+        //public async Task<IActionResult> Get([FromQuery] GetAllProductQueryRequest getAllProductQueryRequest)
+        //{
 
-            GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
-            return Ok(response);
+        //    GetAllProductQueryResponse response = await _mediator.Send(getAllProductQueryRequest);
+        //    return Ok(response);
 
-        }
+        //}
 
         [HttpGet("{Id}")]
         public async Task<IActionResult> Get([FromRoute] GetByIdProductQueryRequest getByIdProductQueryRequest)
@@ -54,8 +54,8 @@ namespace ETicaretAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{CategoryId}")]
-        public async Task<IActionResult> Get([FromRoute] GetAllCategoryProductQueryRequest getAllCategoryProductQueryRequest)
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] GetAllCategoryProductQueryRequest getAllCategoryProductQueryRequest)
         {
 
             GetAllCategoryProductQueryResponse response = await _mediator.Send(getAllCategoryProductQueryRequest);

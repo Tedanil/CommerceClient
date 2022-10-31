@@ -4,6 +4,7 @@ import { ProductsComponent } from './products.component';
 import { RouterModule } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CategoryListComponent } from './category-list/category-list.component';
 
 
 
@@ -11,7 +12,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
   declarations: [
     ProductsComponent,
     ListComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CategoryListComponent
   ],
   imports: [
     CommonModule,

@@ -58,8 +58,26 @@ export class ProductService {
     const promiseData: Promise<{totalProductCount: number;   products: List_Product[] }> = this.httpClientService.get< {totalProductCount: number;   products: List_Product[] }>({
       controller: "products",
       queryString: `page=${page}&size=${size}`
+      
 
-    }).toPromise();
+    },).toPromise();
+
+    promiseData.then(d => successCallBack())
+       .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
+       
+       
+    return await promiseData;
+     
+  }
+  async readCategory(categoryName: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{totalProductCount: number;   products: List_Product[] }> {
+    const promiseData: Promise<{totalProductCount: number;   products: List_Product[] }> = this.httpClientService.get< {totalProductCount: number;   products: List_Product[] }>({
+      controller: "products",
+      queryString: `page=${categoryName}}`
+
+      
+      
+
+    },).toPromise();
 
     promiseData.then(d => successCallBack())
        .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));

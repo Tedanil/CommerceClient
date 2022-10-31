@@ -57,7 +57,7 @@ export class ListComponent extends BaseComponent implements OnInit {
       console.log(this.products)
 
      // alttakini categorylistte kullan products/:categoryName burdaki name neye eşitse dinamik olarak o sayfayı çağırsın
-        this.products =  this.products.filter(p=> p.categoryName == "vacuum");
+        //this.products =  this.products.filter(p=> p.categoryName == "vacuum");
          
 
       
