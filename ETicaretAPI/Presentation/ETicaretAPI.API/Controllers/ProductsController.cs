@@ -9,6 +9,7 @@ using ETicaretAPI.Application.Features.Commands.Product.UpdateProduct;
 using ETicaretAPI.Application.Features.Commands.ProductImageFile.ChangeShowcaseImage;
 using ETicaretAPI.Application.Features.Commands.ProductImageFile.RemoveProductImage;
 using ETicaretAPI.Application.Features.Commands.ProductImageFile.UploadProductImage;
+using ETicaretAPI.Application.Features.Queries.Product.GetAllCategoryProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetAllProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct;
 using ETicaretAPI.Application.Features.Queries.ProductImageFile.GetProductImages;
@@ -53,7 +54,15 @@ namespace ETicaretAPI.API.Controllers
             return Ok(response);
         }
 
-       
+        [HttpGet("{CategoryId}")]
+        public async Task<IActionResult> Get([FromRoute] GetAllCategoryProductQueryRequest getAllCategoryProductQueryRequest)
+        {
+
+            GetAllCategoryProductQueryResponse response = await _mediator.Send(getAllCategoryProductQueryRequest);
+            return Ok(response);
+        }
+
+
         [HttpPost]
         [Authorize(AuthenticationSchemes = "Admin")]
         [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products,
