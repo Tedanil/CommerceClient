@@ -49,7 +49,7 @@ export class DeleteDirective {
    
          $(td.parentElement).fadeOut(1000, () => {
            this.callBack.emit();
-           this.alertifyService.message("Ürün Başarıyla Silinmiştir.", {
+           this.alertifyService.message(`${this.controller == 'roles' ? 'Rol' : 'Ürün'} Başarıyla Silinmiştir.`, {
              dismissOthers: true,
              messageType: MessageType.Success,
              position: Position.TopRight
