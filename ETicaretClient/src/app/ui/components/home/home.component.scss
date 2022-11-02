@@ -20,9 +20,10 @@ nav ul{
     display: inline-block;
     list-style-type: none;
 }
-nav ul li{
+nav ul a{
     display: inline-block;
     margin-right: 20px;
+    cursor: pointer;
 }
 a{
     text-decoration: none;
@@ -74,7 +75,9 @@ p{
     border-radius: 30px;
 }
 .header{
-    background: radial-gradient(#fff, #ffd2d2);
+    //background: radial-gradient(#fff, #ffd2d2);
+    background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);
+
 }
 .header .row{
     margin-top: 70px;

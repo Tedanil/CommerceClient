@@ -11,6 +11,12 @@ import { PasswordResetComponent } from './password-reset/password-reset.componen
 import { UpdatePasswordComponent } from './update-password/update-password.component';
 import { PasswordResetModule } from './password-reset/password-reset.module';
 import { UpdatePasswordModule } from './update-password/update-password.module';
+import { LayoutModule } from './my-account/layout/layout.module';
+import { AccountComponentsModule } from './my-account/components/account-components.module';
+
+
+
+
 
 
 @NgModule({
@@ -25,10 +31,23 @@ import { UpdatePasswordModule } from './update-password/update-password.module';
     RegisterModule,
     //LoginModule,
     PasswordResetModule,
-    UpdatePasswordModule
+    UpdatePasswordModule,
+    LayoutModule,
+    AccountComponentsModule
+    
+    
+    
+    
+    
+    
+   
+    
+    
+    
   ],
   exports: [
-    BasketsModule
+    BasketsModule,
+    LayoutModule
   ]
 })
 export class ComponentsModule { }

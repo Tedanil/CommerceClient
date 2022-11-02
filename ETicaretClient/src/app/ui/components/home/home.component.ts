@@ -18,5 +18,9 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
   //imagePath: string ="https://imgyukle.com/f/2022/10/14/nb63u1.png";
   //storyPath: string = 'assets/images/erbas.PNG';
+   
+
+
+
 
 }

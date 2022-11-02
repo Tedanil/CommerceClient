@@ -1,4 +1,5 @@
-     <nav class="navbar navbar-expand-lg navbar-light" style="background: radial-gradient(#fff, #f8dbdc);
+     <nav class="navbar navbar-expand-lg navbar-light" style="background:radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);
+
      ">
       <div class="container-fluid">
         <a class="navbar-brand f-color" routerLink="">ERBAŞ-TİCARET</a>
@@ -31,6 +32,18 @@
               <a routerLink="admin" class="btn btn-outline-success" type="submit"
                 *ngIf="authService.isAuthenticated">Yönetim Paneli</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(19, 14, 14); font: italic;">
+                Hesabım
+              </a>
+              <ul class="dropdown-menu" style="background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);">
+                <li><a class="dropdown-item" routerLink="my-account/my-orders">Siparişlerim</a></li>
+                <li><a class="dropdown-item" routerLink="my-account/user-info">Kullanıcı Bilgilerim</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" routerLink="my-account/address-info">Adres Bilgilerim</a></li>
+              </ul>
+            </li>
+            
           </ul>
           <div class="d-flex nav-item">
             <img src="../../../../assets/images/cart.png" width="30px" height="30px">
@@ -72,11 +85,13 @@
                   <img src="../../../../assets/images/app-store.png">
 
               </div>
+              <div class="contact" id="contact">
+                <h2> İletişim</h2>
+                <h5>0232 675 76 45</h5>
+              </div>
           </div>
               <div class="footer-col-2">
-              <img src="../../../../assets/images/erbas2.jpg">
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Iusto quibusdam dolore molestias delectus optio! Reiciendis, deserunt.</p> 
+                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=131cbTKzrylC8-xcIDYmgfiqIrH81Ko8&ehbc=2E312F" width="340" height="240"></iframe>
               </div>
               <div class="footer-col-3">
                   <h3>Usefull Links</h3>

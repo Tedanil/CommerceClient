@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './admin/components/dashboard/dashboard.component';
 import { LayoutComponent } from './admin/layout/layout.component';
 import { AuthGuard } from './guards/common/auth.guard';
 import { HomeComponent } from './ui/components/home/home.component';
+import { LayoutComponent2 } from './ui/components/my-account/layout/layout.component2';
 import { CategoryListComponent } from './ui/components/products/category-list/category-list.component';
 import { ProductDetailComponent } from './ui/components/products/product-detail/product-detail.component';
 
@@ -28,6 +29,18 @@ const routes: Routes = [
   { path: "login", loadChildren: () => import("./ui/components/login/login.module").then(module => module.LoginModule) },
   { path: "password-reset", loadChildren: () => import("./ui/components/password-reset/password-reset.module").then(module => module.PasswordResetModule) },
   { path: "update-password/:userId/:resetToken", loadChildren: () => import("./ui/components/update-password/update-password.module").then(module => module.UpdatePasswordModule) },
+
+  {path: "my-account", component:LayoutComponent2, children: [
+    {path: "my-orders", loadChildren: () => import("./ui/components/my-account/components/my-orders/my-orders.module").then(module => module.MyOrdersModule)},
+    {path: "user-info", loadChildren: () => import("./ui/components/my-account/components/user-info/user-info.module").then(module => module.UserInfoModule)},
+    {path: "address-info", loadChildren: () => import("./ui/components/my-account/components/address-info/address-info.module").then(module => module.AddressInfoModule)},
+
+
+  ]}
+  
+
+
+
 ];
 
 @NgModule({
