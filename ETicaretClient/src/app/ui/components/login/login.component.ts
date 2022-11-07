@@ -20,7 +20,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     private router: Router, private socialAuthService: SocialAuthService,) {
     super(spinner)
     socialAuthService.authState.subscribe(async (user: SocialUser) => {
-      console.log(user)
+      console.log(user.name)
       this.showSpinner(SpinnerType.BallScaleMultiple);
       switch (user.provider) {
         case "GOOGLE":

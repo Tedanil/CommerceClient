@@ -10,20 +10,28 @@ using System.Text;
 using System.Threading.Tasks;
 using ETicaretAPI.Application.Helpers;
 using Microsoft.AspNetCore.WebUtilities;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using ETicaretAPI.Persistence.Contexts;
 
 namespace ETicaretAPI.Persistence.Services
 {
     public class UserService : IUserService
     {
         readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
+        private ETicaretAPIDbContext _eTicaretAPIDbContext;
 
-        public UserService(UserManager<AppUser> userManager)
+
+        public UserService(UserManager<AppUser> userManager, ETicaretAPIDbContext eTicaretAPIDbContext)
         {
             _userManager = userManager;
+            _eTicaretAPIDbContext = eTicaretAPIDbContext;
         }
 
         public async Task<CreateUserResponse> CreateAsync(CreateUser model)
         {
+            var x = _eTicaretAPIDbContext.Users.ToList();
+
             IdentityResult result = await _userManager.CreateAsync(new()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -45,6 +53,7 @@ namespace ETicaretAPI.Persistence.Services
 
         public async Task UpdateRefreshTokenAsync(string refreshToken, AppUser user, DateTime accessTokenDate, int addOnAccessTokenDate)
         {
+           
           
             if (user != null)
             {

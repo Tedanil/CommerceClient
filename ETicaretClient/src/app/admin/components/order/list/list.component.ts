@@ -38,6 +38,7 @@ export class ListComponent extends BaseComponent implements OnInit {
       messageType: MessageType.Error,
       position: Position.TopRight
     }))
+    console.log(allOrders);
     this.dataSource = new MatTableDataSource<List_Order>(allOrders.orders);
     this.paginator.length = allOrders.totalOrderCount;
   }
