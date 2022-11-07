@@ -16,6 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatListModule} from '@angular/material/list';
 
 
 @NgModule({
@@ -30,7 +31,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatDialogModule, MatButtonModule, MatCardModule,
     FileUploadModule,
     FormsModule,
-    MatTableModule, MatToolbarModule,MatBadgeModule
+    MatTableModule, MatToolbarModule,MatBadgeModule,MatListModule
   ]
 })
 export class DialogModule { }
