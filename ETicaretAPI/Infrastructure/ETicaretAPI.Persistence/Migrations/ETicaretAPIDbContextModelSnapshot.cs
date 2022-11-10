@@ -24,15 +24,15 @@ namespace ETicaretAPI.Persistence.Migrations
 
             modelBuilder.Entity("AppRoleEndpoint", b =>
                 {
-                    b.Property<string>("AppRolesId")
-                        .HasColumnType("text");
-
                     b.Property<Guid>("EndpointsId")
                         .HasColumnType("uuid");
 
-                    b.HasKey("AppRolesId", "EndpointsId");
+                    b.Property<string>("RolesId")
+                        .HasColumnType("text");
 
-                    b.HasIndex("EndpointsId");
+                    b.HasKey("EndpointsId", "RolesId");
+
+                    b.HasIndex("RolesId");
 
                     b.ToTable("AppRoleEndpoint");
                 });
@@ -499,15 +499,15 @@ namespace ETicaretAPI.Persistence.Migrations
 
             modelBuilder.Entity("AppRoleEndpoint", b =>
                 {
-                    b.HasOne("ETicaretAPI.Domain.Entities.Identity.AppRole", null)
-                        .WithMany()
-                        .HasForeignKey("AppRolesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ETicaretAPI.Domain.Entities.Endpoint", null)
                         .WithMany()
                         .HasForeignKey("EndpointsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ETicaretAPI.Domain.Entities.Identity.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
