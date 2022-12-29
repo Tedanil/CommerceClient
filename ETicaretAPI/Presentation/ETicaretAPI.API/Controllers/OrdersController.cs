@@ -1,6 +1,7 @@
 ﻿using ETicaretAPI.Application.Consts;
 using ETicaretAPI.Application.CustomAttributes;
 using ETicaretAPI.Application.Enums;
+using ETicaretAPI.Application.Features.Commands.Order.CompleteOrder;
 using ETicaretAPI.Application.Features.Commands.Order.CreateOrder;
 using ETicaretAPI.Application.Features.Queries.Order.GetAllOrders;
 using ETicaretAPI.Application.Features.Queries.Order.GetOrderById;
@@ -49,6 +50,12 @@ namespace ETicaretAPI.API.Controllers
             return Ok(response);
         }
 
+        [HttpGet("complete-order/{Id}")]
+        public async Task<ActionResult> CompleteOrder([FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
+        {
+            CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);
+            return Ok(response);
+        }
 
     }
 }
