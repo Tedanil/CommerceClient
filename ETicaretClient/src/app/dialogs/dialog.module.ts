@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-menu-dialog.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatListModule} from '@angular/material/list';
+import { CompleteOrderDialogComponent } from './complete-order-dialog/complete-order-dialog.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatListModule} from '@angular/material/list';
   BasketItemRemoveDialogComponent,
   ShoppingCompleteDialogComponent,
   OrderDetailDialogComponent,
-  AuthorizeMenuDialogComponent],
+  AuthorizeMenuDialogComponent,
+  CompleteOrderDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule, MatButtonModule, MatCardModule,
