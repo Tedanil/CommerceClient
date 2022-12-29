@@ -25,30 +25,30 @@
                 *ngIf="!authService.isAuthenticated">Giriş Yap</a>
             </li>
             <li>
-              <a class="nav-link active" aria-current="page" style="color:red;cursor:pointer;" (click)="signOut()"
-                *ngIf="authService.isAuthenticated">Çıkış Yap</a>
-            </li>
-            <li>
               <a routerLink="admin" class="btn btn-outline-success" type="submit"
                 *ngIf="authService.isAuthenticated">Yönetim Paneli</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(19, 14, 14); font: italic;">
+              <a class="nav-link dropdown-toggle" *ngIf="authService.isAuthenticated" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(19, 14, 14); font: italic;">
                 Hesabım
               </a>
-              <ul class="dropdown-menu" style="background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);">
+              <ul class="dropdown-menu" *ngIf="authService.isAuthenticated"  style="background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);">
                 <li><a class="dropdown-item" routerLink="my-account/my-orders">Siparişlerim</a></li>
                 <li><a class="dropdown-item" routerLink="my-account/user-info">Kullanıcı Bilgilerim</a></li>
-                <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" routerLink="my-account/address-info">Adres Bilgilerim</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" routerLink="" style="color:red;cursor:pointer;" (click)="signOut()"
+                  *ngIf="authService.isAuthenticated">Çıkış Yap</a></li>
+
+                
               </ul>
             </li>
             
           </ul>
           <div class="d-flex nav-item">
-            <img src="../../../../assets/images/cart.png" width="30px" height="30px">
+           <img src="../../../../assets/images/cart.png" width="30px" height="30px">
             <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal"
-              (click)="loadComponent()" type="submit">Sepetim</button>
+              (click)="loadComponent()" type="submit" mat-raised-button matBadge="0"  >Sepetim</button>
           </div>
         </div>
       </div>

@@ -46,7 +46,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
           errorMessage => {
 
           });
-          debugger;
+          
 
       this.products = data.products;
 

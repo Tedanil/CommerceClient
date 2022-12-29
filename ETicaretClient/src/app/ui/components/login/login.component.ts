@@ -27,6 +27,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
           await userAuthService.googleLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallScaleMultiple)
+            this.router.navigate([""]);
 
           })
           break;
@@ -34,6 +35,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
           await userAuthService.facebookLogin(user, () => {
             this.authService.identityCheck();
             this.hideSpinner(SpinnerType.BallScaleMultiple)
+            this.router.navigate([""]);
 
           })
           break;
@@ -54,7 +56,10 @@ export class LoginComponent extends BaseComponent implements OnInit {
       this.activatedRoute.queryParams.subscribe(params => {
         const returnUrl: string = params["returnUrl"];
         if (returnUrl)
+        {
           this.router.navigate([returnUrl]);
+        }
+          this.router.navigate([""]);
       });
       this.hideSpinner(SpinnerType.SquareLoader)
 
@@ -66,6 +71,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
   }
   googleLogin() {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID);
+    
   }
 
 

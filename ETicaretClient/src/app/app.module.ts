@@ -19,6 +19,9 @@ import { FacebookLoginProvider, GoogleLoginProvider,SocialAuthServiceConfig,Soci
 import { RouterModule } from '@angular/router';
 import { HttpErrorHandlerInterceptionService } from './services/common/http-error-handler-interception.service';
 import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-component.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
         allowedDomains: ["localhost:7249"]
       }
     }),
-    SocialLoginModule
+    SocialLoginModule,
+    MatIconModule, MatBadgeModule, MatButtonModule
    
 
   ],

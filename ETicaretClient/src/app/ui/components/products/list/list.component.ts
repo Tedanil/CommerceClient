@@ -28,7 +28,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   currentPageNo: number;
   totalProductCount: number;
   totalPageCount: number;
-  pageSize: number = 12;
+  pageSize: number = 10;
   pageList: number[] = [];
   baseUrl: BaseUrl;
   selectedProduct: List_Product;
