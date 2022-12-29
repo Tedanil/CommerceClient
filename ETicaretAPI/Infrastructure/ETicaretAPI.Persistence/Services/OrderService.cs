@@ -16,12 +16,14 @@ namespace ETicaretAPI.Persistence.Services
         readonly IOrderWriteRepository _orderWriteRepository;
         readonly IOrderReadRepository _orderReadRepository;
         readonly ICompletedOrderWriteRepository _completedOrderWriteRepository;
+        readonly ICompletedOrderReadRepository _completedOrderReadRepository;
 
-        public OrderService(IOrderWriteRepository orderWriteRepository, IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository)
+        public OrderService(IOrderWriteRepository orderWriteRepository, IOrderReadRepository orderReadRepository, ICompletedOrderWriteRepository completedOrderWriteRepository, ICompletedOrderReadRepository completedOrderReadRepository)
         {
             _orderWriteRepository = orderWriteRepository;
             _orderReadRepository = orderReadRepository;
             _completedOrderWriteRepository = completedOrderWriteRepository;
+            _completedOrderReadRepository = completedOrderReadRepository;
         }
 
 
@@ -51,16 +53,30 @@ namespace ETicaretAPI.Persistence.Services
             var data = query.Skip(page * size).Take(size);
             /*.Take((page * size)..size);*/
 
+            var data2 = from order in data
+                        join completedOrder in _completedOrderReadRepository.Table
+                           on order.Id equals completedOrder.OrderId into co
+                        from _co in co.DefaultIfEmpty()
+                        select new
+                        {
+                            Id = order.Id,
+                            CreatedDate = order.CreatedDate,
+                            OrderCode = order.OrderCode,
+                            Basket = order.Basket,
+                            Completed = _co != null ? true : false
+                        };
+
             return new()
             {
                 TotalOrderCount = await query.CountAsync(),
-                Orders = await data.Select(o => new
+                Orders = await data2.Select(o => new
                 {
                     Id = o.Id,
                     CreatedDate = o.CreatedDate,
                     OrderCode = o.OrderCode,
                     TotalPrice = o.Basket.BasketItems.Sum(bi => bi.Product.Price * bi.Quantity),
-                    UserName = o.Basket.User.UserName
+                    UserName = o.Basket.User.UserName,
+                    o.Completed
                 }).ToListAsync()
             };
         }
