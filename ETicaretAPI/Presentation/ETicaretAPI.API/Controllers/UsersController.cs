@@ -4,6 +4,7 @@ using ETicaretAPI.Application.Features.Commands.AppUser.FacebookLogin;
 using ETicaretAPI.Application.Features.Commands.AppUser.GoogleLogin;
 using ETicaretAPI.Application.Features.Commands.AppUser.LoginUser;
 using ETicaretAPI.Application.Features.Commands.AppUser.UpdatePassword;
+using ETicaretAPI.Application.Features.Queries.AppUser.GetUserByToken;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -32,6 +33,13 @@ namespace ETicaretAPI.API.Controllers
         public async Task<IActionResult> UpdatePassword([FromBody] UpdatePasswordCommandRequest updatePasswordCommandRequest)
         {
             UpdatePasswordCommandResponse response = await _mediator.Send(updatePasswordCommandRequest);
+            return Ok(response);
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetUser([FromRoute] GetUserByTokenQueryRequest getUserByTokenQueryRequest)
+        {
+            GetUserByTokenQueryResponse response = await _mediator.Send(getUserByTokenQueryRequest);
             return Ok(response);
         }
     }

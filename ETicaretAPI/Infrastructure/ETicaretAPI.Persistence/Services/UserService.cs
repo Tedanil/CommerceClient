@@ -80,5 +80,23 @@ namespace ETicaretAPI.Persistence.Services
                     throw new PasswordChangeFailedException();
             }
         }
+
+        public async Task<UserResponse> GetUserAsync(string refreshToken)
+        {
+            AppUser? user =  _userManager.Users.FirstOrDefault(u => u.RefreshToken == refreshToken);
+            if(user != null) 
+            { 
+            return new()
+            {
+                NameSurname = user.NameSurname,
+                Username = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+
+            };
+            }
+            else
+                throw new NotFoundUserException();
+        }
     }
 }
