@@ -50,10 +50,13 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
 
       this.products = data.products;
 
+      
+      if(this.categoryName == "all")
       console.log(this.products)
-
-      // alttakini categorylistte kullan products/:categoryName burdaki name neye eşitse dinamik olarak o sayfayı çağırsın
+      else
       this.products = this.products.filter(p => p.categoryName == this.categoryName);
+      // alttakini categorylistte kullan products/:categoryName burdaki name neye eşitse dinamik olarak o sayfayı çağırsın
+      
 
 
       console.log(this.products)
@@ -100,7 +103,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
   productView(product: List_Product) {
     //console.log(id);
     this.selectedProduct = product;
-    this.router.navigateByUrl(`products/${product.id}`);
+    this.router.navigateByUrl(`productDetail/${product.id}`);
   }
 
 }

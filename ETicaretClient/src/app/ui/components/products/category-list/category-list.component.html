@@ -1,10 +1,10 @@
-<div class="container my-3">
+
     <div class="row">
         <div class="col-3">
             <h2>Kategori Listesi</h2>
 
             <div class="list-group">
-                <a routerLink="/products" class="list-group-item list-group-item-action">
+                <a routerLink="/products/all" class="list-group-item list-group-item-action">
                   Tüm Ürünler
                 </a>
                 <a routerLink="/products/vacuum" class="list-group-item list-group-item-action">
@@ -23,9 +23,9 @@
 
         </div>
         <div class="col-9">
-            <h2>Ürün Listesi</h2>
             
-
+            
+            
             <div class="container" *ngIf="!(products.length < 2)">
                 <div class="row">
                     <div class="card" style="width: 18rem;float:left;margin:5px;" *ngFor="let product of products;">
@@ -48,4 +48,3 @@
             </div>
         </div>
     </div>
-</div>

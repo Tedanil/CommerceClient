@@ -13,6 +13,7 @@ import { PasswordResetModule } from './password-reset/password-reset.module';
 import { UpdatePasswordModule } from './update-password/update-password.module';
 import { LayoutModule } from './my-account/layout/layout.module';
 import { AccountComponentsModule } from './my-account/components/account-components.module';
+import { ProductDetailModule } from './product-detail/product-detail.module';
 
 
 
@@ -36,7 +37,8 @@ import { AccountComponentsModule } from './my-account/components/account-compone
     PasswordResetModule,
     UpdatePasswordModule,
     LayoutModule,
-    AccountComponentsModule
+    AccountComponentsModule,
+    ProductDetailModule
     
     
     
