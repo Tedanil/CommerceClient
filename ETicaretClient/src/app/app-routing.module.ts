@@ -32,9 +32,9 @@ const routes: Routes = [
   { path: "update-password/:userId/:resetToken", loadChildren: () => import("./ui/components/update-password/update-password.module").then(module => module.UpdatePasswordModule) },
 
   {path: "my-account", component:LayoutComponent2, children: [
-    {path: "my-orders", loadChildren: () => import("./ui/components/my-account/components/my-orders/my-orders.module").then(module => module.MyOrdersModule)},
-    {path: "user-info", loadChildren: () => import("./ui/components/my-account/components/user-info/user-info.module").then(module => module.UserInfoModule)},
-    {path: "address-info", loadChildren: () => import("./ui/components/my-account/components/address-info/address-info.module").then(module => module.AddressInfoModule)},
+    {path: "my-orders", loadChildren: () => import("./ui/components/my-account/components/my-orders/my-orders.module").then(module => module.MyOrdersModule), canActivate: [AuthGuard]},
+    {path: "user-info", loadChildren: () => import("./ui/components/my-account/components/user-info/user-info.module").then(module => module.UserInfoModule), canActivate: [AuthGuard]},
+    {path: "address-info", loadChildren: () => import("./ui/components/my-account/components/address-info/address-info.module").then(module => module.AddressInfoModule), canActivate: [AuthGuard]},
 
 
   ]}

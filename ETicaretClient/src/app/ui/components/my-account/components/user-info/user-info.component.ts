@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_User } from 'src/app/contracts/users/create_user';
+import { User_Response } from 'src/app/contracts/users/user_response';
 import { User } from 'src/app/entities/user';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
@@ -23,31 +24,47 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
     spinner: NgxSpinnerService, private socialAuthService: SocialAuthService, private activatedRoute: ActivatedRoute, private userAuthService: UserAuthService,
     private alertifyService: AlertifyService, private router: Router) {
       super(spinner)
-      socialAuthService.authState.subscribe(async (user: SocialUser) => {
-        console.log(user)
-      });    
+      // socialAuthService.authState.subscribe(async (user: SocialUser) => {
+      //   console.log(user)
+      // });    
       
       }
 
   frm: FormGroup;
   state: any;
   userInfo: SocialUser;
+  currentUser: User_Response;
+
   
   
   
-  ngOnInit(): void {
-    this.frm = this.formBuilder.group({
-      nameSurname: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3) ]],
-      username: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3) ]],
-      email: ["", [Validators.required, Validators.maxLength(50), Validators.email ]],
-      password: ["", [Validators.required] ],
-      passwordConfirm: ["", [Validators.required]]
-    },
-    this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
-      console.log(user.email);
-      this.userInfo = user;
-      console.log(this.userInfo.email)
-     })
+ async ngOnInit() {
+  const token: string = localStorage.getItem("refreshToken");
+  
+  this.currentUser = await this.userService.getUserByToken(token);
+  console.log(this.currentUser)
+  
+  
+  console.log(this.currentUser.nameSurname)
+    // this.frm = this.formBuilder.group({
+    //   nameSurname: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3) ]],
+    //   username: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3) ]],
+    //   email: ["", [Validators.required, Validators.maxLength(50), Validators.email ]],
+    //   password: ["", [Validators.required] ],
+    //   passwordConfirm: ["", [Validators.required]]
+    // },
+    // this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
+    //   console.log(user.email);
+    //   this.userInfo = user;
+    //   console.log(this.userInfo.email)
+    //  })
+     
+
+     
+
+
+
+
     // {
     //   validators: (group: AbstractControl): ValidationErrors | null => {
     //     let password = group.get("password").value;
@@ -55,7 +72,7 @@ export class UserInfoComponent extends BaseComponent implements OnInit {
     //     return password === passwordConfirm ? null : {notSame: true};
     //   }
     // }
-)
+//)
 // this.showSpinner(SpinnerType.SquareLoader)
 // this.activatedRoute.params.subscribe({
 //   next: async params => {

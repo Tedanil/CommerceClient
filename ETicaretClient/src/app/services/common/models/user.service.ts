@@ -9,6 +9,7 @@ import { HttpClientService } from '../http-client.service';
 import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
+import { User_Response } from 'src/app/contracts/users/user_response';
 
 
 @Injectable({
@@ -25,6 +26,7 @@ export class UserService {
     }, user);
 
     return await firstValueFrom(observable) as Create_User;
+    debugger
   }
   async updatePassword(userId: string, resetToken: string, password: string, passwordConfirm: string, successCallBack?: () => void, errorCallBack?: (error) => void) {
     const observable: Observable<any> = this.httpClientService.post({
@@ -40,6 +42,22 @@ export class UserService {
     const promiseData: Promise<any> = firstValueFrom(observable);
     promiseData.then(value => successCallBack()).catch(error => errorCallBack(error));
     await promiseData;
+  }
+  async getUserByToken(refreshToken: string): Promise<any> {
+    
+    const observable: Observable<any | User_Response> = this.httpClientService.post({
+      controller: "users",
+      action: "getuser"
+    }, {refreshToken});
+   
+    
+
+    const userData: User_Response = await firstValueFrom(observable);
+    return userData;
+    
+    
+
+  
   }
 
 

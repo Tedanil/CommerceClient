@@ -6,6 +6,7 @@ using ETicaretAPI.Application.Features.Commands.AppUser.LoginUser;
 using ETicaretAPI.Application.Features.Commands.AppUser.UpdatePassword;
 using ETicaretAPI.Application.Features.Queries.AppUser.GetUserByToken;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,8 +37,9 @@ namespace ETicaretAPI.API.Controllers
             return Ok(response);
         }
 
-        [HttpGet("{Id}")]
-        public async Task<IActionResult> GetUser([FromRoute] GetUserByTokenQueryRequest getUserByTokenQueryRequest)
+        [HttpPost("[action]")]
+        [Authorize(AuthenticationSchemes = "Admin")]
+        public async Task<IActionResult> GetUser([FromBody] GetUserByTokenQueryRequest getUserByTokenQueryRequest)
         {
             GetUserByTokenQueryResponse response = await _mediator.Send(getUserByTokenQueryRequest);
             return Ok(response);

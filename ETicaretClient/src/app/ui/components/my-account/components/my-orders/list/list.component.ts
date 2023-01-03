@@ -5,12 +5,14 @@ import { MatTableDataSource } from '@angular/material/table';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Order } from 'src/app/contracts/order/list_order';
+import { User_Response } from 'src/app/contracts/users/user_response';
 import { OrderDetailDialogComponent } from 'src/app/dialogs/order-detail-dialog/order-detail-dialog.component';
 import { User } from 'src/app/entities/user';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { OrderService } from 'src/app/services/common/models/order.service';
+import { UserService } from 'src/app/services/common/models/user.service';
 
 @Component({
   selector: 'app-list',
@@ -24,7 +26,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     private alertifyService: AlertifyService,
     private dialogService: DialogService,
     public socialAuthService: SocialAuthService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
     ) {
     super(spinner)
    socialAuthService.authState.subscribe(async (user: SocialUser) => {
@@ -32,6 +35,8 @@ export class ListComponent extends BaseComponent implements OnInit {
     });
     
   }
+
+currentUser : User_Response;
 
   
   
@@ -43,6 +48,10 @@ export class ListComponent extends BaseComponent implements OnInit {
 
   async getOrders() {
     this.showSpinner(SpinnerType.SquareLoader);
+    const token: string = localStorage.getItem("refreshToken");
+  
+  this.currentUser = await this.userService.getUserByToken(token);
+  console.log(this.currentUser)
 
     const allOrders: { totalOrderCount: number; orders: List_Order[] } = await this.orderService
     .getAllOrders(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5, () => 
@@ -52,15 +61,15 @@ export class ListComponent extends BaseComponent implements OnInit {
       position: Position.TopRight
     }))
 
-    this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
-      console.log(user.email);
-      allOrders.orders = allOrders.orders.filter(p => p.userName == user.email);
+    // this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
+    //   console.log(user.email);
+    //   allOrders.orders = allOrders.orders.filter(p => p.userName == user.email);
 
-    });
+    // });
     
   
    
-   
+    allOrders.orders = allOrders.orders.filter(p => p.userName == this.currentUser.username || p.userName == this.currentUser.email);
     
     this.dataSource = new MatTableDataSource<List_Order>(allOrders.orders);
     this.paginator.length = allOrders.totalOrderCount;
@@ -71,7 +80,10 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
 
   async ngOnInit() {
+   
+    
     await this.getOrders();
+    
   }
 
   showDetail(id: string) {
