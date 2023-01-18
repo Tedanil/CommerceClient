@@ -16,6 +16,8 @@ namespace ETicaretAPI.Application.Abstractions.Services
         Task<UserResponse> GetUserAsync(string refreshToken);
         Task<List<ListUser>> GetAllUsersAsync(int page, int size);
         int TotalUsersCount { get; }
+        Task AssignRoleToUserAsnyc(string userId, string[] roles);
+        Task<string[]> GetRolesToUserAsync(string userId);
 
     }
 }

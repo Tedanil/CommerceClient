@@ -18,6 +18,7 @@ import { AuthorizeMenuDialogComponent } from './authorize-menu-dialog/authorize-
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatListModule} from '@angular/material/list';
 import { CompleteOrderDialogComponent } from './complete-order-dialog/complete-order-dialog.component';
+import { AuthorizeUserDialogComponent } from './authorize-user-dialog/authorize-user-dialog.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { CompleteOrderDialogComponent } from './complete-order-dialog/complete-o
   ShoppingCompleteDialogComponent,
   OrderDetailDialogComponent,
   AuthorizeMenuDialogComponent,
-  CompleteOrderDialogComponent],
+  CompleteOrderDialogComponent,
+  AuthorizeUserDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule, MatButtonModule, MatCardModule,

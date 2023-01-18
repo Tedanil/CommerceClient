@@ -6,6 +6,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { OrderModule } from './order/order.module';
 import { AuthorizeMenuModule } from './authorize-menu/authorize-menu.module';
 import { RoleModule } from './role/role.module';
+import { UserModule } from './user/user.module';
 
 
 
@@ -19,7 +20,8 @@ import { RoleModule } from './role/role.module';
     DashboardModule,
     OrderModule,
     AuthorizeMenuModule,
-    RoleModule
+    RoleModule,
+    UserModule
     
 
   ]
