@@ -33,14 +33,14 @@
 
 
       <ng-container matColumnDef="photos">
-        <th mat-header-cell *matHeaderCellDef > </th>
-        <td mat-cell *matCellDef="let element" > <img style="cursor:pointer" (click)="addProductImages(element.id)" src="../../../../../assets/photo.png" width="25" height="25" />  </td>
+        <th mat-header-cell *matHeaderCellDef  width="30"> </th>
+        <td mat-cell *matCellDef="let element" > <img style="cursor:pointer" (click)="addProductImages(element.id)" src="../../../../../assets/photo.gif" width="25" height="25" />  </td>
       </ng-container>
 
 
-      <ng-container matColumnDef="edit">
+      <ng-container matColumnDef="qrcode">
         <th mat-header-cell *matHeaderCellDef width="30">  </th>
-        <td mat-cell *matCellDef="let element" > <img src="../../../../../assets/edit.png" width="25" height="25" />  </td>
+        <td mat-cell *matCellDef="let element" > <img style="cursor:pointer" src="../../../../../assets/qrcode.gif" width="25" height="25" (click)="showQRCode(element.id)"  />  </td>
       </ng-container>
 
 
