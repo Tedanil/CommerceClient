@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hIoJpIgqtLEgTHBfuBXFKFuARcJ6IQuw0Oau2RkALYoIEHnKd5KZtrfr4xzyTh2hD4nHe9NDx4u0XOFpudKgJQ==",
+  "dgSpecHash": "FhH553Kzddq0v2U+QXS1ttBG/3ci2rl9K7F2o9YhuPLwiLy/0+nqAAhB/7iBqNBg7L/K1V7/oDEDZxQS1qulMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\anild\\Desktop\\TEST\\CommerceClient\\ETicaretAPI\\Infrastructure\\ETicaretAPI.Infrastructure\\ETicaretAPI.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -60,6 +60,7 @@
     "C:\\Users\\anild\\.nuget\\packages\\microsoft.net.http.headers\\2.2.0\\microsoft.net.http.headers.2.2.0.nupkg.sha512",
     "C:\\Users\\anild\\.nuget\\packages\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
     "C:\\Users\\anild\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
+    "C:\\Users\\anild\\.nuget\\packages\\qrcoder\\1.4.3\\qrcoder.1.4.3.nupkg.sha512",
     "C:\\Users\\anild\\.nuget\\packages\\system.buffers\\4.5.0\\system.buffers.4.5.0.nupkg.sha512",
     "C:\\Users\\anild\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\anild\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
