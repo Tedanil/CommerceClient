@@ -37,6 +37,7 @@ export class ListComponent extends BaseComponent implements OnInit {
   }
 
 currentUser : User_Response;
+currentUserName: string
 
   
   
@@ -51,15 +52,17 @@ currentUser : User_Response;
     const token: string = localStorage.getItem("refreshToken");
   
   this.currentUser = await this.userService.getUserByToken(token);
-  console.log(this.currentUser)
+  console.log(this.currentUser);
+   this.currentUserName = this.currentUser.username ;
 
     const allOrders: { totalOrderCount: number; orders: List_Order[] } = await this.orderService
-    .getAllOrders(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5, () => 
+    .getOrdersByUser(this.paginator ? this.paginator.pageIndex : 0, this.paginator ? this.paginator.pageSize : 5,this.currentUserName,  () => 
     this.hideSpinner(SpinnerType.SquareLoader), errorMessage => this.alertifyService.message(errorMessage, {
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight
     }))
+    
 
     // this.socialAuthService.authState.subscribe(async (user: SocialUser) => {
     //   console.log(user.email);
@@ -69,7 +72,7 @@ currentUser : User_Response;
     
   
    
-    allOrders.orders = allOrders.orders.filter(p => p.userName == this.currentUser.username || p.userName == this.currentUser.email);
+   // allOrders.orders = allOrders.orders.filter(p => p.userName == this.currentUser.username || p.userName == this.currentUser.email);
     
     this.dataSource = new MatTableDataSource<List_Order>(allOrders.orders);
     this.paginator.length = allOrders.totalOrderCount;

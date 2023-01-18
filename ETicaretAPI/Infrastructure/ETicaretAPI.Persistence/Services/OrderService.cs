@@ -50,6 +50,10 @@ namespace ETicaretAPI.Persistence.Services
                          .ThenInclude(b => b.BasketItems)
                          .ThenInclude(bi => bi.Product);
 
+
+
+            
+
             var data = query.Skip(page * size).Take(size);
             /*.Take((page * size)..size);*/
 
@@ -78,6 +82,60 @@ namespace ETicaretAPI.Persistence.Services
                     UserName = o.Basket.User.UserName,
                     o.Completed
                 }).ToListAsync()
+            };
+        }
+
+        public async Task<ListOrder> GetOrdersByUserName(int page, int size, string userName)
+        {
+            var query = _orderReadRepository.Table.Include(o => o.Basket)
+                      .ThenInclude(b => b.User)
+                      .Include(o => o.Basket)
+                         .ThenInclude(b => b.BasketItems)
+                         .ThenInclude(bi => bi.Product)
+                         .Where(o => o.Basket.User.UserName == userName);
+            //.FirstOrDefaultAsync(o => o.Basket.User.UserName == userName);
+            //.IgnoreQueryFilters(o => o.Basket.User.UserName == userName);
+
+            // var q2 =  query.FirstOrDefaultAsync(o => o.Basket.User.UserName == userName);
+
+            //var query2 =  _orderReadRepository.Table.Include(o => o.Basket)
+            //          .ThenInclude(b => b.User)
+            //          .Include(o => o.Basket)
+            //             .ThenInclude(b => b.BasketItems)
+            //             .ThenInclude(bi => bi.Product)
+            //             .Where(o => o.Basket.User.UserName == userName);
+
+
+
+
+            var data = query.Skip(page * size).Take(size);
+            /*.Take((page * size)..size);*/
+
+            var data2 = from order in data
+                        join completedOrder in _completedOrderReadRepository.Table
+                           on order.Id equals completedOrder.OrderId into co
+                        from _co in co.DefaultIfEmpty()
+                        select new
+                        {
+                            Id = order.Id,
+                            CreatedDate = order.CreatedDate,
+                            OrderCode = order.OrderCode,
+                            Basket = order.Basket,
+                            Completed = _co != null ? true : false
+                        };
+
+            return new()
+            {
+                TotalOrderCount = await query.CountAsync(),
+                Orders =  data2.Select(o => new
+                {
+                    Id = o.Id,
+                    CreatedDate = o.CreatedDate,
+                    OrderCode = o.OrderCode,
+                    TotalPrice = o.Basket.BasketItems.Sum(bi => bi.Product.Price * bi.Quantity),
+                    UserName = o.Basket.User.UserName,
+                    o.Completed
+                })
             };
         }
 
@@ -120,6 +178,7 @@ namespace ETicaretAPI.Persistence.Services
                 Completed = data2.Completed
             };
         }
+      
         public async Task<(bool, CompletedOrderDTO)> CompleteOrderAsync(string id)
         {
             Order? order = await _orderReadRepository.Table
@@ -143,5 +202,7 @@ namespace ETicaretAPI.Persistence.Services
             }
             return (false, null);
         }
+
+        
     }
 }

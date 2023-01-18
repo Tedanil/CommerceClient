@@ -1,9 +1,12 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
+using ETicaretAPI.Application.CustomAttributes;
+using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commands.AppUser.CreateUser;
 using ETicaretAPI.Application.Features.Commands.AppUser.FacebookLogin;
 using ETicaretAPI.Application.Features.Commands.AppUser.GoogleLogin;
 using ETicaretAPI.Application.Features.Commands.AppUser.LoginUser;
 using ETicaretAPI.Application.Features.Commands.AppUser.UpdatePassword;
+using ETicaretAPI.Application.Features.Queries.AppUser.GetAllUsers;
 using ETicaretAPI.Application.Features.Queries.AppUser.GetUserByToken;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -39,9 +42,19 @@ namespace ETicaretAPI.API.Controllers
 
         [HttpPost("[action]")]
         [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get Current User", Menu = "Users")]
         public async Task<IActionResult> GetUser([FromBody] GetUserByTokenQueryRequest getUserByTokenQueryRequest)
         {
             GetUserByTokenQueryResponse response = await _mediator.Send(getUserByTokenQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get All Users", Menu = "Users")]
+        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersQueryRequest getAllUsersQueryRequest)
+        {
+            GetAllUsersQueryResponse response = await _mediator.Send(getAllUsersQueryRequest);
             return Ok(response);
         }
     }

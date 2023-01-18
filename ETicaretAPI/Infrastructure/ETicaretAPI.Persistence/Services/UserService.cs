@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using ETicaretAPI.Persistence.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace ETicaretAPI.Persistence.Services
 {
@@ -21,6 +22,7 @@ namespace ETicaretAPI.Persistence.Services
         readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
         private ETicaretAPIDbContext _eTicaretAPIDbContext;
 
+        
 
         public UserService(UserManager<AppUser> userManager, ETicaretAPIDbContext eTicaretAPIDbContext)
         {
@@ -98,5 +100,24 @@ namespace ETicaretAPI.Persistence.Services
             else
                 throw new NotFoundUserException();
         }
+
+        public async Task<List<ListUser>> GetAllUsersAsync(int page, int size)
+        {
+          var users =  await _userManager.Users
+                .Skip(page * size)
+                .Take(size)
+                .ToListAsync();
+
+            return users.Select(user => new ListUser
+            {
+                Id = user.Id,
+                UserName = user.UserName,
+                NameSurname = user.NameSurname,
+                Email = user.Email,
+                TwoFactorEnabled = user.TwoFactorEnabled
+
+            }).ToList();
+        }
+        public int TotalUsersCount => _userManager.Users.Count();
     }
 }

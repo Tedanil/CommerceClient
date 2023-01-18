@@ -5,6 +5,7 @@ using ETicaretAPI.Application.Features.Commands.Order.CompleteOrder;
 using ETicaretAPI.Application.Features.Commands.Order.CreateOrder;
 using ETicaretAPI.Application.Features.Queries.Order.GetAllOrders;
 using ETicaretAPI.Application.Features.Queries.Order.GetOrderById;
+using ETicaretAPI.Application.Features.Queries.Order.GetOrdersByUserName;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -38,6 +39,13 @@ namespace ETicaretAPI.API.Controllers
         public async Task<ActionResult> GetAllOrders([FromQuery] GetAllOrdersQueryRequest getAllOrdersQueryRequest)
         {
             GetAllOrdersQueryResponse response = await _mediator.Send(getAllOrdersQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetOrdersByUserName([FromQuery] GetOrdersByUserNameQueryRequest getOrdersByUserNameQueryRequest)
+        {
+            GetOrdersByUserNameQueryResponse response = await _mediator.Send(getOrdersByUserNameQueryRequest);
             return Ok(response);
         }
 
