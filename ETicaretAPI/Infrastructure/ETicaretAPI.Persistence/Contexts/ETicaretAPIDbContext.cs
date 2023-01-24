@@ -34,6 +34,8 @@ namespace ETicaretAPI.Persistence.Contexts
         public DbSet<Menu> Menus { get; set; }
         public DbSet<Endpoint> Endpoints { get; set; }
         public DbSet<CompletedOrder> CompletedOrders { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder builder)

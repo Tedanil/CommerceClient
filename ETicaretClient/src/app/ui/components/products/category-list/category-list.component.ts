@@ -32,6 +32,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
   async ngOnInit() {
 
     this.baseUrl = await this.fileService.getBaseStorageUrl();
+    
 
 
 
@@ -77,6 +78,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
           description: p.description,
           categoryName: p.categoryName
         };
+        
 
 
 
