@@ -96,7 +96,8 @@ namespace ETicaretAPI.Persistence.Services
                 NameSurname = user.NameSurname,
                 Username = user.UserName,
                 Email = user.Email,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber,
+                UserId = user.Id
 
             };
             }
