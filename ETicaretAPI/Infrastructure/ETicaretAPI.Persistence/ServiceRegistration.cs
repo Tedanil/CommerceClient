@@ -58,6 +58,8 @@ namespace ETicaretAPI.Persistence
             services.AddScoped<IMenuWriteRepository, MenuWriteRepository>();
             services.AddScoped<IAddressReadRepository, AddressReadRepository>();
             services.AddScoped<IAddressWriteRepository, AddressWriteRepository>();
+            services.AddScoped<ICityReadRepository, CityReadRepository>();
+            services.AddScoped<ICityWriteRepository, CityWriteRepository>();
 
 
 

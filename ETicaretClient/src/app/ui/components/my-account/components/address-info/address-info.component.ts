@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { BaseComponent } from 'src/app/base/base.component';
+import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Address } from 'src/app/contracts/address/create_address';
+import { List_City } from 'src/app/contracts/address/list_city';
 import { User_Response } from 'src/app/contracts/users/user_response';
-import { AlertifyService } from 'src/app/services/admin/alertify.service';
+import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { AddressService } from 'src/app/services/common/models/address.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 
@@ -15,15 +16,29 @@ import { UserService } from 'src/app/services/common/models/user.service';
 export class AddressInfoComponent extends BaseComponent implements OnInit {
 
   constructor(spinner:NgxSpinnerService, 
-    private alertify: AlertifyService,
+    private alertifyService: AlertifyService,
      private userService: UserService,
-     private addressService: AddressService) {
+     private addressService: AddressService,) {
     super(spinner)
    }
 
    currentUser : User_Response;
+   cities2 : List_City[];
+   
+   
 
-  ngOnInit(): void {
+ async ngOnInit() {
+  this.showSpinner(SpinnerType.BallElasticDot);
+ 
+    
+    const allCities: {cities:List_City[]} = await this.addressService.getCities(() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
+      dismissOthers: true,
+      messageType: MessageType.Error,
+      position: Position.TopRight
+    }));
+    this.cities2 = allCities.cities
+    
+
   }
  async create(city:HTMLInputElement, district: HTMLInputElement){
     const token: string = localStorage.getItem("refreshToken");
@@ -38,5 +53,10 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
   
 
   }
-
+  
 }
+interface Food {
+  value: string;
+  viewValue: string;
+}
+

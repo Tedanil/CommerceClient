@@ -1,10 +1,43 @@
-<mat-form-field appearance="fill"  >
-    <mat-label>City</mat-label>
+<div class="tab">
+<mat-form-field class="inputs" appearance="fill"  >
+    <mat-label>Ad*</mat-label>
     <input matInput #txtCity>
   </mat-form-field>
   <mat-form-field appearance="fill"  >
-    <mat-label>District</mat-label>
+    <mat-label>Soyad*</mat-label>
     <input matInput #txtDistrict>
   </mat-form-field>
-
+  <mat-form-field class="inputs"  appearance="fill"  >
+    <mat-label>Telefon*</mat-label>
+    <input matInput #txtDistrict>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>İl Seçiniz</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let city of cities2" [value]="city.cityId">
+        {{city.cityName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="inputs" appearance="fill">
+    <mat-label>İlçe Seçiniz</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let city of cities2" [value]="city.cityId">
+        {{city.cityName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field   appearance="fill"  >
+    <mat-label>Mahalle*</mat-label>
+    <input matInput #txtDistrict>
+  </mat-form-field>
+  <mat-form-field class="inputAd"  appearance="fill"  >
+    <mat-label>Adres*</mat-label>
+    <input matInput size="medium" #txtDistrict>
+  </mat-form-field>
+  <mat-form-field class="inputAd"  appearance="fill"  >
+    <mat-label>Adres Başlığı*</mat-label>
+    <input matInput size="medium" #txtDistrict>
+  </mat-form-field>
+</div>
   <button mat-raised-button class="btn" (click)="create(txtCity, txtDistrict)" color="primary" >Create Address </button>

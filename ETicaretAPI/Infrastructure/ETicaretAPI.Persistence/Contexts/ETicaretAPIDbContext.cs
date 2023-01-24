@@ -35,6 +35,10 @@ namespace ETicaretAPI.Persistence.Contexts
         public DbSet<Endpoint> Endpoints { get; set; }
         public DbSet<CompletedOrder> CompletedOrders { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<City> Cities { get; set; }
+
+
+
 
 
 
@@ -56,6 +60,9 @@ namespace ETicaretAPI.Persistence.Contexts
                 .HasOne(o => o.CompletedOrder)
                 .WithOne(c => c.Order)
                 .HasForeignKey<CompletedOrder>(c => c.OrderId);
+
+            builder.Entity<City>()
+                .HasNoKey();
 
             base.OnModelCreating(builder);
 

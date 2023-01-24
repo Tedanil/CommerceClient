@@ -1,5 +1,19 @@
-.row {
-
-    width: 50% !important;
-
-}
+.tab {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .inputs{
+    margin: 20px;
+    border-radius: 3px;
+    border-color: black;
+  }
+  .inputAd{
+    margin: 20px;
+    min-width: 420px;   
+  }
+  .btn{
+    margin-top: 20px;
+    margin-left: 145px;
+    
+  }

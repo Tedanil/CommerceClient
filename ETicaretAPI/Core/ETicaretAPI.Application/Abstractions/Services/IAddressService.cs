@@ -10,5 +10,6 @@ namespace ETicaretAPI.Application.Abstractions.Services
     public interface IAddressService
     {
        public Task CreateAddressAsync(CreateAddress createAddress);
+       public Task<ListCity> GetAllCityAsync();
     }
 }

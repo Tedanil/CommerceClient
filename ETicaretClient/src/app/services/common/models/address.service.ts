@@ -1,6 +1,8 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, observable, Observable } from 'rxjs';
 import { Create_Address } from 'src/app/contracts/address/create_address';
+import { List_City } from 'src/app/contracts/address/list_city';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -16,5 +18,19 @@ export class AddressService {
     }, address);
 
     await firstValueFrom(observable);
+  }
+  async getCities( successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{cities: List_City[] }> {
+    const promiseData: Promise<{cities: List_City[] }> = this.httpCLientService.get< {cities: List_City[] }>({
+      controller: "address",
+     
+      
+
+    },).toPromise();
+
+    promiseData.then(d => successCallBack())
+       .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
+       
+       
+    return await promiseData;
   }
 }

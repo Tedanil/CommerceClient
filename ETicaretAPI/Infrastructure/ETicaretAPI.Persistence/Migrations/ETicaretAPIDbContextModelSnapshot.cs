@@ -143,6 +143,17 @@ namespace ETicaretAPI.Persistence.Migrations
                     b.ToTable("BasketItems");
                 });
 
+            modelBuilder.Entity("ETicaretAPI.Domain.Entities.City", b =>
+                {
+                    b.Property<int?>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("CityName")
+                        .HasColumnType("text");
+
+                    b.ToTable("Cities");
+                });
+
             modelBuilder.Entity("ETicaretAPI.Domain.Entities.CompletedOrder", b =>
                 {
                     b.Property<Guid>("Id")
