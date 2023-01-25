@@ -198,6 +198,20 @@ namespace ETicaretAPI.Persistence.Migrations
                     b.ToTable("Customers");
                 });
 
+            modelBuilder.Entity("ETicaretAPI.Domain.Entities.District", b =>
+                {
+                    b.Property<int?>("CityId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("DistrictId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("DistrictName")
+                        .HasColumnType("text");
+
+                    b.ToTable("Districts");
+                });
+
             modelBuilder.Entity("ETicaretAPI.Domain.Entities.Endpoint", b =>
                 {
                     b.Property<Guid>("Id")

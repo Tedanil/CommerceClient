@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace ETicaretAPI.Application.DTOs.Address
 {
     public class ListCity
-    {
-       
+    {    
         public object Cities { get; set; }
     }
 }
