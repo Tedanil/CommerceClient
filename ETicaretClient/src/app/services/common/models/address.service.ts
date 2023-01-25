@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { firstValueFrom, observable, Observable } from 'rxjs';
 import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
+import { List_District } from 'src/app/contracts/address/list_district';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -26,6 +27,22 @@ export class AddressService {
       
 
     },).toPromise();
+
+    promiseData.then(d => successCallBack())
+       .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
+       
+       
+    return await promiseData;
+  }
+
+  async getDistricts(cityId : any, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{districts: List_District[] }> {
+    const promiseData: Promise<{districts: List_District[] }> = this.httpCLientService.get< {districts: List_District[] }>({
+      controller: "address",
+      action: "getdistricts"
+     
+      
+
+    },cityId).toPromise();
 
     promiseData.then(d => successCallBack())
        .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));

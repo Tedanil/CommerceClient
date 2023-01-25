@@ -1,19 +1,19 @@
 <div class="tab">
 <mat-form-field class="inputs" appearance="fill"  >
     <mat-label>Ad*</mat-label>
-    <input matInput #txtCity>
+    <input matInput #txtName>
   </mat-form-field>
   <mat-form-field appearance="fill"  >
     <mat-label>Soyad*</mat-label>
-    <input matInput #txtDistrict>
+    <input matInput #txtSurname>
   </mat-form-field>
   <mat-form-field class="inputs"  appearance="fill"  >
     <mat-label>Telefon*</mat-label>
-    <input matInput #txtDistrict>
+    <input matInput #txtPhone>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>İl Seçiniz</mat-label>
-    <mat-select>
+    <mat-select #selectCity (selectionChange)="onSelectChange($event)">
       <mat-option *ngFor="let city of cities2" [value]="city.cityId">
         {{city.cityName}}
       </mat-option>
@@ -21,23 +21,23 @@
   </mat-form-field>
   <mat-form-field class="inputs" appearance="fill">
     <mat-label>İlçe Seçiniz</mat-label>
-    <mat-select>
-      <mat-option *ngFor="let city of cities2" [value]="city.cityId">
-        {{city.cityName}}
+    <mat-select #selectDistrict >
+      <mat-option *ngFor="let district of districts2" [value]="district.districtId">
+        {{district.districtName}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field   appearance="fill"  >
     <mat-label>Mahalle*</mat-label>
-    <input matInput #txtDistrict>
+    <input matInput #txtNeighborhood>
   </mat-form-field>
   <mat-form-field class="inputAd"  appearance="fill"  >
     <mat-label>Adres*</mat-label>
-    <input matInput size="medium" #txtDistrict>
+    <input matInput size="medium" #txtDescription>
   </mat-form-field>
   <mat-form-field class="inputAd"  appearance="fill"  >
     <mat-label>Adres Başlığı*</mat-label>
-    <input matInput size="medium" #txtDistrict>
+    <input matInput size="medium" #txtTitle>
   </mat-form-field>
 </div>
-  <button mat-raised-button class="btn" (click)="create(txtCity, txtDistrict)" color="primary" >Create Address </button>
+  <button mat-raised-button class="btn" (click)="create(txtName, txtSurname, txtPhone, txtDescription, txtNeighborhood, txtTitle, selectCity, selectDistrict)" color="primary" >Create Address </button>

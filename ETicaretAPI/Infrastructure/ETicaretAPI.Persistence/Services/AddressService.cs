@@ -28,12 +28,21 @@ namespace ETicaretAPI.Persistence.Services
 
         public async Task CreateAddressAsync(CreateAddress createAddress)
         {
+            var cityName = _cityReadRepository.Table.FirstOrDefault(c => c.CityId == createAddress.SelectCity);
+            var districtName = _districtReadRepository.Table.FirstOrDefault(d => d.DistrictId == createAddress.SelectDistrict);
+
             await _addressWriteRepository.AddAsync(new()
             {
-                UserId = createAddress.UserId,
-                City = createAddress.City,
-                District = createAddress.District,
                 AddressId = Guid.NewGuid().ToString(),
+                UserId = createAddress.UserId,
+                Name = createAddress.Name,
+                Surname = createAddress.Surname,
+                Title = createAddress.Title,
+                PhoneNumber = createAddress.Phone,
+                City = cityName.CityName,
+                District = districtName.DistrictName,
+                Neighborhood = createAddress.Neighborhood,
+                Description = createAddress.Description               
                 
             });
 

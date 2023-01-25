@@ -1,5 +1,11 @@
 export class Create_Address {
-    city: string;
-    district: string;
+    name: string;
+    surname: string;
+    phone: string;
+    description: string;
+    neighborhood: string;
+    title: string;
+    selectCity: string;
+    selectDistrict: string;
     userId: string;
   }

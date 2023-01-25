@@ -22,8 +22,14 @@ namespace ETicaretAPI.Application.Features.Commands.Address.CreateAddress
             await _addressService.CreateAddressAsync(new()
             {
                 UserId = request.UserId,
-                City = request.City,
-                District = request.District
+                Name = request.Name,
+                Surname = request.Surname,
+                Phone = request.Phone,
+                Neighborhood = request.Neighborhood,
+                Description = request.Description,
+                Title = request.Title,
+                SelectCity = request.SelectCity,
+                SelectDistrict = request.SelectDistrict
             });
 
             return new();
