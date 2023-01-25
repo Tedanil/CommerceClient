@@ -34,5 +34,13 @@ namespace ETicaretAPI.API.Controllers
             ListCity cities = await _addressService.GetAllCityAsync();
             return Ok(cities);
         }
+
+        [HttpGet("[action]/{CityId}")]
+        public async Task<IActionResult> GetDistricts([FromRoute] int cityId)
+        {
+
+            ListDistrict districts = await _addressService.GetDistrictsByCityIdAsync(cityId);
+            return Ok(districts);
+        }
     }
 }

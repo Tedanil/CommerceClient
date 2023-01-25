@@ -16,12 +16,14 @@ namespace ETicaretAPI.Persistence.Services
         readonly IAddressWriteRepository _addressWriteRepository;
         private ETicaretAPIDbContext _eTicaretAPIDbContext;
         readonly ICityReadRepository _cityReadRepository;
+        readonly IDistrictReadRepository _districtReadRepository;
 
-        public AddressService(IAddressWriteRepository addressWriteRepository, ICityReadRepository cityReadRepository, ETicaretAPIDbContext eTicaretAPIDbContext)
+        public AddressService(IAddressWriteRepository addressWriteRepository, ICityReadRepository cityReadRepository, ETicaretAPIDbContext eTicaretAPIDbContext, IDistrictReadRepository districtReadRepository)
         {
             _addressWriteRepository = addressWriteRepository;
             _cityReadRepository = cityReadRepository;
             _eTicaretAPIDbContext = eTicaretAPIDbContext;
+            _districtReadRepository = districtReadRepository;
         }
 
         public async Task CreateAddressAsync(CreateAddress createAddress)
@@ -53,12 +55,22 @@ namespace ETicaretAPI.Persistence.Services
             {
                 Cities = cities
             };
-            
-           
-           
           
-          
-            
+        }
+
+        public async Task<ListDistrict> GetDistrictsByCityIdAsync(int cityId)
+        {
+            var districts = _districtReadRepository.GetAll(false).Where(d => d.CityId == cityId)
+                .Select(x => new
+                {
+                    x.DistrictId,
+                    x.DistrictName
+                }).ToList();
+
+            return new()
+            {
+                Districts = districts
+            };
         }
     }
 }
