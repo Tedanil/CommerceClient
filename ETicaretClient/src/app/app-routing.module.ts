@@ -36,7 +36,9 @@ const routes: Routes = [
     {path: "my-orders", loadChildren: () => import("./ui/components/my-account/components/my-orders/my-orders.module").then(module => module.MyOrdersModule), canActivate: [AuthGuard]},
     {path: "user-info", loadChildren: () => import("./ui/components/my-account/components/user-info/user-info.module").then(module => module.UserInfoModule), canActivate: [AuthGuard]},
     {path: "address-info", loadChildren: () => import("./ui/components/my-account/components/address-info/address-info.module").then(module => module.AddressInfoModule), canActivate: [AuthGuard]},
-    {path: "create-address", loadChildren: () => import("./ui/components/my-account/components/create-address/create-address.module").then(module => module.CreateAddressModule), canActivate: [AuthGuard]},   
+    {path: "create-address", loadChildren: () => import("./ui/components/my-account/components/create-address/create-address.module").then(module => module.CreateAddressModule), canActivate: [AuthGuard]},
+    {path: "edit-address/:id", loadChildren: () => import("./ui/components/my-account/components/edit-address/edit-address.module").then(module => module.EditAddressModule), canActivate: [AuthGuard]},   
+
 
   ]}
   

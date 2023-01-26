@@ -72,6 +72,25 @@ export class AddressService {
     return await promiseData;
   }
 
+  async getSingleAddress(Id : string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{singleAddressInfo: Address_Info }> {
+    const promiseData: Promise<{singleAddressInfo: Address_Info}> = this.httpCLientService.get< {singleAddressInfo: Address_Info}>({
+      controller: "address",
+      action: "getsingleaddress"
+     
+      
+
+    },Id).toPromise();
+    
+
+    promiseData.then(d => successCallBack())
+       .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
+       
+       
+    return await promiseData;
+    
+    
+  }
+
   async delete(id: string) {
     const deleteObservable: Observable<any> = this.httpCLientService.delete<any>({
       controller: "address"

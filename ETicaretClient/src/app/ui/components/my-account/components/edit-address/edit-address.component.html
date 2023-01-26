@@ -1,0 +1,48 @@
+<p>{{singleAddressInfo.city}}</p>
+<div class="tab">
+    <mat-form-field class="inputs" appearance="fill">
+      <mat-label>Ad*</mat-label>
+      <input matInput #txtName [value]="singleAddressInfo[0].name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Soyad*</mat-label>
+      <input matInput #txtSurname [value]="singleAddressInfo[0].surname">
+    </mat-form-field>
+    <mat-form-field class="inputs" appearance="fill">
+      <mat-label>Telefon*</mat-label>
+      <input matInput #txtPhone [value]="singleAddressInfo[0].phoneNumber">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>İl Seçiniz</mat-label>
+      <mat-select #selectCity (selectionChange)="onSelectChange($event)">
+        <mat-option *ngFor="let city of cities2" [value]="city.cityId">
+          {{city.cityName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="inputs" appearance="fill">
+      <mat-label>İlçe Seçiniz</mat-label>
+      <mat-select #selectDistrict>
+        <mat-option *ngFor="let district of districts2" [value]="district.districtId">
+          {{district.districtName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Mahalle*</mat-label>
+      <input matInput #txtNeighborhood [value]="singleAddressInfo[0].neighborhood">
+    </mat-form-field>
+    <mat-form-field class="inputAd" appearance="fill">
+      <mat-label>Adres*</mat-label>
+      <input matInput size="medium" #txtDescription [value]="singleAddressInfo[0].description">
+    </mat-form-field>
+    <mat-form-field class="inputAd" appearance="fill">
+      <mat-label>Adres Başlığı*</mat-label>
+      <input matInput size="medium" #txtTitle [value]="singleAddressInfo[0].title">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button class="btn" (click)="create(txtName, txtSurname, txtPhone, 
+    txtDescription, txtNeighborhood, txtTitle, selectCity, selectDistrict)" color="primary">Create Address </button>
+  
+  
+

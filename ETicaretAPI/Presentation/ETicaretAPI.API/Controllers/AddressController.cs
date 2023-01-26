@@ -3,6 +3,7 @@ using ETicaretAPI.Application.DTOs.Address;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
 using ETicaretAPI.Application.Features.Commands.Address.RemoveAddress;
 using ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserId;
+using ETicaretAPI.Application.Features.Queries.Address.GetSingleAddressById;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -50,6 +51,14 @@ namespace ETicaretAPI.API.Controllers
         {
 
             GetAddressInfoByUserIdQueryResponse response = await _mediator.Send(getAddressInfoByUserIdQueryRequest);
+            return Ok(response);
+        }
+
+        [HttpGet("[action]/{Id}")]
+        public async Task<IActionResult> GetSingleAddress([FromRoute] GetSingleAddressByIdQueryRequest getSingleAddressByIdQueryRequest)
+        {
+
+            GetSingleAddressByIdQueryResponse response = await _mediator.Send(getSingleAddressByIdQueryRequest);
             return Ok(response);
         }
 

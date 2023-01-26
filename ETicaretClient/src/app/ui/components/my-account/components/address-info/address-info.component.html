@@ -10,11 +10,9 @@
         <h5 class="card-text">{{info.description}} </h5>
         <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
         <h5 class="card-text">{{info.phoneNumber}} </h5>
-        
-          
-        <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25" height="25" (click)="deleteAddress(info.id)">    </a>
-        
-         <a class="btn btn-success" style="margin-left: 15px;" >Adresi Düzenle</a> 
+        <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25"
+            height="25" (click)="deleteAddress(info.id)"> </a>
+        <a routerLink="/my-account/edit-address/{{info.id}}" class="btn btn-success" style="margin-left: 15px;">Adresi Düzenle</a>
       </div>
     </div>
   </div>
