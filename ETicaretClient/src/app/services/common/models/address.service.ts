@@ -5,6 +5,7 @@ import { Address_Info } from 'src/app/contracts/address/address_info';
 import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
 import { List_District } from 'src/app/contracts/address/list_district';
+import { Update_Address } from 'src/app/contracts/address/update_address';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -25,6 +26,21 @@ export class AddressService {
 
    return await promiseData ;
   }
+
+  async update(address: Update_Address, successCallBack?: () => void, errorCallBack?: (error) => void): Promise<void> {
+    const observable: Observable<any> = this.httpCLientService.put({
+      controller: "address",
+      action: "updateaddress"
+    }, address);
+
+    const promiseData =  firstValueFrom(observable);
+    promiseData.then(successCallBack)
+    .catch(errorCallBack);
+
+   return await promiseData ;
+  }
+
+
   async getCities( successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{cities: List_City[] }> {
     const promiseData: Promise<{cities: List_City[] }> = this.httpCLientService.get< {cities: List_City[] }>({
       controller: "address",

@@ -121,8 +121,8 @@ namespace ETicaretAPI.Persistence.Services
 
         public async Task UpdateAddressAsync(UpdateAddress updateAddress)
         {
-            var cityName = _cityReadRepository.Table.FirstOrDefault(c => c.CityId == updateAddress.SelectCity);
-            var districtName = _districtReadRepository.Table.FirstOrDefault(d => d.DistrictId == updateAddress.SelectDistrict);
+            City? cityName = _cityReadRepository.Table.FirstOrDefault(c => c.CityId == updateAddress.SelectCity);
+            District? districtName = _districtReadRepository.Table.FirstOrDefault(d => d.DistrictId == updateAddress.SelectDistrict);
 
             Address? address =  await _addressReadRepository.GetByIdAsync(updateAddress.Id);
             if(address != null)
