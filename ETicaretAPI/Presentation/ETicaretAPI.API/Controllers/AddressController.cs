@@ -1,6 +1,7 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
 using ETicaretAPI.Application.DTOs.Address;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
+using ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserId;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -41,6 +42,14 @@ namespace ETicaretAPI.API.Controllers
 
             ListDistrict districts = await _addressService.GetDistrictsByCityIdAsync(cityId);
             return Ok(districts);
+        }
+
+        [HttpGet("[action]/{UserId}")]
+        public async Task<IActionResult> GetAddressInfo([FromRoute] GetAddressInfoByUserIdQueryRequest getAddressInfoByUserIdQueryRequest)
+        {
+
+            GetAddressInfoByUserIdQueryResponse response = await _mediator.Send(getAddressInfoByUserIdQueryRequest);
+            return Ok(response);
         }
     }
 }

@@ -14,16 +14,18 @@ namespace ETicaretAPI.Persistence.Services
     public class AddressService : IAddressService
     {
         readonly IAddressWriteRepository _addressWriteRepository;
+        readonly IAddressReadRepository _addressReadRepository;
         private ETicaretAPIDbContext _eTicaretAPIDbContext;
         readonly ICityReadRepository _cityReadRepository;
         readonly IDistrictReadRepository _districtReadRepository;
 
-        public AddressService(IAddressWriteRepository addressWriteRepository, ICityReadRepository cityReadRepository, ETicaretAPIDbContext eTicaretAPIDbContext, IDistrictReadRepository districtReadRepository)
+        public AddressService(IAddressWriteRepository addressWriteRepository, ICityReadRepository cityReadRepository, ETicaretAPIDbContext eTicaretAPIDbContext, IDistrictReadRepository districtReadRepository, IAddressReadRepository addressReadRepository)
         {
             _addressWriteRepository = addressWriteRepository;
             _cityReadRepository = cityReadRepository;
             _eTicaretAPIDbContext = eTicaretAPIDbContext;
             _districtReadRepository = districtReadRepository;
+            _addressReadRepository = addressReadRepository;
         }
 
         public async Task CreateAddressAsync(CreateAddress createAddress)
@@ -79,6 +81,29 @@ namespace ETicaretAPI.Persistence.Services
             return new()
             {
                 Districts = districts
+            };
+        }
+
+        public async Task<AddressInfo> GetAddressInfoByUserIdAsync(string userId)
+        {
+            var infos = _addressReadRepository.GetAll(false).Where(a => a.UserId == userId)
+                .Select(x => new
+                {
+                    x.Id,
+                    x.Name,
+                    x.Surname,
+                    x.Title,
+                    x.PhoneNumber,
+                    x.Neighborhood,
+                    x.Description,
+                    x.City,
+                    x.District
+
+                }).ToList();
+
+            return new()
+            {
+                Infos = infos
             };
         }
     }

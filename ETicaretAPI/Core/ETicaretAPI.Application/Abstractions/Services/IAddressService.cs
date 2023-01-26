@@ -12,5 +12,6 @@ namespace ETicaretAPI.Application.Abstractions.Services
        public Task CreateAddressAsync(CreateAddress createAddress);
        public Task<ListCity> GetAllCityAsync();
        public Task<ListDistrict> GetDistrictsByCityIdAsync(int cityId);
+       public Task<AddressInfo> GetAddressInfoByUserIdAsync(string userId);
     }
 }
