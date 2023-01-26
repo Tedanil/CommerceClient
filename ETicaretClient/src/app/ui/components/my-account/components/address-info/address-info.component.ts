@@ -9,8 +9,10 @@ import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
 import { List_District } from 'src/app/contracts/address/list_district';
 import { User_Response } from 'src/app/contracts/users/user_response';
+import { DeleteDialogComponent, DeleteState } from 'src/app/dialogs/delete-dialog/delete-dialog.component';
 import { DynamicLoadComponentDirective } from 'src/app/directives/common/dynamic-load-component.directive';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { DialogService } from 'src/app/services/common/dialog.service';
 import { ComponentType, DynamicLoadComponentService } from 'src/app/services/common/dynamic-load-component.service';
 import { AddressService } from 'src/app/services/common/models/address.service';
 import { UserService } from 'src/app/services/common/models/user.service';
@@ -33,6 +35,7 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
      private toastrService: CustomToastrService,
      private router: Router,
      private dynamicLoadComponentService: DynamicLoadComponentService,
+     private dialogService: DialogService,
     
     ) {
     super(spinner)
@@ -63,46 +66,29 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
     this.infos = allInfos.infos
     console.log(this.infos)
 
-  
-    
-   
-    
-    // this.infos2 = this.infos2.map<Address_Info>(p => {
-      
-    //   const listInfo: Address_Info = {
-    //     id: p.id,
-    //     name: p.name,
-    //     surname: p.surname,
-    //     title: p.title,
-    //     phoneNumber: p.phoneNumber,
-    //     neighborhood: p.neighborhood,
-    //     city: p.city,
-    //     district: p.district,
-    //     description: p.description,
-        
-        
-    //   };
-
-
-
-
-    //   return listInfo;
-    // });
-    // console.log(this.infos2)
-
-  
- 
-
-    
 
   }
-  
+  async deleteAddress(id:string){
+    this.dialogService.openDialog({
+      componentType: DeleteDialogComponent,
+      data: DeleteState.Yes,
+      afterClosed: async () => {
+       
+     await this.addressService.delete(id);
+     this.toastrService.message("Adres Silinmiştir!", "Adres Başarıyla Silindi!", {
+      messageType: ToastrMessageType.Success,
+      position: ToastrPosition.TopRight
+    })
+    this.router.navigate(["/my-account/address-info"]);
+     }
+    });
 
-  
-  
-  
 
   }
+
+}
+
+
 
 
  

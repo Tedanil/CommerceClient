@@ -71,4 +71,12 @@ export class AddressService {
        
     return await promiseData;
   }
+
+  async delete(id: string) {
+    const deleteObservable: Observable<any> = this.httpCLientService.delete<any>({
+      controller: "address"
+    }, id);
+
+      await firstValueFrom(deleteObservable);
+  }
 }
