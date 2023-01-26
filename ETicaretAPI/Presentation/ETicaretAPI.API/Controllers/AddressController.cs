@@ -2,6 +2,7 @@
 using ETicaretAPI.Application.DTOs.Address;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
 using ETicaretAPI.Application.Features.Commands.Address.RemoveAddress;
+using ETicaretAPI.Application.Features.Commands.Address.UpdateAddress;
 using ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserId;
 using ETicaretAPI.Application.Features.Queries.Address.GetSingleAddressById;
 using MediatR;
@@ -27,6 +28,12 @@ namespace ETicaretAPI.API.Controllers
         public async Task<IActionResult> CreateAddress(CreateAddressCommandRequest createAddressCommandRequest)
         {
             CreateAddressCommandResponse response = await _mediator.Send(createAddressCommandRequest);
+            return Ok(response);
+        }
+        [HttpPut("[action]")]
+        public async Task<IActionResult> UpdateAddress(UpdateAddressCommandRequest updateAddressCommandRequest)
+        {
+            UpdateAddressCommandResponse response = await _mediator.Send(updateAddressCommandRequest);
             return Ok(response);
         }
 

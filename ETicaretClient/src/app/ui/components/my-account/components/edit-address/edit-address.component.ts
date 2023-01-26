@@ -74,9 +74,7 @@ export class EditAddressComponent extends BaseComponent implements OnInit {
       messageType: MessageType.Error,
       position: Position.TopRight
     }));
-    this.singleAddressInfo = allInfos.singleAddressInfo
-    console.log(this.singleAddressInfo)
-    debugger
+    this.singleAddressInfo = allInfos.singleAddressInfo   
   });
 
   }

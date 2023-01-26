@@ -118,5 +118,26 @@ namespace ETicaretAPI.Persistence.Services
 
 
         }
+
+        public async Task UpdateAddressAsync(UpdateAddress updateAddress)
+        {
+            var cityName = _cityReadRepository.Table.FirstOrDefault(c => c.CityId == updateAddress.SelectCity);
+            var districtName = _districtReadRepository.Table.FirstOrDefault(d => d.DistrictId == updateAddress.SelectDistrict);
+
+            Address? address =  await _addressReadRepository.GetByIdAsync(updateAddress.Id);
+            if(address != null)
+            {
+                address.Name = updateAddress.Name;
+                address.Surname = updateAddress.Surname;
+                address.PhoneNumber = updateAddress.Phone;
+                address.Neighborhood = updateAddress.Neighborhood;
+                address.Description = updateAddress.Description;
+                address.Title = updateAddress.Title;
+                address.City = cityName.CityName;
+                address.District = districtName.DistrictName;
+
+                await _addressWriteRepository.SaveAsync();
+            }
+        }
     }
 }
