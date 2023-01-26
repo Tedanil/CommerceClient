@@ -52,7 +52,9 @@ import { ProductDetailModule } from './product-detail/product-detail.module';
   ],
   exports: [
     BasketsModule,
-    LayoutModule
+    LayoutModule,
+    
+    
   ]
 })
 export class ComponentsModule { }

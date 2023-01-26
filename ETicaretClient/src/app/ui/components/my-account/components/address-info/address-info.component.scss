@@ -17,3 +17,17 @@
     margin-left: 145px;
     
   }
+
+  .nav-item a:hover{
+    color: #8a443d;
+    border: 1px solid #eee0d4;
+    border-radius: 30px;
+    transition: 0.3s ease;
+  }
+  .nav-item button:hover {
+    background-color: #ff523b;
+    color: white;
+    border: 1px solid #eee0d4;
+    border-radius: 30px;
+    transition: 0.3s ease;
+  }

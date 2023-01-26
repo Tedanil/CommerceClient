@@ -11,15 +11,24 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 
+
+
+
 @NgModule({
   declarations: [
     AddressInfoComponent
+    
+     
+    
   ],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {path: "", component:AddressInfoComponent}
     ]), MatFormFieldModule, MatButtonModule, MatInputModule,MatSelectModule,MatOptionModule,MatIconModule
+  ],
+  exports: [
+    
   ]
 })
 export class AddressInfoModule { }

@@ -19,7 +19,10 @@ export class DynamicLoadComponentService {
       case ComponentType.BasketsComponent:
         _component = (await import("../../ui/components/baskets/baskets.component")).BasketsComponent;
         break;
+
+          
     }
+    
 
     viewContainerRef.clear();
     return viewContainerRef.createComponent(_component)
@@ -28,4 +31,5 @@ export class DynamicLoadComponentService {
 
 export enum ComponentType {
   BasketsComponent
+
 }

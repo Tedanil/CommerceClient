@@ -13,12 +13,16 @@ export class AddressService {
 
   constructor(private httpCLientService: HttpClientService) { }
 
-  async create(address: Create_Address): Promise<void> {
+  async create(address: Create_Address, successCallBack?: () => void, errorCallBack?: (error) => void): Promise<void> {
     const observable: Observable<any> = this.httpCLientService.post({
       controller: "address"
     }, address);
 
-    await firstValueFrom(observable);
+    const promiseData =  firstValueFrom(observable);
+    promiseData.then(successCallBack)
+    .catch(errorCallBack);
+
+   return await promiseData ;
   }
   async getCities( successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{cities: List_City[] }> {
     const promiseData: Promise<{cities: List_City[] }> = this.httpCLientService.get< {cities: List_City[] }>({

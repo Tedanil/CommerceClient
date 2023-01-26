@@ -1,34 +1,49 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { MatSelect } from '@angular/material/select';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
 import { List_District } from 'src/app/contracts/address/list_district';
 import { User_Response } from 'src/app/contracts/users/user_response';
+import { DynamicLoadComponentDirective } from 'src/app/directives/common/dynamic-load-component.directive';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { ComponentType, DynamicLoadComponentService } from 'src/app/services/common/dynamic-load-component.service';
 import { AddressService } from 'src/app/services/common/models/address.service';
 import { UserService } from 'src/app/services/common/models/user.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
+
+declare var $: any;
 @Component({
   selector: 'app-address-info',
   templateUrl: './address-info.component.html',
   styleUrls: ['./address-info.component.scss']
 })
 export class AddressInfoComponent extends BaseComponent implements OnInit {
+  
 
   constructor(spinner:NgxSpinnerService, 
     private alertifyService: AlertifyService,
      private userService: UserService,
-     private addressService: AddressService,) {
+     private addressService: AddressService,
+     private toastrService: CustomToastrService,
+     private router: Router,
+     private dynamicLoadComponentService: DynamicLoadComponentService,
+    
+    ) {
     super(spinner)
    }
+    @ViewChild(DynamicLoadComponentDirective, { static: false })
+   dynamicLoadComponentDirective: DynamicLoadComponentDirective;
    @ViewChild('selectCity') selectCity: any;
    selectedCityId: number;
    currentUser : User_Response;
    cities2 : List_City[];
    districts2: List_District[];
+   
    
   async onSelectChange(event) {
     this.selectedCityId = event.value;
@@ -58,12 +73,12 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
  
 
     
-    
 
   }
   
  async create(name:HTMLInputElement, surname: HTMLInputElement, phone:HTMLInputElement,
    description: HTMLInputElement, neighborhood: HTMLInputElement, title: HTMLInputElement, selectCity: MatSelect, selectDistrict: MatSelect){
+    this.showSpinner(SpinnerType.SquareJellyBox);
     const token: string = localStorage.getItem("refreshToken");
   
   this.currentUser = await this.userService.getUserByToken(token);
@@ -78,11 +93,31 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
   create_address.selectCity = selectCity.value;
   create_address.selectDistrict = selectDistrict.value;
   create_address.userId = this.currentUser.userId;
-  await this.addressService.create(create_address);
+  await this.addressService.create(create_address, () => this.hideSpinner(SpinnerType.SquareJellyBox) , errorMessage => this.alertifyService.message(errorMessage, {
+    dismissOthers: true,
+    messageType: MessageType.Error,
+    position: Position.TopRight
+  }));
+  this.toastrService.message("Adres Eklenmiştir!", "Yeni Adres Oluşturuldu!", {
+    messageType: ToastrMessageType.Success,
+    position: ToastrPosition.TopRight
+  })
+  this.router.navigate(["/my-account/user-info"]);
   
 
   }
+
+
+ 
+
+
   
-}
+   
+
+    
+  }
+  
+  
+
 
 

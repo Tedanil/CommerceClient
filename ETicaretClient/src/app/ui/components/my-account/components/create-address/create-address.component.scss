@@ -1,0 +1,33 @@
+.tab {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  .inputs{
+    margin: 20px;
+    border-radius: 3px;
+    border-color: black;
+  }
+  .inputAd{
+    margin: 20px;
+    min-width: 420px;   
+  }
+  .btn{
+    margin-top: 20px;
+    margin-left: 145px;
+    
+  }
+
+  .nav-item a:hover{
+    color: #8a443d;
+    border: 1px solid #eee0d4;
+    border-radius: 30px;
+    transition: 0.3s ease;
+  }
+  .nav-item button:hover {
+    background-color: #ff523b;
+    color: white;
+    border: 1px solid #eee0d4;
+    border-radius: 30px;
+    transition: 0.3s ease;
+  }
