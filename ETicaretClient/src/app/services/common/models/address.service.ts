@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, observable, Observable } from 'rxjs';
+import { Address_Info } from 'src/app/contracts/address/address_info';
 import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
 import { List_District } from 'src/app/contracts/address/list_district';
@@ -47,6 +48,22 @@ export class AddressService {
       
 
     },cityId).toPromise();
+
+    promiseData.then(d => successCallBack())
+       .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));
+       
+       
+    return await promiseData;
+  }
+
+  async getAddressInfo(userId : string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{infos: Address_Info[] }> {
+    const promiseData: Promise<{infos: Address_Info[]}> = this.httpCLientService.get< {infos: Address_Info[]}>({
+      controller: "address",
+      action: "getaddressinfo"
+     
+      
+
+    },userId).toPromise();
 
     promiseData.then(d => successCallBack())
        .catch((errorResponse: HttpErrorResponse) => errorCallBack(errorResponse.message));

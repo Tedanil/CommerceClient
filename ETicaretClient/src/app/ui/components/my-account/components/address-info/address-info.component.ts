@@ -4,6 +4,7 @@ import { MatSelect } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
+import { Address_Info } from 'src/app/contracts/address/address_info';
 import { Create_Address } from 'src/app/contracts/address/create_address';
 import { List_City } from 'src/app/contracts/address/list_city';
 import { List_District } from 'src/app/contracts/address/list_district';
@@ -36,38 +37,58 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
     ) {
     super(spinner)
    }
-    @ViewChild(DynamicLoadComponentDirective, { static: false })
-   dynamicLoadComponentDirective: DynamicLoadComponentDirective;
-   @ViewChild('selectCity') selectCity: any;
-   selectedCityId: number;
-   currentUser : User_Response;
-   cities2 : List_City[];
-   districts2: List_District[];
-   
-   
-  async onSelectChange(event) {
-    this.selectedCityId = event.value;
-    this.showSpinner(SpinnerType.BallElasticDot);
-  const allDistricts: {districts:List_District[]} = await this.addressService.getDistricts(this.selectedCityId as number,() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
-    dismissOthers: true,
-    messageType: MessageType.Error,
-    position: Position.TopRight
-  }));
-  this.districts2 = allDistricts.districts
   
-  }
+ 
+   currentUser : User_Response;
+   infos:Address_Info[]
+   
+  
+   
+   
+ 
 
  async ngOnInit() {
   this.showSpinner(SpinnerType.BallElasticDot);
- 
+
+ const token: string = localStorage.getItem("refreshToken");
+  
+  this.currentUser = await this.userService.getUserByToken(token);
     
     
-    const allCities: {cities:List_City[]} = await this.addressService.getCities(() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
+    const allInfos: {infos:Address_Info[]} = await this.addressService.getAddressInfo(this.currentUser.userId,() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight
     }));
-    this.cities2 = allCities.cities
+    this.infos = allInfos.infos
+    console.log(this.infos)
+
+  
+    
+   
+    
+    // this.infos2 = this.infos2.map<Address_Info>(p => {
+      
+    //   const listInfo: Address_Info = {
+    //     id: p.id,
+    //     name: p.name,
+    //     surname: p.surname,
+    //     title: p.title,
+    //     phoneNumber: p.phoneNumber,
+    //     neighborhood: p.neighborhood,
+    //     city: p.city,
+    //     district: p.district,
+    //     description: p.description,
+        
+        
+    //   };
+
+
+
+
+    //   return listInfo;
+    // });
+    // console.log(this.infos2)
 
   
  
@@ -76,33 +97,9 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
 
   }
   
- async create(name:HTMLInputElement, surname: HTMLInputElement, phone:HTMLInputElement,
-   description: HTMLInputElement, neighborhood: HTMLInputElement, title: HTMLInputElement, selectCity: MatSelect, selectDistrict: MatSelect){
-    this.showSpinner(SpinnerType.SquareJellyBox);
-    const token: string = localStorage.getItem("refreshToken");
-  
-  this.currentUser = await this.userService.getUserByToken(token);
 
-  const create_address : Create_Address = new Create_Address();
-  create_address.name = name.value;
-  create_address.surname = surname.value;
-  create_address.phone = phone.value;
-  create_address.description = description.value;
-  create_address.neighborhood = neighborhood.value;
-  create_address.title = title.value;
-  create_address.selectCity = selectCity.value;
-  create_address.selectDistrict = selectDistrict.value;
-  create_address.userId = this.currentUser.userId;
-  await this.addressService.create(create_address, () => this.hideSpinner(SpinnerType.SquareJellyBox) , errorMessage => this.alertifyService.message(errorMessage, {
-    dismissOthers: true,
-    messageType: MessageType.Error,
-    position: Position.TopRight
-  }));
-  this.toastrService.message("Adres Eklenmiştir!", "Yeni Adres Oluşturuldu!", {
-    messageType: ToastrMessageType.Success,
-    position: ToastrPosition.TopRight
-  })
-  this.router.navigate(["/my-account/user-info"]);
+  
+  
   
 
   }
@@ -115,7 +112,7 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
    
 
     
-  }
+  
   
   
 

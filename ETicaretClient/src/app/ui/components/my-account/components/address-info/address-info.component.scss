@@ -1,33 +1,14 @@
-.tab {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  .inputs{
-    margin: 20px;
-    border-radius: 3px;
-    border-color: black;
-  }
-  .inputAd{
-    margin: 20px;
-    min-width: 420px;   
-  }
-  .btn{
-    margin-top: 20px;
-    margin-left: 145px;
+.container{
     
-  }
+  padding: 0 !important;
+  box-sizing: border-box;
+}
 
-  .nav-item a:hover{
-    color: #8a443d;
-    border: 1px solid #eee0d4;
-    border-radius: 30px;
-    transition: 0.3s ease;
-  }
-  .nav-item button:hover {
-    background-color: #ff523b;
-    color: white;
-    border: 1px solid #eee0d4;
-    border-radius: 30px;
-    transition: 0.3s ease;
-  }
+.container .row .col-3{
+  //background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);
+
+}
+
+.ng-star-inserted{
+  margin: 0 !important;
+}

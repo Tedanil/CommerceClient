@@ -53,6 +53,7 @@ export class ListComponent extends BaseComponent implements OnInit {
           });
 
       this.products = data.products;
+      
 
       console.log(this.products)
 

@@ -1,6 +1,7 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
 using ETicaretAPI.Application.DTOs.Address;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
+using ETicaretAPI.Application.Features.Commands.Address.RemoveAddress;
 using ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserId;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -50,6 +51,13 @@ namespace ETicaretAPI.API.Controllers
 
             GetAddressInfoByUserIdQueryResponse response = await _mediator.Send(getAddressInfoByUserIdQueryRequest);
             return Ok(response);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> Delete([FromRoute] RemoveAddressCommandRequest removeAddressCommandRequest)
+        {
+            RemoveAddressCommandResponse response = await _mediator.Send(removeAddressCommandRequest);
+            return Ok();
         }
     }
 }

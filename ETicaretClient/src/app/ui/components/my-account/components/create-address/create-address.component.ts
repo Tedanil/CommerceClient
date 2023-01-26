@@ -96,7 +96,7 @@ export class CreateAddressComponent extends BaseComponent implements OnInit {
     messageType: ToastrMessageType.Success,
     position: ToastrPosition.TopRight
   })
-  this.router.navigate(["/my-account/user-info"]);
+  this.router.navigate(["/my-account/address-info"]);
   
 
   }

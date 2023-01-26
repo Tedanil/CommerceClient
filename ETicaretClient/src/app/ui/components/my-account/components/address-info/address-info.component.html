@@ -1,48 +1,17 @@
 <a routerLink="/my-account/create-address"> Yeni Adres Ekle</a>
-<div class="tab">
-  <mat-form-field class="inputs" appearance="fill">
-    <mat-label>Ad*</mat-label>
-    <input matInput #txtName>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Soyad*</mat-label>
-    <input matInput #txtSurname>
-  </mat-form-field>
-  <mat-form-field class="inputs" appearance="fill">
-    <mat-label>Telefon*</mat-label>
-    <input matInput #txtPhone>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>İl Seçiniz</mat-label>
-    <mat-select #selectCity (selectionChange)="onSelectChange($event)">
-      <mat-option *ngFor="let city of cities2" [value]="city.cityId">
-        {{city.cityName}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="inputs" appearance="fill">
-    <mat-label>İlçe Seçiniz</mat-label>
-    <mat-select #selectDistrict>
-      <mat-option *ngFor="let district of districts2" [value]="district.districtId">
-        {{district.districtName}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Mahalle*</mat-label>
-    <input matInput #txtNeighborhood>
-  </mat-form-field>
-  <mat-form-field class="inputAd" appearance="fill">
-    <mat-label>Adres*</mat-label>
-    <input matInput size="medium" #txtDescription>
-  </mat-form-field>
-  <mat-form-field class="inputAd" appearance="fill">
-    <mat-label>Adres Başlığı*</mat-label>
-    <input matInput size="medium" #txtTitle>
-  </mat-form-field>
+
+<div class="container">
+  <div class="row">
+    <div class="card" style="width: 18rem;float:left;margin:5px !important;" *ngFor="let info of infos;">
+      <div class="card-body">
+        <h1 class="card-title">{{info.title}}</h1>
+        <h3 class="card-text">{{info.name}} {{info.surname}} </h3>
+        <h5 class="card-text">{{info.neighborhood}} </h5>
+        <h5 class="card-text">{{info.description}} </h5>
+        <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
+        <h5 class="card-text">{{info.phoneNumber}} </h5>
+         <a class="btn btn-success" >Adresi Düzenle</a> 
+      </div>
+    </div>
+  </div>
 </div>
-<button mat-raised-button class="btn" (click)="create(txtName, txtSurname, txtPhone, 
-  txtDescription, txtNeighborhood, txtTitle, selectCity, selectDistrict)" color="primary">Create Address </button>
-
-
-

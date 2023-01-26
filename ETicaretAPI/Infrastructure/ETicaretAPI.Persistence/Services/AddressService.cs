@@ -89,7 +89,7 @@ namespace ETicaretAPI.Persistence.Services
             var infos = _addressReadRepository.GetAll(false).Where(a => a.UserId == userId)
                 .Select(x => new
                 {
-                    x.Id,
+               Id = x.Id.ToString(),
                     x.Name,
                     x.Surname,
                     x.Title,
@@ -105,6 +105,18 @@ namespace ETicaretAPI.Persistence.Services
             {
                 Infos = infos
             };
+        }
+
+        public async Task RemoveAddressAsync(string id)
+        {
+           Address address = await _addressReadRepository.GetByIdAsync(id);
+            if (address != null)
+            {
+                _addressWriteRepository.Remove(address);
+                await _addressWriteRepository.SaveAsync();
+            }
+
+
         }
     }
 }
