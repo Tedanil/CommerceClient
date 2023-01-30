@@ -71,7 +71,7 @@ export class BasketsComponent extends BaseComponent implements OnInit {
       afterClosed: async () => {
         this.showSpinner(SpinnerType.SquareLoader);
         const order: Create_Order = new Create_Order();
-        order.address = "Yenimahalle";
+        order.address = "8f72f5a9-c509-44b6-a969-84927bea8d68";
         order.description = "Falanca filanca...";
         await this.orderService.create(order);
         this.hideSpinner(SpinnerType.SquareLoader);
@@ -80,6 +80,7 @@ export class BasketsComponent extends BaseComponent implements OnInit {
           position: ToastrPosition.TopRight
         })
         this.router.navigate(["/"]);
+        
       }
     });
 

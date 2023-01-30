@@ -35,7 +35,7 @@ namespace ETicaretAPI.Persistence.Services
 
             await _addressWriteRepository.AddAsync(new()
             {
-                AddressId = Guid.NewGuid().ToString(),
+                //AddressId = Guid.NewGuid().ToString(),
                 UserId = createAddress.UserId,
                 Name = createAddress.Name,
                 Surname = createAddress.Surname,

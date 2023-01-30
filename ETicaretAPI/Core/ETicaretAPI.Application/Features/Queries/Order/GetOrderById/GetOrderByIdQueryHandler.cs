@@ -24,7 +24,10 @@ namespace ETicaretAPI.Application.Features.Queries.Order.GetOrderById
             {
                 Id = data.Id,
                 OrderCode = data.OrderCode,
-                Address = data.Address,
+                AddressDescription = data.AddressDescription,
+                AddressCity = data.AddressCity,
+                AddressDistrict = data.AddressDistrict,
+                AddressNeighborhood = data.AddressNeighborhood,
                 BasketItems = data.BasketItems,
                 CreatedDate = data.CreatedDate,
                 Description = data.Description,

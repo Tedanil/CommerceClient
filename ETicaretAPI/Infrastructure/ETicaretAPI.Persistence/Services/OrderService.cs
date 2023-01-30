@@ -33,7 +33,7 @@ namespace ETicaretAPI.Persistence.Services
             orderCode = orderCode.Substring(orderCode.IndexOf(".") + 1, orderCode.Length - orderCode.IndexOf(".") - 1);
             await _orderWriteRepository.AddAsync(new()
             {
-                Address = createOrder.Address,
+                AddressId = Guid.Parse(createOrder.Address),
                 Id = Guid.Parse(createOrder.BasketId),
                 Description = createOrder.Description,
                 OrderCode = orderCode
@@ -171,7 +171,10 @@ namespace ETicaretAPI.Persistence.Services
                     bi.Product.Price,
                     bi.Quantity
                 }),
-                Address = data2.Address,
+                AddressDescription = data2.Address.Description,
+                AddressCity = data2.Address.City,
+                AddressDistrict = data2.Address.District,
+                AddressNeighborhood = data2.Address.Neighborhood,
                 CreatedDate = data2.CreatedDate,
                 Description = data2.Description,
                 OrderCode = data2.OrderCode,

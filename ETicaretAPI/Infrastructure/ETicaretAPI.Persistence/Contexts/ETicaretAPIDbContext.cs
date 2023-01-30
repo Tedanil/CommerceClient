@@ -69,6 +69,11 @@ namespace ETicaretAPI.Persistence.Contexts
             builder.Entity<District>()
                 .HasNoKey();
 
+            builder.Entity<Order>()
+                .HasOne(o => o.Address)
+                .WithMany(a => a.Orders)
+                .HasForeignKey(o => o.AddressId);
+
             base.OnModelCreating(builder);
 
         }

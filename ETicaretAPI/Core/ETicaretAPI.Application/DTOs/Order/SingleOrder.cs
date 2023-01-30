@@ -8,7 +8,10 @@ namespace ETicaretAPI.Application.DTOs.Order
 {
     public class SingleOrder
     {
-        public string Address { get; set; }
+        public string AddressDescription { get; set; }
+        public string AddressCity { get; set; }
+        public string AddressDistrict { get; set; }
+        public string AddressNeighborhood { get; set; }
         public object BasketItems { get; set; }
         public DateTime CreatedDate { get; set; }
         public string Description { get; set; }

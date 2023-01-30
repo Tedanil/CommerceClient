@@ -1,5 +1,8 @@
 export class SingleOrder {
-    address: string;
+    addressDescription: string;
+    addressCity: string;
+    addressDistrict: string;
+    addressNeighborhood: string;
     basketItems: any[];
     createdDate: Date;
     description: string;

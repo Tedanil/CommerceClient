@@ -2,18 +2,23 @@
 
 <div class="container">
   <div class="row">
-    <div class="card" style="width: 18rem;float:left;margin:5px !important;" *ngFor="let info of infos;">
-      <div class="card-body">
-        <h1 class="card-title">{{info.title}}</h1>
-        <h3 class="card-text">{{info.name}} {{info.surname}} </h3>
-        <h5 class="card-text">{{info.neighborhood}} </h5>
-        <h5 class="card-text">{{info.description}} </h5>
-        <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
-        <h5 class="card-text">{{info.phoneNumber}} </h5>
-        <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25"
-            height="25" (click)="deleteAddress(info.id)"> </a>
-        <a routerLink="/my-account/edit-address/{{info.id}}" class="btn btn-success" style="margin-left: 15px;">Adresi Düzenle</a>
+    <div *ngIf="infos.length > 0">
+      <div class="card" style="width: 18rem;float:left;margin:5px !important;" *ngFor="let info of infos;">
+        <div class="card-body">
+          <h1 class="card-title">{{info.title}}</h1>
+          <h3 class="card-text">{{info.name}} {{info.surname}} </h3>
+          <h5 class="card-text">{{info.neighborhood}} </h5>
+          <h5 class="card-text">{{info.description}} </h5>
+          <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
+          <h5 class="card-text">{{info.phoneNumber}} </h5>
+          <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25"
+              height="25" (click)="deleteAddress(info.id)"> </a>
+          <a routerLink="/my-account/edit-address/{{info.id}}" class="btn btn-success" style="margin-left: 15px;">Adresi
+            Düzenle</a>
+        </div>
       </div>
     </div>
+    <div *ngIf="infos.length == 3"> Kayıtlı adresiniz bulunamadı.<br>
+      Siparişleriniz için kullanabileceğiniz adres eklemek için ekranın üstünden <br> “Yeni Adres Ekle” linkine tıklayarak adres oluşturabilirsiniz </div>
   </div>
 </div>

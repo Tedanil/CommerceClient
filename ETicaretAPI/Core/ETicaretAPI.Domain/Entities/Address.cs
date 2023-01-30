@@ -10,8 +10,7 @@ namespace ETicaretAPI.Domain.Entities
 {
     public class Address :BaseEntity
     {
-        public string UserId { get; set; }
-        public string AddressId { get; set; }
+        public string UserId { get; set; }       
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public string? Title { get; set; }
@@ -20,8 +19,10 @@ namespace ETicaretAPI.Domain.Entities
         public string District { get; set; }
         public string? Neighborhood { get; set; }
         public string? Description { get; set; }
+        public bool Showcase { get; set; }
 
         public AppUser User { get; set; }
+        public ICollection<Order> Orders { get; set; }
 
     }
 }
