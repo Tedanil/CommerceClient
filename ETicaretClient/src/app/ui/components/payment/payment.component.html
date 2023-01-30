@@ -1,0 +1,17 @@
+<a routerLink="/my-account/create-address"> Yeni Adres Ekle</a>
+
+<div class="container">
+  <div class="row">
+    <div *ngIf="infos.length > 0">
+      <div class="card" style="width: 18rem;float:left;margin:5px !important;" *ngFor="let info of infos;">
+        <div><input type="radio" name="img" (click)="showCase(info.id)"/> {{info.title}}</div>
+        <div class="card-body">
+          <h3 class="card-text">{{info.name}} {{info.surname}} </h3>
+          <h5 class="card-text"> {{info.neighborhood}} {{info.description}} </h5>
+          <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
+          <a routerLink="/my-account/edit-address/{{info.id}}" class="btn btn-success" style="margin-left: 0px; max-width: 140px; max-height: 40px;">Adresi
+            Düzenle</a>
+        </div>
+      </div>
+    </div>
+</div>

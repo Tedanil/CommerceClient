@@ -33,7 +33,8 @@ namespace ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserI
              x.Neighborhood,
              x.Description,
              x.City,
-             x.District
+             x.District,
+             x.Showcase
 
          }).ToList();
 

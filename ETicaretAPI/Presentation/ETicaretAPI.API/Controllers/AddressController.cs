@@ -1,5 +1,6 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
 using ETicaretAPI.Application.DTOs.Address;
+using ETicaretAPI.Application.Features.Commands.Address.ChangeShowcaseAddress;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
 using ETicaretAPI.Application.Features.Commands.Address.RemoveAddress;
 using ETicaretAPI.Application.Features.Commands.Address.UpdateAddress;
@@ -74,6 +75,13 @@ namespace ETicaretAPI.API.Controllers
         {
             RemoveAddressCommandResponse response = await _mediator.Send(removeAddressCommandRequest);
             return Ok();
+        }
+
+        [HttpGet("[action]")]      
+        public async Task<IActionResult> ChangeShowcaseAddress([FromQuery] ChangeShowcaseAddressCommandRequest changeShowcaseAddressCommandRequest)
+        {
+            ChangeShowcaseAddressCommandResponse response = await _mediator.Send(changeShowcaseAddressCommandRequest);
+            return Ok(response);
         }
     }
 }

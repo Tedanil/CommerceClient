@@ -8,5 +8,6 @@ export class Address_Info{
     description: string;
     city: string;
     district: string;
+    showcase: boolean;
 }
 
