@@ -114,4 +114,14 @@ export class AddressService {
 
       await firstValueFrom(deleteObservable);
   }
+
+  async changeShowcaseAddress(id: string, userId: string, successCallBack?: () => void): Promise<void> {
+    const changeShowcaseAddressObservable = this.httpCLientService.get({
+      controller: "address",
+      action: "ChangeShowcaseAddress",
+      queryString: `id=${id}&userId=${userId}`
+    });
+    await firstValueFrom(changeShowcaseAddressObservable);
+    successCallBack();
+  }
 }

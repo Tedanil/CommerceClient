@@ -58,7 +58,11 @@ export class PaymentComponent extends BaseComponent implements OnInit {
 
   }
   showCase(id: string){
-    
+    this.showSpinner(SpinnerType.SquareJellyBox);
+
+  this.addressService.changeShowcaseAddress(id, this.currentUser.userId, () => {
+    this.hideSpinner(SpinnerType.SquareJellyBox);
+  });
   }
   
 
