@@ -27,7 +27,8 @@ namespace ETicaretAPI.Application.Features.Queries.AppUser.GetUserByToken
                 Username = data.Username,
                 Email = data.Email,
                 PhoneNumber = data.PhoneNumber,
-                UserId = data.UserId
+                UserId = data.UserId,
+                Role = data.Role
             };
            
         }

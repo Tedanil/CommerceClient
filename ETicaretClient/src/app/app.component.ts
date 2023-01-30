@@ -6,6 +6,9 @@ import { AuthService } from './services/common/auth.service';
 import { ComponentType, DynamicLoadComponentService } from './services/common/dynamic-load-component.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from './services/ui/custom-toastr.service';
 import * as bootstrap from 'bootstrap'
+import { UserService } from './services/common/models/user.service';
+import { User_Response } from './contracts/users/user_response';
+import { identity } from 'rxjs';
 
 declare var $: any
 
@@ -18,9 +21,21 @@ export class AppComponent {
   @ViewChild(DynamicLoadComponentDirective, { static: true })
   dynamicLoadComponentDirective: DynamicLoadComponentDirective;
 
-  constructor(public authService: AuthService, private toastrService: CustomToastrService, private router: Router, private dynamicLoadComponentService: DynamicLoadComponentService) {
-    authService.identityCheck();
+  constructor(public authService: AuthService, private toastrService: CustomToastrService,
+     private router: Router, private dynamicLoadComponentService: DynamicLoadComponentService,
+     private userService: UserService) {
+    authService.identityCheck(); 
+    
+ 
+    
+    
+    
+    
   }
+
+
+
+  
 
   signOut() {
     localStorage.removeItem("accessToken");
@@ -35,6 +50,7 @@ export class AppComponent {
   loadComponent() {
     this.dynamicLoadComponentService.loadComponent(ComponentType.BasketsComponent, this.dynamicLoadComponentDirective.viewContainerRef);
   }
+
 }
 
 

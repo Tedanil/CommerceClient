@@ -23,19 +23,21 @@ namespace ETicaretAPI.Persistence.Services
         readonly UserManager<Domain.Entities.Identity.AppUser> _userManager;
         readonly IEndpointReadRepository _endpointReadRepository;
         private ETicaretAPIDbContext _eTicaretAPIDbContext;
+        readonly RoleManager<AppRole> _roleManager;
 
 
 
-        public UserService(UserManager<AppUser> userManager, ETicaretAPIDbContext eTicaretAPIDbContext, IEndpointReadRepository endpointReadRepository)
+        public UserService(UserManager<AppUser> userManager, ETicaretAPIDbContext eTicaretAPIDbContext, IEndpointReadRepository endpointReadRepository, RoleManager<AppRole> roleManager)
         {
             _userManager = userManager;
             _eTicaretAPIDbContext = eTicaretAPIDbContext;
             _endpointReadRepository = endpointReadRepository;
+            _roleManager = roleManager;
         }
 
         public async Task<CreateUserResponse> CreateAsync(CreateUser model)
         {
-            var x = _eTicaretAPIDbContext.Users.ToList();
+            
 
             IdentityResult result = await _userManager.CreateAsync(new()
             {
@@ -48,7 +50,11 @@ namespace ETicaretAPI.Persistence.Services
             CreateUserResponse response = new() { Succeeded = result.Succeeded };
 
             if (result.Succeeded)
+            {
                 response.Message = "Kullanıcı başarıyla oluşturulmuştur!";
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                await _userManager.AddToRoleAsync(user, "Member");
+            }
             else
                 foreach (var error in result.Errors)
                     response.Message += $"{error.Code} - {error.Description}<br>";
@@ -89,7 +95,8 @@ namespace ETicaretAPI.Persistence.Services
         public async Task<UserResponse> GetUserAsync(string refreshToken)
         {
             AppUser? user =  _userManager.Users.FirstOrDefault(u => u.RefreshToken == refreshToken);
-            if(user != null) 
+            var roles = await _userManager.GetRolesAsync(user);
+            if (user != null) 
             { 
             return new()
             {
@@ -97,7 +104,9 @@ namespace ETicaretAPI.Persistence.Services
                 Username = user.UserName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
-                UserId = user.Id
+                UserId = user.Id,
+                Role = roles.FirstOrDefault()
+                
 
             };
             }

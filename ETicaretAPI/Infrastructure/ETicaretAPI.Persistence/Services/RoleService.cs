@@ -49,6 +49,7 @@ namespace ETicaretAPI.Persistence.Services
         {
             string role = await _roleManager.GetRoleIdAsync(new() { Id = id });
             return (id, role);   
+            
         }
 
         public async Task<bool> UpdateRole(string id,string name)

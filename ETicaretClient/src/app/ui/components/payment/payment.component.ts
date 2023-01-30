@@ -3,12 +3,15 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Address_Info } from 'src/app/contracts/address/address_info';
+import { Create_Order } from 'src/app/contracts/order/create_order';
 import { User_Response } from 'src/app/contracts/users/user_response';
+import { ShoppingCompleteDialogComponent, ShoppingCompleteState } from 'src/app/dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { AddressService } from 'src/app/services/common/models/address.service';
+import { OrderService } from 'src/app/services/common/models/order.service';
 import { UserService } from 'src/app/services/common/models/user.service';
-import { CustomToastrService } from 'src/app/services/ui/custom-toastr.service';
+import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
 @Component({
   selector: 'app-payment',
@@ -25,6 +28,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
      private toastrService: CustomToastrService,
      private router: Router,
      private dialogService: DialogService,
+     private orderService: OrderService
     
     ) {
     super(spinner)
@@ -33,6 +37,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
  
    currentUser : User_Response;
    infos:Address_Info[]
+   addressId: string;
    
   
    
@@ -54,15 +59,46 @@ export class PaymentComponent extends BaseComponent implements OnInit {
     }));
     this.infos = allInfos.infos
     console.log(this.infos)
+    this.addressId = this.infos.find(a => a.showcase).id;
+    
+    
 
 
   }
   showCase(id: string){
-    this.showSpinner(SpinnerType.SquareJellyBox);
+    this.showSpinner(SpinnerType.SquareJellyBox);  
 
   this.addressService.changeShowcaseAddress(id, this.currentUser.userId, () => {
     this.hideSpinner(SpinnerType.SquareJellyBox);
+    this.ngOnInit();
+    
+    
   });
+  }
+
+  shoppingComplete() {
+   
+
+    this.dialogService.openDialog({
+      componentType: ShoppingCompleteDialogComponent,
+      data: ShoppingCompleteState.Yes,
+      afterClosed: async () => {
+        this.showSpinner(SpinnerType.SquareLoader);
+        const order: Create_Order = new Create_Order();
+        order.address = this.addressId as string;
+        order.description = "Falanca filanca...";
+        await this.orderService.create(order);
+        this.hideSpinner(SpinnerType.SquareLoader);
+        this.toastrService.message("Sipariş alınmıştır!", "Sipariş Oluşturuldu!", {
+          messageType: ToastrMessageType.Info,
+          position: ToastrPosition.TopRight
+        })
+        this.router.navigate(["/"]);
+        
+      }
+    });
+
+
   }
   
 

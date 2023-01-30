@@ -5,5 +5,6 @@ export class User_Response
    email: string;
    phoneNumber: string;
    userId: string;
+   role: string;
 
 }
