@@ -43,6 +43,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders,
+            ActionType = ActionType.Reading, Definition = "Get Orders By UserName")]
         public async Task<IActionResult> GetOrdersByUserName([FromQuery] GetOrdersByUserNameQueryRequest getOrdersByUserNameQueryRequest)
         {
             GetOrdersByUserNameQueryResponse response = await _mediator.Send(getOrdersByUserNameQueryRequest);
@@ -59,6 +61,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("complete-order/{Id}")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders,
+            ActionType = ActionType.Updating, Definition = "Complete Order")]
         public async Task<ActionResult> CompleteOrder([FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
         {
             CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);

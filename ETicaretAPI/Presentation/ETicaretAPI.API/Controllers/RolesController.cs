@@ -1,4 +1,5 @@
-﻿using ETicaretAPI.Application.CustomAttributes;
+﻿using ETicaretAPI.Application.Consts;
+using ETicaretAPI.Application.CustomAttributes;
 using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commands.Role.CreateRole;
 using ETicaretAPI.Application.Features.Commands.Role.DeleteRole;
@@ -25,7 +26,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet]
-        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get Roles", Menu = "Roles")]
+        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get Roles", Menu = AuthorizeDefinitionConstants.Roles)]
         public async Task<IActionResult> GetRoles([FromQuery] GetRolesQueryRequest getRolesQueryRequest)
         {
           GetRolesQueryResponse response = await _mediator.Send(getRolesQueryRequest);
@@ -33,7 +34,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get Role By Id", Menu = "Roles")]
+        [AuthorizeDefinition(ActionType = ActionType.Reading, Definition = "Get Role By Id", Menu = AuthorizeDefinitionConstants.Roles)]
         public async Task<IActionResult> GetRoles([FromRoute] GetRoleByIdQueryRequest getRoleByIdQueryRequest )
         {
           GetRoleByIdQueryResponse response = await _mediator.Send(getRoleByIdQueryRequest);
@@ -41,7 +42,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpPost]
-        [AuthorizeDefinition(ActionType = ActionType.Writing, Definition = "Create Role", Menu = "Roles")]
+        [AuthorizeDefinition(ActionType = ActionType.Writing, Definition = "Create Role", Menu = AuthorizeDefinitionConstants.Roles)]
         public async Task<IActionResult> CreateRole([FromBody] CreateRoleCommandRequest createRoleCommandRequest)
         {
           CreateRoleCommandResponse response = await _mediator.Send(createRoleCommandRequest);
@@ -49,7 +50,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpPut("{Id}")]
-        [AuthorizeDefinition(ActionType = ActionType.Updating, Definition = "Update Role", Menu = "Roles")]
+        [AuthorizeDefinition(ActionType = ActionType.Updating, Definition = "Update Role", Menu = AuthorizeDefinitionConstants.Roles)]
         public async Task<IActionResult> UpdateRole([FromBody, FromRoute] UpdateRoleCommandRequest updateRoleCommandRequest)
         {
           UpdateRoleCommandResponse response = await _mediator.Send(updateRoleCommandRequest);
@@ -57,7 +58,7 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpDelete("{Id}")]
-        [AuthorizeDefinition(ActionType = ActionType.Deleting, Definition = "Delete Role", Menu = "Roles")]
+        [AuthorizeDefinition(ActionType = ActionType.Deleting, Definition = "Delete Role", Menu = AuthorizeDefinitionConstants.Roles)]
         public async Task<IActionResult> DeleteRole([FromRoute] DeleteRoleCommandRequest deleteRoleCommandRequest)
         {
           DeleteRoleCommandResponse response = await _mediator.Send(deleteRoleCommandRequest);

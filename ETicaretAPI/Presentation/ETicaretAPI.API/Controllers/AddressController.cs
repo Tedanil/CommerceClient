@@ -1,5 +1,8 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
+using ETicaretAPI.Application.Consts;
+using ETicaretAPI.Application.CustomAttributes;
 using ETicaretAPI.Application.DTOs.Address;
+using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commands.Address.ChangeShowcaseAddress;
 using ETicaretAPI.Application.Features.Commands.Address.CreateAddress;
 using ETicaretAPI.Application.Features.Commands.Address.RemoveAddress;
@@ -7,6 +10,7 @@ using ETicaretAPI.Application.Features.Commands.Address.UpdateAddress;
 using ETicaretAPI.Application.Features.Queries.Address.GetAddressInfoByUserId;
 using ETicaretAPI.Application.Features.Queries.Address.GetSingleAddressById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,6 +18,7 @@ namespace ETicaretAPI.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = "Admin")]
     public class AddressController : ControllerBase
     {
         readonly IMediator _mediator;
@@ -26,12 +31,16 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpPost]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Writing, Definition = "Create Address")]
         public async Task<IActionResult> CreateAddress(CreateAddressCommandRequest createAddressCommandRequest)
         {
             CreateAddressCommandResponse response = await _mediator.Send(createAddressCommandRequest);
             return Ok(response);
         }
         [HttpPut("[action]")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Updating, Definition = "Update Address")]
         public async Task<IActionResult> UpdateAddress(UpdateAddressCommandRequest updateAddressCommandRequest)
         {
             UpdateAddressCommandResponse response = await _mediator.Send(updateAddressCommandRequest);
@@ -39,6 +48,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Reading, Definition = "Get Cities")]
         public async Task<IActionResult> Get()
         {
 
@@ -47,6 +58,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]/{CityId}")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Reading, Definition = "Get Districts")]
         public async Task<IActionResult> GetDistricts([FromRoute] int cityId)
         {
 
@@ -55,6 +68,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]/{UserId}")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Reading, Definition = "Get Address Infos By UserId")]
         public async Task<IActionResult> GetAddressInfo([FromRoute] GetAddressInfoByUserIdQueryRequest getAddressInfoByUserIdQueryRequest)
         {
 
@@ -63,6 +78,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]/{Id}")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Reading, Definition = "Get Single Address Info")]
         public async Task<IActionResult> GetSingleAddress([FromRoute] GetSingleAddressByIdQueryRequest getSingleAddressByIdQueryRequest)
         {
 
@@ -71,13 +88,17 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpDelete("{Id}")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Deleting, Definition = "Delete Address")]
         public async Task<IActionResult> Delete([FromRoute] RemoveAddressCommandRequest removeAddressCommandRequest)
         {
             RemoveAddressCommandResponse response = await _mediator.Send(removeAddressCommandRequest);
             return Ok();
         }
 
-        [HttpGet("[action]")]      
+        [HttpGet("[action]")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Addresses,
+            ActionType = ActionType.Updating, Definition = "Change Showcase Address")]
         public async Task<IActionResult> ChangeShowcaseAddress([FromQuery] ChangeShowcaseAddressCommandRequest changeShowcaseAddressCommandRequest)
         {
             ChangeShowcaseAddressCommandResponse response = await _mediator.Send(changeShowcaseAddressCommandRequest);

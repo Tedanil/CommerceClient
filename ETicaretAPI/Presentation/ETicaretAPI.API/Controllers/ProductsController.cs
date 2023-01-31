@@ -59,6 +59,9 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("qrcode/{productId}")]
+        [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products,
+            ActionType = ActionType.Reading, Definition = "Get Qr Code To Product")]
         public async Task<IActionResult> GetQrCodeToProduct([FromRoute] string productId)
         {
           var data = await _productService.QrCodeToProductAsync(productId);
@@ -66,6 +69,9 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpPut("qrcode")]
+        [Authorize(AuthenticationSchemes = "Admin")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products,
+            ActionType = ActionType.Updating, Definition = "Update Stock Qr Code To Product")]
         public async Task<IActionResult> UpdateStockQrCodeToProduct(UpdateStockQrCodeToProductCommandRequest updateStockQrCodeToProductCommandRequest)
         {
             UpdateStockQrCodeToProductCommandResponse response = await _mediator.Send(updateStockQrCodeToProductCommandRequest);
