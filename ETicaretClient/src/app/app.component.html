@@ -28,7 +28,7 @@
               <a routerLink="admin" class="btn btn-outline-success" type="submit"
                 *ngIf="authService.isAuthenticated && authService.isAdmin">Yönetim Paneli</a>
             </li>
-            <li class="nav-item dropdown">
+            <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" *ngIf="authService.isAuthenticated" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(19, 14, 14); font: italic;">
                 Hesabım
               </a>
@@ -42,9 +42,23 @@
 
                 
               </ul>
-            </li>
+            </li> -->
             
           </ul>
+          <button mat-icon-button *ngIf="authService.isAuthenticated"  [matMenuTriggerFor]="menu">
+            Hesabım
+          </button>
+          
+          <mat-menu style="background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);" #menu="matMenu">
+            <button mat-menu-item routerLink="my-account/my-orders">Siparişlerim </button>
+            <button mat-menu-item routerLink="my-account/user-info">Kullanıcı Bilgilerim</button>
+            <button mat-menu-item routerLink="my-account/address-info">Adres Bilgilerim</button>
+            <hr>
+            <button mat-menu-item routerLink="" style="color:red;cursor:pointer;" (click)="signOut()"
+            *ngIf="authService.isAuthenticated">Çıkış Yap</button>
+
+          </mat-menu>
+          
           <div class="d-flex nav-item">
            <img src="../../../../assets/images/cart.png" width="30px" height="30px">
             <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal"

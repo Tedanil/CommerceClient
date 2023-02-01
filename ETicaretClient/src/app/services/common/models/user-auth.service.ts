@@ -108,6 +108,7 @@ export class UserAuthService {
       action: "password-reset"
     }, email);
     
+    
 
     await firstValueFrom(observable);
     callBackFunction();

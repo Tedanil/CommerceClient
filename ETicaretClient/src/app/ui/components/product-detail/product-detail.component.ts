@@ -41,8 +41,12 @@ export class ProductDetailComponent extends BaseComponent implements OnInit {
 
 
       
-      this.product = await this.productService.getProductById(this.id as string);
-      console.log(this.product);
+      const data: { product: List_Product } = await this.productService.getProductById(this.id as string);
+      
+      this.product = data.product;
+      
+      this.product.imagePath =  this.product.productImageFiles.length ? this.product.productImageFiles.find(p => p.showcase).path : "";
+      
 
 
 

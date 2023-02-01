@@ -22,6 +22,8 @@ import { DynamicLoadComponentDirective } from './directives/common/dynamic-load-
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
@@ -46,7 +48,7 @@ import { MatButtonModule } from '@angular/material/button';
       }
     }),
     SocialLoginModule,
-    MatIconModule, MatBadgeModule, MatButtonModule
+    MatIconModule, MatBadgeModule, MatButtonModule,ReactiveFormsModule,MatMenuModule
    
 
   ],

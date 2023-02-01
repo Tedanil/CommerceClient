@@ -60,19 +60,21 @@ async onSubmit(user: User)  {
  const result: Create_User = await this.userService.create(user);
   
  if(result.succeeded)
- 
+ {
      this.toastrService.message(result.message, "Kullanıcı Kaydı Başarılı..!", {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopRight
         
      });
+     this.router.navigate(["/login"]);
+    }
      
      else
      this.toastrService.message(result.message, "Hata!", {
       messageType: ToastrMessageType.Error,
       position: ToastrPosition.TopRight
    });
-   this.router.navigate(["/login"]);
+   
    
 
 

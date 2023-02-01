@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/common/models/user.service';
 import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { async } from '@angular/core/testing';
 import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
     spinner: NgxSpinnerService, private authService: AuthService, private activatedRoute: ActivatedRoute,
     private router: Router, private socialAuthService: SocialAuthService,) {
     super(spinner)
+   
     socialAuthService.authState.subscribe(async (user: SocialUser) => {
       console.log(user.name)
       this.showSpinner(SpinnerType.BallScaleMultiple);
@@ -45,6 +47,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
 
   }
 
+
   ngOnInit(): void {
   }
 
@@ -60,6 +63,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
         {
           this.router.navigate([returnUrl]);
         }
+        else
           this.router.navigate([""]);
       });
       this.hideSpinner(SpinnerType.SquareLoader)

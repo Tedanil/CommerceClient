@@ -65,6 +65,8 @@ namespace ETicaretAPI.Persistence.Services
             if (result)
             {
                 await _userManager.AddLoginAsync(user, info);
+                
+                await _userManager.AddToRoleAsync(user, "Member");
 
                 Token token = _tokenHandler.CreateAccessToken(accessTokenLifeTime, user);
                 await _userService.UpdateRefreshTokenAsync(token.RefreshToken, user, token.Expiration, 15);
@@ -141,7 +143,7 @@ namespace ETicaretAPI.Persistence.Services
                 return token;
             }
 
-            throw new AuthenticationErrorException();
+            throw new UserNameOrPasswordFailedException();
         }
         
 
