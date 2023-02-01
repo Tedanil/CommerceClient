@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
@@ -18,100 +19,118 @@ import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/
   styleUrls: ['./create-address.component.scss']
 })
 export class CreateAddressComponent extends BaseComponent implements OnInit {
-  
 
-  constructor(spinner:NgxSpinnerService, 
+
+  constructor(spinner: NgxSpinnerService,
     private alertifyService: AlertifyService,
-     private userService: UserService,
-     private addressService: AddressService,
-     private toastrService: CustomToastrService,
-     private router: Router,
-     
-    
-    ) {
+    private userService: UserService,
+    private addressService: AddressService,
+    private toastrService: CustomToastrService,
+    private router: Router,
+    private formBuilder: FormBuilder
+
+
+  ) {
     super(spinner)
-   }
-  
-   @ViewChild('selectCity') selectCity: any;
-   selectedCityId: number;
-   currentUser : User_Response;
-   cities2 : List_City[];
-   districts2: List_District[];
-   
-   
+  }
+
+  @ViewChild('selectCity') selectCity: any;
+  selectedCityId: number;
+  currentUser: User_Response;
+  cities2: List_City[];
+  districts2: List_District[];
+  frm: FormGroup;
+  submitted: boolean = false;
+
+
+
   async onSelectChange(event) {
     this.selectedCityId = event.value;
     this.showSpinner(SpinnerType.BallElasticDot);
-  const allDistricts: {districts:List_District[]} = await this.addressService.getDistricts(this.selectedCityId as number,() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
-    dismissOthers: true,
-    messageType: MessageType.Error,
-    position: Position.TopRight
-  }));
-  this.districts2 = allDistricts.districts
-  
+    const allDistricts: { districts: List_District[] } = await this.addressService.getDistricts(this.selectedCityId as number, () => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
+      dismissOthers: true,
+      messageType: MessageType.Error,
+      position: Position.TopRight
+    }));
+    this.districts2 = allDistricts.districts
+
   }
 
- async ngOnInit() {
-  this.showSpinner(SpinnerType.BallElasticDot);
- 
-    
-    
-    const allCities: {cities:List_City[]} = await this.addressService.getCities(() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
+  async ngOnInit() {
+    this.frm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3)]],
+      surname: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3)]],
+      phone: ["", [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      selectCity: ["", [Validators.required]],
+      selectDistrict: ["", [Validators.required]],
+      neighborhood: ["", [Validators.required, Validators.maxLength(50), Validators.minLength(3)]],
+      description: ["", [Validators.required, Validators.maxLength(200), Validators.minLength(3)]],
+      title: ["", [Validators.required, Validators.maxLength(25), Validators.minLength(1)]],
+
+
+
+    }
+
+    )
+    this.showSpinner(SpinnerType.BallElasticDot);
+
+
+
+    const allCities: { cities: List_City[] } = await this.addressService.getCities(() => this.hideSpinner(SpinnerType.BallElasticDot), errorMessage => this.alertifyService.message(errorMessage, {
       dismissOthers: true,
       messageType: MessageType.Error,
       position: Position.TopRight
     }));
     this.cities2 = allCities.cities
 
-  
- 
 
-    
+
+
+
 
   }
-  
- async create(name:HTMLInputElement, surname: HTMLInputElement, phone:HTMLInputElement,
-   description: HTMLInputElement, neighborhood: HTMLInputElement, title: HTMLInputElement, selectCity: MatSelect, selectDistrict: MatSelect){
+
+  get component() {
+    return this.frm.controls;
+  }
+
+  async create(create_address: Create_Address) {
+    this.submitted = true;
     this.showSpinner(SpinnerType.SquareJellyBox);
     const token: string = localStorage.getItem("refreshToken");
-  
-  this.currentUser = await this.userService.getUserByToken(token);
 
-  const create_address : Create_Address = new Create_Address();
-  create_address.name = name.value;
-  create_address.surname = surname.value;
-  create_address.phone = phone.value;
-  create_address.description = description.value;
-  create_address.neighborhood = neighborhood.value;
-  create_address.title = title.value;
-  create_address.selectCity = selectCity.value;
-  create_address.selectDistrict = selectDistrict.value;
-  create_address.userId = this.currentUser.userId;
-  await this.addressService.create(create_address, () => this.hideSpinner(SpinnerType.SquareJellyBox) , errorMessage => this.alertifyService.message(errorMessage, {
-    dismissOthers: true,
-    messageType: MessageType.Error,
-    position: Position.TopRight
-  }));
-  this.toastrService.message("Adres Eklenmiştir!", "Yeni Adres Oluşturuldu!", {
-    messageType: ToastrMessageType.Success,
-    position: ToastrPosition.TopRight
-  })
-  this.router.navigate(["/my-account/address-info"]);
-  
+    this.currentUser = await this.userService.getUserByToken(token);
+
+
+    create_address.userId = this.currentUser.userId;
+    if (this.frm.invalid)
+      return;
+
+    await this.addressService.create(create_address, () => this.hideSpinner(SpinnerType.SquareJellyBox), errorMessage => this.alertifyService.message(errorMessage, {
+      dismissOthers: true,
+      messageType: MessageType.Error,
+      position: Position.TopRight
+    }));
+    this.toastrService.message("Adres Eklenmiştir!", "Yeni Adres Oluşturuldu!", {
+      messageType: ToastrMessageType.Success,
+      position: ToastrPosition.TopRight
+    })
+    this.router.navigate(["/my-account/address-info"]);
+
 
   }
 
 
- 
 
 
-  
-   
 
-    
-  }
-  
-  
+
+
+
+
+}
+
+
 
 
 

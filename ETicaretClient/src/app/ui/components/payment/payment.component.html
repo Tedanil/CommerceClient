@@ -14,8 +14,14 @@
         </div>
       </div>
     </div>
+    <div *ngIf="infos.length == 0" style="margin: 90px !important;">
+      <h1>Kayıtlı Bir Adresiniz bulunmuyor. Alışverişi tamamlamak için bir adres ekleyiniz.!</h1>
+    </div>
+    <div *ngIf="!addressId" style="margin: 90px !important;">
+      <h2>Alışverişi tamamlamak için bir adres seçiniz.!</h2>
+    </div>
 </div>
 
-<div class="modal-footer">
-    <button type="button" class="btn btn-success" (click)="shoppingComplete()"> Kaydet Ve Alışverişi Tamamla</button>
+<div class="modal-footer" >
+    <button type="button" class="btn btn-success" (click)="shoppingComplete()" [disabled]="!addressId"> Kaydet Ve Alışverişi Tamamla</button>
   </div>
