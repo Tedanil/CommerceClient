@@ -54,6 +54,7 @@ export class BasketsComponent extends BaseComponent implements OnInit {
       afterClosed: async () => {
         this.showSpinner(SpinnerType.SquareLoader);
         await this.basketService.remove(basketItemId);
+        this.basketService.reload();
 
         var a = $("." + basketItemId)
         $("." + basketItemId).fadeOut(500, () => this.hideSpinner(SpinnerType.SquareLoader));

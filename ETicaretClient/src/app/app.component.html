@@ -62,7 +62,7 @@
           <div class="d-flex nav-item">
            <img src="../../../../assets/images/cart.png" width="30px" height="30px">
             <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal"
-              (click)="loadComponent()" type="submit" mat-raised-button matBadge="0"  >Sepetim</button>
+              (click)="loadComponent()" type="submit" mat-raised-button [matBadge]="basketItems.length"  >Sepetim</button>
           </div>
         </div>
       </div>

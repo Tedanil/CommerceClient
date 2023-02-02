@@ -10,6 +10,7 @@ import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
+
 @Component({
   selector: 'app-category-list',
   templateUrl: './category-list.component.html',
@@ -19,7 +20,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
     private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService,
-    private customToastrService: CustomToastrService, private router: Router) {
+    private customToastrService: CustomToastrService, private router: Router,) {
     super(spinner)
   }
 
@@ -28,6 +29,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
   baseUrl: BaseUrl;
   products: List_Product[];
   selectedProduct: List_Product;
+ 
 
   async ngOnInit() {
 
@@ -96,6 +98,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
     _basketItem.quantity = 1;
     await this.basketService.add(_basketItem);
     this.hideSpinner(SpinnerType.Pacman);
+    this.basketService.reload();
     this.customToastrService.message("Ürün sepete eklenmiştir.", "Sepete Eklendi", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight
