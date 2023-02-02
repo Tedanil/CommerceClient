@@ -72,13 +72,13 @@
   <div class="mb-3">
     <mat-form-field appearance="fill">
       <mat-label>Telefon</mat-label>
-      <input matInput formControlName="phone" id="phone" placeholder="phone"
+      <input matInput formControlName="phone" id="phone" placeholder="(xxx) xxx xx xx"
         [ngClass]="{'is-invalid': submitted && component.phone.errors}">
       <div class="form-text invalid-feedback" *ngIf="submitted && component.phone.errors?.required">Lütfen Telefon
         kısmını
         boş geçmeyiniz..</div>
       <div class="form-text invalid-feedback"
-        *ngIf="submitted && (component.phone.errors?.maxlength || component.phone.errors?.minlength)">Telefon kısmı 10
+        *ngIf="submitted && (component.phone.errors?.maxlength || component.phone.errors?.minlength)">Telefon kısmı başında "0" olmadan  10
         haneli olmalıdır..</div>
     </mat-form-field>
   

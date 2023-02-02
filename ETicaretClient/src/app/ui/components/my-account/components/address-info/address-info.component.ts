@@ -80,6 +80,7 @@ export class AddressInfoComponent extends BaseComponent implements OnInit {
       position: ToastrPosition.TopRight
     })
     this.router.navigate(["/my-account/address-info"]);
+    this.ngOnInit();
      }
     });
 

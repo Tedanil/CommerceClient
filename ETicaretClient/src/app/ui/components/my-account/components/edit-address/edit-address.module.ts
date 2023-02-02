@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     RouterModule.forChild([
       {path: "", component:EditAddressComponent}
-    ]), MatFormFieldModule, MatButtonModule, MatInputModule,MatSelectModule,MatOptionModule,MatIconModule
+    ]), MatFormFieldModule, MatButtonModule, MatInputModule,MatSelectModule,MatOptionModule,MatIconModule,ReactiveFormsModule
   ]
 })
 export class EditAddressModule { }

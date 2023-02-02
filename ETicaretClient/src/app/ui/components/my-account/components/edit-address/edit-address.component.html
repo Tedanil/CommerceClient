@@ -1,48 +1,114 @@
-<p>{{singleAddressInfo.city}}</p>
-<div class="tab">
-    <mat-form-field class="inputs" appearance="fill">
-      <mat-label>Ad*</mat-label>
-      <input matInput #txtName [value]="singleAddressInfo[0].name">
-    </mat-form-field>
+<form [formGroup]="frm" (ngSubmit)="update(frm.value)">
+  <div class="mb-3">
     <mat-form-field appearance="fill">
-      <mat-label>Soyad*</mat-label>
-      <input matInput #txtSurname [value]="singleAddressInfo[0].surname">
+      <mat-label>Ad</mat-label>
+      <input matInput formControlName="name" id="name" [(ngModel)]="singleAddressInfo[0].name"
+        [ngClass]="{'is-invalid': submitted && component.name.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.name.errors?.required">Lütfen Ad kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.name.errors?.maxlength || component.name.errors?.minlength)">Ad kısmı 3 ile
+        50 karakter arasında olmalıdır..</div>
     </mat-form-field>
-    <mat-form-field class="inputs" appearance="fill">
-      <mat-label>Telefon*</mat-label>
-      <input matInput #txtPhone [value]="singleAddressInfo[0].phoneNumber">
+ 
+    <mat-form-field appearance="fill" class="inputs">
+      <mat-label>Soyad</mat-label>
+      <input matInput formControlName="surname" id="surname" [(ngModel)]="singleAddressInfo[0].surname"
+        [ngClass]="{'is-invalid': submitted && component.surname.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.surname.errors?.required">Lütfen Soyad
+        kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.surname.errors?.maxlength || component.surname.errors?.minlength)">Soyad kısmı 3
+        ile
+        50 karakter arasında olmalıdır..</div>
     </mat-form-field>
+  </div>
+
+  <div class="mb-3">
+    <mat-form-field appearance="fill">
+      <mat-label>Telefon</mat-label>
+      <input matInput formControlName="phone" id="phone" placeholder="(xxx) xxx xx xx" [(ngModel)]="singleAddressInfo[0].phoneNumber"
+        [ngClass]="{'is-invalid': submitted && component.phone.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.phone.errors?.required">Lütfen Telefon
+        kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.phone.errors?.maxlength || component.phone.errors?.minlength)">Telefon kısmı başında "0" olmadan  10
+        haneli olmalıdır..</div>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="inputs">
+      <mat-label>Adres Başlığı</mat-label>
+      <input matInput formControlName="title" id="title" [(ngModel)]="singleAddressInfo[0].title"
+        [ngClass]="{'is-invalid': submitted && component.title.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.title.errors?.required">Lütfen Adres Başlığı kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.title.errors?.maxlength || component.title.errors?.minlength)">Adres Başlığı kısmı 1 ile
+        30 karakter arasında olmalıdır..</div>
+    </mat-form-field>
+  </div>
+
+  <div class="mb-3">
     <mat-form-field appearance="fill">
       <mat-label>İl Seçiniz</mat-label>
-      <mat-select #selectCity (selectionChange)="onSelectChange($event)">
+      <mat-select #selectCity formControlName="selectCity" id="selectCity" 
+        [ngClass]="{'is-invalid': submitted && component.selectCity.errors}" (selectionChange)="onSelectChange($event)">
         <mat-option *ngFor="let city of cities2" [value]="city.cityId">
           {{city.cityName}}
         </mat-option>
       </mat-select>
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.selectCity.errors?.required">Lütfen il
+        seçiniz
+      </div>
     </mat-form-field>
+
     <mat-form-field class="inputs" appearance="fill">
       <mat-label>İlçe Seçiniz</mat-label>
-      <mat-select #selectDistrict>
+      <mat-select #selectDistrict formControlName="selectDistrict" id="selectDistrict" [ngClass]="{'is-invalid': submitted && component.selectDistrict.errors}">
         <mat-option *ngFor="let district of districts2" [value]="district.districtId">
           {{district.districtName}}
         </mat-option>
       </mat-select>
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.selectDistrict.errors?.required">Lütfen ilçe
+        seçiniz
+      </div>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Mahalle*</mat-label>
-      <input matInput #txtNeighborhood [value]="singleAddressInfo[0].neighborhood">
+
+
+  </div>
+  <div class="mb-3">
+    <mat-form-field appearance="fill" >
+      <mat-label>Mahalle</mat-label>
+      <input matInput formControlName="neighborhood" id="neighborhood" [(ngModel)]="singleAddressInfo[0].neighborhood"
+        [ngClass]="{'is-invalid': submitted && component.neighborhood.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.neighborhood.errors?.required">Lütfen Mahalle kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.neighborhood.errors?.maxlength || component.neighborhood.errors?.minlength)">Mahalle kısmı 3 ile
+        50 karakter arasında olmalıdır..</div>
     </mat-form-field>
-    <mat-form-field class="inputAd" appearance="fill">
-      <mat-label>Adres*</mat-label>
-      <input matInput size="medium" #txtDescription [value]="singleAddressInfo[0].description">
-    </mat-form-field>
-    <mat-form-field class="inputAd" appearance="fill">
-      <mat-label>Adres Başlığı*</mat-label>
-      <input matInput size="medium" #txtTitle [value]="singleAddressInfo[0].title">
+    </div>
+    <div class="mb-3">
+    <mat-form-field appearance="fill" style="min-width: 120px !important;">
+      <mat-label>Adres</mat-label>
+      <input matInput formControlName="description" id="description" [(ngModel)]="singleAddressInfo[0].description"
+        [ngClass]="{'is-invalid': submitted && component.description.errors}">
+      <div class="form-text invalid-feedback" *ngIf="submitted && component.description.errors?.required">Lütfen Adres kısmını
+        boş geçmeyiniz..</div>
+      <div class="form-text invalid-feedback"
+        *ngIf="submitted && (component.description.errors?.maxlength || component.description.errors?.minlength)">Adres kısmı 3 ile
+        200 karakter arasında olmalıdır..</div>
     </mat-form-field>
   </div>
-  <button mat-raised-button class="btn" (click)="update(txtName, txtSurname, txtPhone, 
-    txtDescription, txtNeighborhood, txtTitle, selectCity, selectDistrict)" color="primary">Adresi Güncelle </button>
+
+  
+
+
+  <br>
+  <button type="submit" class="btn btn-primary">Adresi Güncelle</button>
+</form>
   
   
 
