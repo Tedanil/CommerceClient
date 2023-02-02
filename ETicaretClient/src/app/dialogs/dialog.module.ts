@@ -24,6 +24,7 @@ import { QrcodeReadingDialogComponent } from './qrcode-reading-dialog/qrcode-rea
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
+import { UpdateOrderStatusDialogComponent } from './update-order-status-dialog/update-order-status-dialog.component';
 
 
 
@@ -37,7 +38,8 @@ import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
   CompleteOrderDialogComponent,
   AuthorizeUserDialogComponent,
   QrcodeDialogComponent,
-  QrcodeReadingDialogComponent],
+  QrcodeReadingDialogComponent,
+  UpdateOrderStatusDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule, MatButtonModule, MatCardModule,

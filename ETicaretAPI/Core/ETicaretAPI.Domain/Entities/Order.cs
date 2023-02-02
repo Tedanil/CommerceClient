@@ -13,7 +13,7 @@ namespace ETicaretAPI.Domain.Entities
         public Guid AddressId { get; set; }
         public string Description { get; set; }
         //public string Address { get; set; }
-
+        public OrderStatus Status { get; set; }
         public string OrderCode { get; set; }
 
         public Basket Basket { get; set; }
@@ -22,5 +22,13 @@ namespace ETicaretAPI.Domain.Entities
 
         //public ICollection<Product> Products { get; set; }
         //public Customer Customer { get; set; }
+    }
+
+    public enum OrderStatus
+    {
+        Received,
+        InPreparation,
+        Shipped,
+        Delivered
     }
 }

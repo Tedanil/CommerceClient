@@ -64,4 +64,14 @@ export class OrderService {
 
     await firstValueFrom(observable);
   }
+
+  async updateOrderStatus(id: string, selectStatus: any, successCallBack?: () => void): Promise<void> {
+    const updateOrderStatusObservable = this.httpCLientService.get({
+      controller: "orders",
+      action: "updateorderstatus",
+      queryString: `id=${id}&selectStatus=${selectStatus}`
+    });
+    await firstValueFrom(updateOrderStatusObservable);
+    successCallBack();
+}
 }

@@ -1,3 +1,5 @@
+import { OrderStatus } from "src/app/dialogs/order-detail-dialog/order-detail-dialog.component";
+
 export class SingleOrder {
     addressDescription: string;
     addressCity: string;
@@ -9,4 +11,5 @@ export class SingleOrder {
     id: string;
     orderCode: string;
     completed: boolean;
+    status: any;
   }

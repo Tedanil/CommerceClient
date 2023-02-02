@@ -74,6 +74,13 @@ namespace ETicaretAPI.Persistence.Contexts
                 .WithMany(a => a.Orders)
                 .HasForeignKey(o => o.AddressId);
 
+            builder.Entity<Order>()
+            .Property(p => p.Status)
+            .HasConversion(
+                v => v.ToString(),
+                v => (OrderStatus)Enum.Parse(typeof(OrderStatus), v)
+                );
+
             base.OnModelCreating(builder);
 
         }

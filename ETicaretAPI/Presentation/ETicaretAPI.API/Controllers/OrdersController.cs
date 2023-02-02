@@ -3,6 +3,7 @@ using ETicaretAPI.Application.CustomAttributes;
 using ETicaretAPI.Application.Enums;
 using ETicaretAPI.Application.Features.Commands.Order.CompleteOrder;
 using ETicaretAPI.Application.Features.Commands.Order.CreateOrder;
+using ETicaretAPI.Application.Features.Commands.Order.UpdateOrderStatus;
 using ETicaretAPI.Application.Features.Queries.Order.GetAllOrders;
 using ETicaretAPI.Application.Features.Queries.Order.GetOrderById;
 using ETicaretAPI.Application.Features.Queries.Order.GetOrdersByUserName;
@@ -66,6 +67,13 @@ namespace ETicaretAPI.API.Controllers
         public async Task<ActionResult> CompleteOrder([FromRoute] CompleteOrderCommandRequest completeOrderCommandRequest)
         {
             CompleteOrderCommandResponse response = await _mediator.Send(completeOrderCommandRequest);
+            return Ok(response);
+        }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> UpdateOrderStatus([FromQuery] UpdateOrderStatusCommandRequest updateOrderStatusCommandRequest)
+        {
+            UpdateOrderStatusCommandResponse response = await _mediator.Send(updateOrderStatusCommandRequest);
             return Ok(response);
         }
 

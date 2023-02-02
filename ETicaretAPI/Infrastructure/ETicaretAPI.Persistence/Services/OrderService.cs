@@ -36,7 +36,8 @@ namespace ETicaretAPI.Persistence.Services
                 AddressId = Guid.Parse(createOrder.Address),
                 Id = Guid.Parse(createOrder.BasketId),
                 Description = createOrder.Description,
-                OrderCode = orderCode
+                OrderCode = orderCode,
+                Status = OrderStatus.Received
             });
             await _orderWriteRepository.SaveAsync();
         }
@@ -156,6 +157,7 @@ namespace ETicaretAPI.Persistence.Services
                                    Id = order.Id,
                                    CreatedDate = order.CreatedDate,
                                    OrderCode = order.OrderCode,
+                                   Status = order.Status,
                                    Basket = order.Basket,
                                    Completed = _co != null ? true : false,
                                    Address = order.Address,
@@ -178,7 +180,9 @@ namespace ETicaretAPI.Persistence.Services
                 CreatedDate = data2.CreatedDate,
                 Description = data2.Description,
                 OrderCode = data2.OrderCode,
-                Completed = data2.Completed
+                Completed = data2.Completed,
+                Status = data2.Status,
+                
             };
         }
       
