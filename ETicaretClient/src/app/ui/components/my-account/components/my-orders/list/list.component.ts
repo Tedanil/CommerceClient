@@ -6,7 +6,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { List_Order } from 'src/app/contracts/order/list_order';
 import { User_Response } from 'src/app/contracts/users/user_response';
-import { OrderDetailDialogComponent } from 'src/app/dialogs/order-detail-dialog/order-detail-dialog.component';
+import { OrderDetailDialogComponent, OrderStatus } from 'src/app/dialogs/order-detail-dialog/order-detail-dialog.component';
 import { User } from 'src/app/entities/user';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { AuthService } from 'src/app/services/common/auth.service';
@@ -43,7 +43,7 @@ currentUserName: string
   
   
   
-  displayedColumns: string[] = ['orderCode', 'userName',  'createdDate', 'totalPrice', 'viewdetail'];
+  displayedColumns: string[] = ['orderCode', 'userName',  'createdDate', 'totalPrice', 'viewdetail', 'status', 'completed'];
   dataSource: MatTableDataSource<List_Order> = null;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -76,10 +76,27 @@ currentUserName: string
     
     this.dataSource = new MatTableDataSource<List_Order>(allOrders.orders);
     this.paginator.length = allOrders.totalOrderCount;
+
+    
   }
 
   async pageChanged() {
     await this.getOrders();
+  }
+
+  getTurkishStatus(status: OrderStatus) {
+    switch (status) {
+      case OrderStatus.Received:
+        return 'Sipariş Alındı';
+      case OrderStatus.InPreparation:
+        return 'Sipariş Hazırlanıyor';
+      case OrderStatus.Shipped:
+        return 'Kargoya Verildi';
+      case OrderStatus.Delivered:
+        return 'Teslim Edildi';
+      default:
+        return 'Bilinmiyor';
+    }
   }
 
   async ngOnInit() {

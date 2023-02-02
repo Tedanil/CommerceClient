@@ -4,6 +4,7 @@ import { MatSelect } from '@angular/material/select';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { async } from 'rxjs';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
+import { AuthService } from 'src/app/services/common/auth.service';
 import { SpinnerType } from '../../base/base.component';
 import { SingleOrder } from '../../contracts/order/single_order';
 import { DialogService } from '../../services/common/dialog.service';
@@ -27,7 +28,8 @@ export class OrderDetailDialogComponent extends BaseDialog<OrderDetailDialogComp
     private dialogService: DialogService,
     private spinner: NgxSpinnerService,
     private toastrService: CustomToastrService,
-    private alertifyService: AlertifyService,) {
+    private alertifyService: AlertifyService,
+    public authService: AuthService) {
     super(dialogRef)
   }
 
@@ -39,9 +41,10 @@ export class OrderDetailDialogComponent extends BaseDialog<OrderDetailDialogComp
   dataSource = [];
   clickedRows = new Set<any>();
   totalPrice: number;
-  orderStat: string = "siparis";
+  
 
   async ngOnInit(): Promise<void> {
+    this.authService.adminCheck();
     
     this.orderStatuses = Object.values(OrderStatus);
     
@@ -50,13 +53,28 @@ export class OrderDetailDialogComponent extends BaseDialog<OrderDetailDialogComp
     const orderStatusArray = Object.values(OrderStatus);
     
     this.selectedOrderStatus = orderStatusArray[this.singleOrder.status];
-    debugger
+    
     
     
     
     this.dataSource = this.singleOrder.basketItems;
 
     this.totalPrice = this.singleOrder.basketItems.map((basketItem, index) => basketItem.price * basketItem.quantity).reduce((price, current) => price + current);
+  }
+
+  getTurkishStatus(selectedOrderStatus: string) {
+    switch (selectedOrderStatus) {
+      case "Received":
+        return 'Sipariş Alındı';
+      case "InPreparation":
+        return 'Sipariş Hazırlanıyor';
+      case "Shipped":
+        return 'Kargoya Verildi';
+      case "Delivered":
+        return 'Teslim Edildi';
+      default:
+        return 'Bilinmiyor';
+    }
   }
  
 

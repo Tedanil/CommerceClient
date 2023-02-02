@@ -5,6 +5,7 @@ using ETicaretAPI.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -121,6 +122,7 @@ namespace ETicaretAPI.Persistence.Services
                             Id = order.Id,
                             CreatedDate = order.CreatedDate,
                             OrderCode = order.OrderCode,
+                            Status = order.Status.ToString(),
                             Basket = order.Basket,
                             Completed = _co != null ? true : false
                         };
@@ -131,8 +133,9 @@ namespace ETicaretAPI.Persistence.Services
                 Orders =  data2.Select(o => new
                 {
                     Id = o.Id,
-                    CreatedDate = o.CreatedDate,
+                    CreatedDate = o.CreatedDate.ToString("dd MMMM yyyy", new CultureInfo("tr-TR")),
                     OrderCode = o.OrderCode,
+                    Status = o.Status,
                     TotalPrice = o.Basket.BasketItems.Sum(bi => bi.Product.Price * bi.Quantity),
                     UserName = o.Basket.User.UserName,
                     o.Completed

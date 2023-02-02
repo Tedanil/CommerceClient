@@ -11,5 +11,5 @@ export class SingleOrder {
     id: string;
     orderCode: string;
     completed: boolean;
-    status: any;
+    status: string;
   }
