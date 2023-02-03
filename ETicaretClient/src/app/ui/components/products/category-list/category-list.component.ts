@@ -35,6 +35,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
 
     this.baseUrl = await this.fileService.getBaseStorageUrl();
     
+    
 
 
 
@@ -63,6 +64,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
 
 
       console.log(this.products)
+      
       
 
 
@@ -98,7 +100,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
     _basketItem.quantity = 1;
     await this.basketService.add(_basketItem);
     this.hideSpinner(SpinnerType.Pacman);
-    this.basketService.reload();
+  
     this.customToastrService.message("Ürün sepete eklenmiştir.", "Sepete Eklendi", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight

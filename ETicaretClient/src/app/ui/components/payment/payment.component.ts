@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { Address_Info } from 'src/app/contracts/address/address_info';
+import { List_Basket_Item } from 'src/app/contracts/basket/list_basket_item';
 import { Create_Order } from 'src/app/contracts/order/create_order';
 import { User_Response } from 'src/app/contracts/users/user_response';
 import { ShoppingCompleteDialogComponent, ShoppingCompleteState } from 'src/app/dialogs/shopping-complete-dialog/shopping-complete-dialog.component';
 import { AlertifyService, MessageType, Position } from 'src/app/services/admin/alertify.service';
 import { DialogService } from 'src/app/services/common/dialog.service';
 import { AddressService } from 'src/app/services/common/models/address.service';
+import { BasketService } from 'src/app/services/common/models/basket.service';
 import { OrderService } from 'src/app/services/common/models/order.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
@@ -28,7 +30,8 @@ export class PaymentComponent extends BaseComponent implements OnInit {
      private toastrService: CustomToastrService,
      private router: Router,
      private dialogService: DialogService,
-     private orderService: OrderService
+     private orderService: OrderService,
+     private basketService: BasketService
     
     ) {
     super(spinner)
@@ -38,6 +41,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
    currentUser : User_Response;
    infos:Address_Info[]
    addressId: string;
+   basketItems: List_Basket_Item[];
    
   
    
@@ -46,6 +50,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
 
  async ngOnInit() {
   this.showSpinner(SpinnerType.BallElasticDot);
+  this.basketItems = await this.basketService.get()
 
  const token: string = localStorage.getItem("refreshToken");
   

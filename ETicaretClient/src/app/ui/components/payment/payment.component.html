@@ -20,8 +20,11 @@
     <div *ngIf="!addressId" style="margin: 90px !important;">
       <h2>Alışverişi tamamlamak için bir adres seçiniz.!</h2>
     </div>
+    <div *ngIf="!basketItems.length" style="margin: 90px !important;">
+      <h2>Alışverişi tamamlamak için sepetinize ürün ekleyiniz!</h2>
+    </div>
 </div>
 
 <div class="modal-footer" >
-    <button type="button" class="btn btn-success" (click)="shoppingComplete()" [disabled]="!addressId"> Kaydet Ve Alışverişi Tamamla</button>
+    <button type="button" class="btn btn-success" (click)="shoppingComplete()" [disabled]="!addressId || !basketItems.length"> Kaydet Ve Alışverişi Tamamla</button>
   </div>

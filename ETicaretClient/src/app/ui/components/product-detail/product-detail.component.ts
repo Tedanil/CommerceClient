@@ -62,7 +62,7 @@ export class ProductDetailComponent extends BaseComponent implements OnInit {
     
     await this.basketService.add(_basketItem);
     this.hideSpinner(SpinnerType.Pacman);
-    this.basketService.reload();
+   
     this.customToastrService.message("Ürün sepete eklenmiştir.", "Sepete Eklendi", {
       messageType: ToastrMessageType.Success,
       position: ToastrPosition.TopRight

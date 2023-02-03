@@ -57,5 +57,12 @@ namespace ETicaretAPI.Infrastructure.Services
 
         }
 
+        public async Task SendShippedInfoMailAsync(string to, string orderCode, string userName)
+        {
+            string mail = $"Sayın {userName} Merhaba<br>" +
+                $"{orderCode} kodlu siparişiniz {DateTime.UtcNow} tarihinde kargo firmasına verilmiştir.<br>Hayrını görünüz efendim...";
+
+            await SendMailAsync(to, $"{orderCode} Sipariş Numaralı Siparişiniz Kargo Firmasına Verildi", mail);
+        }
     }
 }

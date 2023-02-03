@@ -71,6 +71,8 @@ namespace ETicaretAPI.API.Controllers
         }
 
         [HttpGet("[action]")]
+        [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Orders,
+            ActionType = ActionType.Updating, Definition = "Update Order Status")]
         public async Task<IActionResult> UpdateOrderStatus([FromQuery] UpdateOrderStatusCommandRequest updateOrderStatusCommandRequest)
         {
             UpdateOrderStatusCommandResponse response = await _mediator.Send(updateOrderStatusCommandRequest);
