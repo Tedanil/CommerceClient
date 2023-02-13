@@ -55,7 +55,6 @@ export class LoginComponent extends BaseComponent implements OnInit {
     this.showSpinner(SpinnerType.SquareLoader);
     await this.userAuthService.login(usernameOrEmail, password, () => {
       this.authService.identityCheck();
-      this.authService.adminCheck();
       
       this.activatedRoute.queryParams.subscribe(params => {
         const returnUrl: string = params["returnUrl"];

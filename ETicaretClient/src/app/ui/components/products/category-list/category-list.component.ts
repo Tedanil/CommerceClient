@@ -5,6 +5,7 @@ import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { BaseUrl } from 'src/app/contracts/base_url';
 import { Create_Basket_Item } from 'src/app/contracts/basket/create_basket_item';
 import { List_Product } from 'src/app/contracts/list_product';
+import { AuthService } from 'src/app/services/common/auth.service';
 import { BasketService } from 'src/app/services/common/models/basket.service';
 import { FileService } from 'src/app/services/common/models/file.service';
 import { ProductService } from 'src/app/services/common/models/product.service';
@@ -20,7 +21,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute,
     private fileService: FileService, private basketService: BasketService, spinner: NgxSpinnerService,
-    private customToastrService: CustomToastrService, private router: Router,) {
+    private customToastrService: CustomToastrService, private router: Router, public authService: AuthService) {
     super(spinner)
   }
 
@@ -32,6 +33,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
  
 
   async ngOnInit() {
+    this.authService.identityCheck();
 
     this.baseUrl = await this.fileService.getBaseStorageUrl();
     

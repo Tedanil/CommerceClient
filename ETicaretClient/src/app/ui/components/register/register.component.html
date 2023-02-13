@@ -17,6 +17,8 @@
           <input type="text" formControlName="username" class="form-control" id="username" placeholder="Username" [ngClass]=
           "{'is-invalid': submitted && component.username.errors}">
           <div class="form-text invalid-feedback" *ngIf="submitted && component.username.errors?.required">Lütfen Kullanıcı Adı kısmını boş geçmeyiniz..</div>
+          <div class="form-text invalid-feedback" *ngIf="submitted && component.username.errors?.pattern">Lütfen Kullanıcı Adı kısmınında "ç,ğ,ı,ö,ü" gibi Türkçe karakterler kullanmayınız!</div>
+
 
         </div>
         <div class="mb-3">

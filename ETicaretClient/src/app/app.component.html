@@ -1,34 +1,33 @@
-     <nav class="navbar navbar-expand-lg navbar-light" style="background:radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);
+<nav class="navbar navbar-expand-lg navbar-light" style="background:radial-gradient(#f7d4ac, #dc9f8910, #fdf9fd, #ffffff);
+
 
      ">
-      <div class="container-fluid">
-        <a class="navbar-brand f-color" routerLink="">ERBAŞ-TİCARET</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" 
-               routerLink="">Anasayfa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="products/all">Ürünler</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="register"
-                *ngIf="!authService.isAuthenticated">Kayıt Ol</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="login"
-                *ngIf="!authService.isAuthenticated">Giriş Yap</a>
-            </li>
-            <li>
-              <a routerLink="admin" class="btn btn-outline-success" type="submit"
-                *ngIf="authService.isAuthenticated && authService.isAdmin">Yönetim Paneli</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
+  <div class="container-fluid">
+    <a class="navbar-brand f-color" routerLink="">ERBAŞ-TİCARET <img src="../../../../assets/images/arcelik-logo.png"
+        width="60px" height="60px"></a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="products/all">Ürünler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="register"
+            *ngIf="!authService.isAuthenticated">Kayıt Ol</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="login" *ngIf="!authService.isAuthenticated">Giriş
+            Yap</a>
+        </li>
+        <li>
+          <a routerLink="admin" class="btn btn-outline-success" type="submit"
+            *ngIf="authService.isAuthenticated && authService.isAdmin">Yönetim Paneli</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" *ngIf="authService.isAuthenticated" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: rgb(19, 14, 14); font: italic;">
                 Hesabım
               </a>
@@ -43,39 +42,41 @@
                 
               </ul>
             </li> -->
-            
-          </ul>
-          <button mat-icon-button *ngIf="authService.isAuthenticated"  [matMenuTriggerFor]="menu">
-            Hesabım
-          </button>
-          
-          <mat-menu style="background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);" #menu="matMenu">
-            <button mat-menu-item routerLink="my-account/my-orders">Siparişlerim </button>
-            <button mat-menu-item routerLink="my-account/user-info">Kullanıcı Bilgilerim</button>
-            <button mat-menu-item routerLink="my-account/address-info">Adres Bilgilerim</button>
-            <hr>
-            <button mat-menu-item routerLink="" style="color:red;cursor:pointer;" (click)="signOut()"
-            *ngIf="authService.isAuthenticated">Çıkış Yap</button>
 
-          </mat-menu>
-          
-          <div class="d-flex nav-item">
-           <img src="../../../../assets/images/cart.png" width="30px" height="30px">
-            <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal"
-              (click)="loadComponent()" type="submit" mat-raised-button>Sepetim</button>
-          </div>
-        </div>
+      </ul>
+      <button mat-icon-button *ngIf="authService.isAuthenticated" [matMenuTriggerFor]="menu" style="margin-right: 20px !important;">
+        Hesabım
+      </button>
+
+      <mat-menu style="background:radial-gradient(#f7d4ac, #b35938, #fdf9fd, #ffffff);
+
+          " #menu="matMenu">
+        <button mat-menu-item routerLink="my-account/my-orders">Siparişlerim </button>
+        <button mat-menu-item routerLink="my-account/user-info">Kullanıcı Bilgilerim</button>
+        <button mat-menu-item routerLink="my-account/address-info">Adres Bilgilerim</button>
+        <hr>
+        <button mat-menu-item routerLink="" style="color:red;cursor:pointer;" (click)="signOut()"
+          *ngIf="authService.isAuthenticated">Çıkış Yap</button>
+
+      </mat-menu>
+
+      <div class="d-flex nav-item">
+        
+        <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()"
+          type="submit" mat-raised-button [disabled]="!authService.isAuthenticated">Sepetim <img src="../../../../assets/images/cart.png" width="30px" height="30px"></button>
       </div>
-    </nav>
-  
-  
+    </div>
+  </div>
+</nav>
 
 
-  
-  
-    <router-outlet></router-outlet>
-  
-  
+
+
+
+
+<router-outlet></router-outlet>
+
+
 
 <ngx-spinner size="default" name="s1" type="ball-atom"></ngx-spinner>
 <ngx-spinner size="default" name="s2" type="ball-scale-multiple"></ngx-spinner>
@@ -90,43 +91,44 @@
 <!--footer-->
 <div class="footer">
   <div class="container">
-      <div class="row">
-          <div class="footer-col-1">
-              <h3>Uygulamayı indir</h3>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
-              <div class="app-logo">
-                  <img src="../../../../assets/images/play-store.png">
-                  <img src="../../../../assets/images/app-store.png">
+    <div class="row">
+      <div class="footer-col-1">
+        <h3>Uygulamayı indir</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+        <div class="app-logo">
+          <img src="../../../../assets/images/play-store.png">
+          <img src="../../../../assets/images/app-store.png">
 
-              </div>
-              <div class="contact" id="contact">
-                <h2> İletişim</h2>
-                <h5>0232 675 76 45</h5>
-              </div>
-          </div>
-              <div class="footer-col-2">
-                <iframe src="https://www.google.com/maps/d/u/0/embed?mid=131cbTKzrylC8-xcIDYmgfiqIrH81Ko8&ehbc=2E312F" width="340" height="240"></iframe>
-              </div>
-              <div class="footer-col-3">
-                  <h3>Usefull Links</h3>
-                  <ul>
-                      <li>Kuponlar</li>
-                      <li>Blog</li>
-                      <li>Return Policy</li>
-                      <li>Join Affiliate</li>
-                  </ul>
-              </div>     
-              <div class="footer-col-4">
-                  <h3>Bizi Takip Et</h3>
-                  <ul>
-                      <li>Facebook</li>
-                      <li>Instagram</li>
-                      <li>Twitter</li>
-                      <li>YouTube</li>
-                  </ul>
-              </div>     
+        </div>
+        <div class="contact" id="contact">
+          <h2> İletişim</h2>
+          <h5>0232 675 76 45</h5>
+        </div>
       </div>
-      <hr>
-      <p class="copyright">ERBAS-TİCARET Her Hakkı Saklıdır © 2022</p>
+      <div class="footer-col-2">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=131cbTKzrylC8-xcIDYmgfiqIrH81Ko8&ehbc=2E312F"
+          width="340" height="240"></iframe>
+      </div>
+      <div class="footer-col-3">
+        <h3>Usefull Links</h3>
+        <ul>
+          <li>Kuponlar</li>
+          <li>Blog</li>
+          <li>Return Policy</li>
+          <li>Join Affiliate</li>
+        </ul>
+      </div>
+      <div class="footer-col-4">
+        <h3>Bizi Takip Et</h3>
+        <ul>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>Twitter</li>
+          <li>YouTube</li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <p class="copyright">ERBAS-TİCARET Her Hakkı Saklıdır © 2022</p>
   </div>
 </div>

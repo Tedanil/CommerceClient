@@ -131,7 +131,7 @@ namespace ETicaretAPI.Persistence.Services
             if (user == null)
                 user = await _userManager.FindByEmailAsync(usernameOrEmail);
             if (user == null)
-                throw new NotFoundUserException();
+                throw new UserNameOrPasswordFailedException();
 
             SignInResult result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             if (result.Succeeded)

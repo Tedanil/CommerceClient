@@ -4,20 +4,26 @@
     font-size: 1.5rem;
     font: italic;
 }
+.container-fluid{
+  border-bottom: 2px solid #ecd0b813;
+
+}
 .navbar-brand:hover{
-  color: #8a443d;
+  color: white;
+  background-color: #f3a365c8;
   border: 2px solid #eee0d4;
   border-radius: 70px;
   transition: 0.3s ease;
 }
 .nav-item a:hover{
-  color: #8a443d;
+  background-color: #f3a365c8;
+  color: white;
   border: 1px solid #eee0d4;
   border-radius: 30px;
   transition: 0.3s ease;
 }
 .nav-item button:hover {
-  background-color: #ff523b;
+  background-color: #f3a365c8;
   color: white;
   border: 1px solid #eee0d4;
   border-radius: 30px;

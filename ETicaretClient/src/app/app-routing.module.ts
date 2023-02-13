@@ -21,7 +21,7 @@ const routes: Routes = [
     ], canActivate: [AuthGuard] 
   },
   { path: "", component: HomeComponent },
-  { path: "basket", loadChildren: () => import("./ui/components/baskets/baskets.module").then(module => module.BasketsModule) },
+  { path: "basket", loadChildren: () => import("./ui/components/baskets/baskets.module").then(module => module.BasketsModule), canActivate: [AuthGuard] },
   { path: "products", loadChildren: () => import("./ui/components/products/products.module").then(module => module.ProductsModule) },
   //{ path: "products/:pageNo", loadChildren: () => import("./ui/components/products/products.module").then(module => module.ProductsModule) },
   //{ path: "products/:id", pathMatch:"full", component: ProductDetailComponent,  },
@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: "login", loadChildren: () => import("./ui/components/login/login.module").then(module => module.LoginModule) },
   { path: "password-reset", loadChildren: () => import("./ui/components/password-reset/password-reset.module").then(module => module.PasswordResetModule) },
   { path: "update-password/:userId/:resetToken", loadChildren: () => import("./ui/components/update-password/update-password.module").then(module => module.UpdatePasswordModule) },
-  { path: "payment", loadChildren: () => import("./ui/components/payment/payment.module").then(module => module.PaymentModule) },
+  { path: "payment", loadChildren: () => import("./ui/components/payment/payment.module").then(module => module.PaymentModule), canActivate: [AuthGuard] },
 
 
   {path: "my-account", component:LayoutComponent2, children: [

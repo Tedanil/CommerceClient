@@ -23,13 +23,23 @@ namespace ETicaretAPI.Application.Features.Commands.AppUser.LoginUser
 
         public async Task<LoginUserCommandResponse> Handle(LoginUserCommandRequest request, CancellationToken cancellationToken)
         {
-            var token = await _authService.LoginAsync(request.UsernameOrEmail, request.Password, 3600);
 
-            return new LoginUserSuccessCommandResponse()
+            try
             {
-                Token = token
-            };
-            
+                var token = await _authService.LoginAsync(request.UsernameOrEmail, request.Password, 3600);
+                return new LoginUserSuccessCommandResponse()
+                {
+                    Token = token
+                };
+            }
+            catch (UserNameOrPasswordFailedException ex)
+            {
+                return new LoginUserErrorCommandResponse()
+                {
+                    Message = ex.Message
+                };
+            }
+
         }   
 
     }

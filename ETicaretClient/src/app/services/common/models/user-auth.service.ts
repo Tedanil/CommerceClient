@@ -1,8 +1,10 @@
 import { SocialUser } from '@abacritt/angularx-social-login';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { firstValueFrom, Observable } from 'rxjs';
 import { TokenResponse } from 'src/app/contracts/token/tokenResponse';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from '../../ui/custom-toastr.service';
+import { AuthService } from '../auth.service';
 import { HttpClientService } from '../http-client.service';
 
 @Injectable({
@@ -10,7 +12,8 @@ import { HttpClientService } from '../http-client.service';
 })
 export class UserAuthService {
 
-  constructor(private httpClientService: HttpClientService, private toastrService: CustomToastrService) { }
+  constructor(private httpClientService: HttpClientService, private toastrService: CustomToastrService,
+    private authService: AuthService) { }
 
 
   async login(usernameOrEmail: string, password: string, callBackFunction?: () => void): Promise<any> {
@@ -21,9 +24,11 @@ export class UserAuthService {
     }, { usernameOrEmail, password })
 
     const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse;
-    if (tokenResponse) {
+    if (tokenResponse.token) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
       localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
+      this.authService.adminCheck();
+
 
 
 
@@ -33,6 +38,13 @@ export class UserAuthService {
         messageType: ToastrMessageType.Success,
         position: ToastrPosition.TopRight,
       })
+    }
+    if(tokenResponse.message){
+      this.toastrService.message("Kullanıcı adı veya şifresi hatalı!!", "Giriş Başarısız", {
+        messageType: ToastrMessageType.Error,
+        position: ToastrPosition.TopRight,
+      })
+      
     }
 
 
