@@ -40,6 +40,13 @@ namespace ETicaretAPI.Persistence.Services
             await _productWriteRepository.SaveAsync();
         }
 
+        public async Task RemoveProductAsync(string id)
+        {
+            await _productWriteRepository.RemoveAsync(id);
+            await _productWriteRepository.SaveAsync();
+        }
+
+
         public async Task<byte[]> QrCodeToProductAsync(string productId)
         {
            Product product = await _productReadRepository.GetByIdAsync(productId);
@@ -60,6 +67,7 @@ namespace ETicaretAPI.Persistence.Services
             return _qRCodeService.GenerateQRCode(plainText);
         }
 
+        
         public async Task StockUpdateToProductAsync(string productId, int stock)
         {
             Product product = await _productReadRepository.GetByIdAsync(productId);

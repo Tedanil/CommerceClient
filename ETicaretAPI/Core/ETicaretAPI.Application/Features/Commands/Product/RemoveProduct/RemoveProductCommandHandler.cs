@@ -1,26 +1,20 @@
-﻿using ETicaretAPI.Application.Repositories;
+﻿using ETicaretAPI.Application.Abstractions.Services;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ETicaretAPI.Application.Features.Commands.Product.RemoveProduct
 {
     public class RemoveProductCommandHandler : IRequestHandler<RemoveProductCommandRequest, RemoveProductCommandResponse>
     {
-        readonly IProductWriteRepository _productWriteRepository;
+        readonly IProductService _productService;
 
-        public RemoveProductCommandHandler(IProductWriteRepository productWriteRepository)
+        public RemoveProductCommandHandler(IProductService productService)
         {
-            _productWriteRepository = productWriteRepository;
+            _productService = productService;
         }
 
         public async Task<RemoveProductCommandResponse> Handle(RemoveProductCommandRequest request, CancellationToken cancellationToken)
         {
-            await _productWriteRepository.RemoveAsync(request.Id);
-            await _productWriteRepository.SaveAsync();
+            await _productService.RemoveProductAsync(request.Id);
             return new();
         }
     }
