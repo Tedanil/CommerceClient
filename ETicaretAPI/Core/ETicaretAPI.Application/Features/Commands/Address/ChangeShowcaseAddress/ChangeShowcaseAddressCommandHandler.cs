@@ -1,32 +1,21 @@
-﻿using ETicaretAPI.Application.Repositories;
+﻿using ETicaretAPI.Application.Abstractions.Services;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ETicaretAPI.Application.Features.Commands.Address.ChangeShowcaseAddress
 {
     public class ChangeShowcaseAddressCommandHandler : IRequestHandler<ChangeShowcaseAddressCommandRequest, ChangeShowcaseAddressCommandResponse>
     {
-        readonly IAddressWriteRepository _adressWriteRepository;
+        readonly IAddressService _addressService;
 
-        public ChangeShowcaseAddressCommandHandler(IAddressWriteRepository adressWriteRepository)
+        public ChangeShowcaseAddressCommandHandler(IAddressService addressService)
         {
-            _adressWriteRepository = adressWriteRepository;
+            _addressService = addressService;
         }
 
         public async Task<ChangeShowcaseAddressCommandResponse> Handle(ChangeShowcaseAddressCommandRequest request, CancellationToken cancellationToken)
         {
-            var data = _adressWriteRepository.Table.FirstOrDefault(a => a.UserId == request.UserId && a.Showcase);
-            if (data != null)
-                data.Showcase = false;
-            var selectedAddress = _adressWriteRepository.Table.FirstOrDefault(a => a.Id == Guid.Parse(request.Id));
-            if (selectedAddress != null)
-                selectedAddress.Showcase = true;
-
-            await _adressWriteRepository.SaveAsync();
+            await _addressService.ChangeShowCaseAddress(request.Id, request.UserId);
 
             return new();
         }

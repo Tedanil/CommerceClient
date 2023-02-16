@@ -9,6 +9,8 @@ namespace ETicaretAPI.Application.Abstractions.Services
 {
     public interface IProductService
     {
+        (object, int) GetAllProducts(int page, int size);
+        object GetProductById(string id);
         public Task CreateProductAsync(CreateProduct createProduct);
         public Task RemoveProductAsync(string id);
         Task<byte[]> QrCodeToProductAsync(string productId);

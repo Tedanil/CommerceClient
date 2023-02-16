@@ -1,4 +1,5 @@
-﻿using ETicaretAPI.Application.Repositories;
+﻿using ETicaretAPI.Application.Abstractions.Services;
+using ETicaretAPI.Application.Repositories;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -13,37 +14,22 @@ namespace ETicaretAPI.Application.Features.Queries.Product.GetAllCategoryProduct
 {
     public class GetAllCategoryProductQueryHandler : IRequestHandler<GetAllCategoryProductQueryRequest, GetAllCategoryProductQueryResponse>
     {
-        readonly IProductReadRepository _productReadRepository;
-        readonly ILogger<GetAllCategoryProductQueryHandler> _logger;
+        readonly IProductService _productService;
 
-        public GetAllCategoryProductQueryHandler(IProductReadRepository productReadRepository, ILogger<GetAllCategoryProductQueryHandler> logger)
+        public GetAllCategoryProductQueryHandler(IProductService productService)
         {
-            _productReadRepository = productReadRepository;
-            _logger = logger;
+            _productService = productService;
         }
+
         public async Task<GetAllCategoryProductQueryResponse> Handle(GetAllCategoryProductQueryRequest request, CancellationToken cancellationToken)
         {
-            var totalProductCount = _productReadRepository.GetAll(false).Count();
-            var products = _productReadRepository.GetAll(false)
-                .Include(p => p.ProductImageFiles)
-                .Select(p => new
-                {
+            var (datas, count) = _productService.GetAllProducts(request.Page, request.Size);
 
-                    p.Id,
-                    p.Name,
-                    p.CategoryName,
-                    p.Description,
-                    p.Stock,
-                    p.Price,
-                    p.CreatedDate,
-                    p.UpdatedDate,
-                    p.ProductImageFiles
-                }).ToList();
 
             return new()
             {
-                Products = products,
-                TotalProductCount = totalProductCount
+                Products = datas,
+                TotalProductCount = count
 
             };
         }

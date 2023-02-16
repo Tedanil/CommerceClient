@@ -45,7 +45,7 @@ export class CategoryListComponent extends BaseComponent implements OnInit {
       this.categoryName = params["categoryName"] ;
 
       const data: { totalProductCount: number, products: List_Product[] } = await this.productService
-        .readCategory(this.categoryName,
+        .read(-1,-1,
           () => {
 
           },

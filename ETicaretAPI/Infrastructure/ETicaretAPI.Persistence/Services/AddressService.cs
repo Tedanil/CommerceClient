@@ -139,5 +139,17 @@ namespace ETicaretAPI.Persistence.Services
                 await _addressWriteRepository.SaveAsync();
             }
         }
+
+        public async Task ChangeShowCaseAddress(string id, string userId)
+        {
+            var data = _addressWriteRepository.Table.FirstOrDefault(a => a.UserId == userId && a.Showcase);
+            if (data != null)
+                data.Showcase = false;
+            var selectedAddress = _addressWriteRepository.Table.FirstOrDefault(a => a.Id == Guid.Parse(id));
+            if (selectedAddress != null)
+                selectedAddress.Showcase = true;
+
+            await _addressWriteRepository.SaveAsync();
+        }
     }
 }

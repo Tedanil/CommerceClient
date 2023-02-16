@@ -2,6 +2,7 @@
 using ETicaretAPI.Application.DTOs.Product;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,54 @@ namespace ETicaretAPI.Persistence.Services
             _productReadRepository = productReadRepository;
             _qRCodeService = qRCodeService;
             _productWriteRepository = productWriteRepository;
+        }
+
+        public (object, int) GetAllProducts(int page, int size)
+        {
+            var query = _productReadRepository.GetAll(false);
+
+            IQueryable<Product> productsQuery = null;
+
+            if (page != -1 && size != -1)
+                productsQuery = query.Skip(page * size).Take(size);
+            else
+                productsQuery = query;
+
+
+            return (productsQuery.Include(p => p.ProductImageFiles)
+                .Select(p => new
+            {
+                p.Id,
+                p.Name,
+                p.CategoryName,
+                p.Description,
+                p.Stock,
+                p.Price,
+                p.CreatedDate,
+                p.UpdatedDate,
+                p.ProductImageFiles
+            }),
+            query.Count());
+        }
+
+        public object GetProductById(string id)
+        {
+            return _productReadRepository.GetAll(false)
+                .Include(p => p.ProductImageFiles)
+                .Where(p => p.Id == Guid.Parse(id))
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.CategoryName,
+                    p.Description,
+                    p.Stock,
+                    p.Price,
+                    p.CreatedDate,
+                    p.UpdatedDate,
+                    p.ProductImageFiles
+                })
+                .FirstOrDefault();
         }
 
         public async Task CreateProductAsync(CreateProduct createProduct)
@@ -77,5 +126,7 @@ namespace ETicaretAPI.Persistence.Services
             product.Stock = stock;
             await _productWriteRepository.SaveAsync();
         }
+
+      
     }
 }
