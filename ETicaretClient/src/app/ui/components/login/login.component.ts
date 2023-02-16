@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent, SpinnerType } from 'src/app/base/base.component';
 import { AuthService } from 'src/app/services/common/auth.service';
 import { UserService } from 'src/app/services/common/models/user.service';
-import { FacebookLoginProvider, GoogleLoginProvider, GoogleSigninButtonDirective, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { async } from '@angular/core/testing';
 import { UserAuthService } from 'src/app/services/common/models/user-auth.service';
 import { FormGroup } from '@angular/forms';

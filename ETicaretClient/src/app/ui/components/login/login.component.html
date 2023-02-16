@@ -12,16 +12,23 @@
     </div>
     <a style="margin-top:25px; color: #0171d3; text-align: center; font-size: 14px;" routerLink="/password-reset"
       class="btn ">Şifremi Unuttum</a>
-    <br/>
+    <br />
+    <div class="socialbutons">
     <button style="margin-top:5px; background: #ff8b39; color: azure;" type="submit" class="btn"
       (click)="login(txtUsernameOrEmail.value, txtPassword.value)">Giriş Yap</button>
+    </div>
     <div class="line"></div>
-   <button class="exbuton button" (click)="facebookLogin()" >Facebook ile giriş yap</button>
-   <asl-google-signin-button> </asl-google-signin-button>
+    <div class="socialbutons">
 
-    
-       
-    
-    
-  </div> 
+      <button class="exbuton button" (click)="facebookLogin()">Facebook ile giriş yap</button>
+    </div>
+    <div class="socialbutons">
+      <asl-google-signin-button type="standard" size="large" shape="rectangular" width="400" theme="filled_black" logo_alignment="center">
+      </asl-google-signin-button>
+    </div>
+
+  </div>
+
+
+
 </div>

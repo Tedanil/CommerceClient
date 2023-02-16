@@ -49,11 +49,7 @@ h1{
 .form-group input:focus{
     outline: 0;
 }
-button{
-    height: 40px;
-    width: 100%;
-    border: none;
-}
+
 a:hover{
     text-decoration: underline;
     
@@ -76,13 +72,26 @@ a:hover{
     padding: 0 15px;
 
 }
+button{
+    height: 40px;
+    width: 400px;
+    border: none;
+    margin-bottom: 25px;
+}
 .exbuton{
     background: #0171d3;
     color: white;
 }
 .exbuton2{
-    background: #d4d4d4;
+    background: #d02f2f;
     margin-top: 10px;
 }
+.socialbutons{
+    margin-left: 32px;
+}
+
+  
+  
  
+
 

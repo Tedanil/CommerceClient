@@ -1,4 +1,5 @@
-<a routerLink="/my-account/create-address"> Yeni Adres Ekle</a>
+<a routerLink="/my-account/create-address" style="color: green;"> <img src="../../../../../../assets/plus-circle2.gif" width="40px" height="40px"> Yeni Adres Ekle  </a>
+
 
 <div class="container">
   <div class="row">
@@ -18,7 +19,7 @@
       <h1>Kayıtlı Bir Adresiniz bulunmuyor. Alışverişi tamamlamak için bir adres ekleyiniz.!</h1>
     </div>
     <div *ngIf="!addressId" style="margin: 90px !important;">
-      <h2>Alışverişi tamamlamak için bir adres seçiniz.!</h2>
+      <h2> <img src="../../../../../../assets/arrow-2.gif" width="100px" height="100px"> Alışverişi tamamlamak için bir adres seçiniz.!</h2>
     </div>
     <div *ngIf="!basketItems.length" style="margin: 90px !important;">
       <h2>Alışverişi tamamlamak için sepetinize ürün ekleyiniz!</h2>
@@ -26,5 +27,5 @@
 </div>
 
 <div class="modal-footer" >
-    <button type="button" class="btn btn-success" (click)="shoppingComplete()" [disabled]="!addressId || !basketItems.length"> Kaydet Ve Alışverişi Tamamla</button>
+    <button type="button" class="btn btn-success" style="margin-bottom: 20px;" (click)="shoppingComplete()" [disabled]="!addressId || !basketItems.length"> Kaydet Ve Alışverişi Tamamla</button>
   </div>

@@ -1,4 +1,4 @@
-<a routerLink="/my-account/create-address"> Yeni Adres Ekle</a>
+<a routerLink="/my-account/create-address" style="color: green;"> <img src="../../../../../../assets/plus-circle2.gif" width="40px" height="40px"> Yeni Adres Ekle  </a>
 
 <div class="container">
   <div class="row">
@@ -20,7 +20,7 @@
     </div>
     <div *ngIf="infos.length == 0"> Kayıtlı adresiniz bulunamadı.<br>
       Siparişleriniz için kullanabileceğiniz adres eklemek için ekranın üstünden <br> “Yeni Adres Ekle” linkine tıklayarak adres oluşturabilirsiniz </div>
-      <div *ngIf="infos.length == 1"> <a routerLink="/payment"> ALIŞVERİŞE DEVAM ETMEK İÇİN TIKLAYINIZ</a></div>
+      <div *ngIf="infos.length == 1"> <a routerLink="/payment" style="color: green; margin-top: 90px !important;"> ALIŞVERİŞE DEVAM ETMEK İÇİN TIKLAYINIZ <img src="../../../../../../assets/basjet.gif" width="40px" height="40px"> </a></div>
   </div>
   
 </div>
