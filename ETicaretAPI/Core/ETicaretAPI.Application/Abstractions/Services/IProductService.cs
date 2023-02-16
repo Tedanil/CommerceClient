@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ETicaretAPI.Application.DTOs.Product;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace ETicaretAPI.Application.Abstractions.Services
 {
     public interface IProductService
     {
+        public Task CreateProductAsync(CreateProduct createProduct);
         Task<byte[]> QrCodeToProductAsync(string productId);
         Task StockUpdateToProductAsync(string productId, int stock);
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using ETicaretAPI.Application.Abstractions.Services;
+using ETicaretAPI.Application.DTOs.Product;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Domain.Entities;
 using System;
@@ -21,6 +22,22 @@ namespace ETicaretAPI.Persistence.Services
             _productReadRepository = productReadRepository;
             _qRCodeService = qRCodeService;
             _productWriteRepository = productWriteRepository;
+        }
+
+        public async Task CreateProductAsync(CreateProduct createProduct)
+        {
+            await _productWriteRepository.AddAsync(new()
+            {
+                Name = createProduct.Name,
+                Description = createProduct.Description,
+                CategoryName = createProduct.CategoryName,
+                Price = (long)createProduct.Price,
+                Stock = createProduct.Stock
+
+
+
+            });
+            await _productWriteRepository.SaveAsync();
         }
 
         public async Task<byte[]> QrCodeToProductAsync(string productId)
