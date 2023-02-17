@@ -88,7 +88,7 @@ namespace ETicaretAPI.API.Controllers
             return StatusCode((int)HttpStatusCode.Created);
 
         }
-        [HttpPut]
+        [HttpPut("[action]")]
         [Authorize(AuthenticationSchemes = "Admin")]
         [AuthorizeDefinition(Menu = AuthorizeDefinitionConstants.Products,
             ActionType = ActionType.Updating, Definition = "Update Product")]

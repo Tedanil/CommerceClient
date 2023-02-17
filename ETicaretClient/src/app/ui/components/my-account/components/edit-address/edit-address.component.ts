@@ -95,7 +95,7 @@ export class EditAddressComponent extends BaseComponent implements OnInit {
         position: Position.TopRight
       }));
       this.singleAddressInfo = allInfos.singleAddressInfo
-      debugger
+      
       
     });
 

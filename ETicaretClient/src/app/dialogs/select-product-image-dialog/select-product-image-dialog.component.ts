@@ -25,60 +25,59 @@ export class SelectProductImageDialogComponent extends BaseDialog<SelectProductI
     @Inject(MAT_DIALOG_DATA) public data: SelectProductImageState | string,
     private productService: ProductService,
     private spinner: NgxSpinnerService,
-    private dialogService: DialogService) 
-  {
-     super(dialogRef)
-   }
-
-   
-
-   
-
-@Output() options: Partial<FileUploadOptions> = {
-  accept: ".png, .jpg, .jpeg, .gif",
-  action: "upload",
-  controller: "products",
-  explanation: "Lütfen resim seçin veya buraya sürükleyin",
-  isAdminPage: true,
-  queryString: `id=${this.data}`
- };
-
- images: List_Product_Image[];
+    private dialogService: DialogService) {
+    super(dialogRef)
+  }
 
 
-async ngOnInit() {
-  this.spinner.show(SpinnerType.SquareLoader);
 
-  this.images = await this.productService.readImages(this.data as string, () => this.spinner.hide(SpinnerType.SquareLoader));
-     
-}
+
+
+  @Output() options: Partial<FileUploadOptions> = {
+    accept: ".png, .jpg, .jpeg, .gif",
+    action: "upload",
+    controller: "products",
+    explanation: "Lütfen resim seçin veya buraya sürükleyin",
+    isAdminPage: true,
+    queryString: `id=${this.data}`
+  };
+
+  images: List_Product_Image[];
+
+
+  async ngOnInit() {
+    this.spinner.show(SpinnerType.SquareLoader);
+
+    this.images = await this.productService.readImages(this.data as string, () => this.spinner.hide(SpinnerType.SquareLoader));
+
+  }
   async deleteImage(imageId: string, event: any) {
-     this.dialogService.openDialog({
+    this.dialogService.openDialog({
       componentType: DeleteDialogComponent,
       data: DeleteState.Yes,
       afterClosed: async () => {
         this.spinner.show(SpinnerType.SquareLoader)
         await this.productService.deleteImage(this.data as string, imageId, () => {
-           this.spinner.hide(SpinnerType.SquareLoader);
-           var card = $(event.srcElement).parent().parent();
-           card.fadeOut(500);
-      });
+          this.spinner.hide(SpinnerType.SquareLoader);
+          var card = $(event.srcElement).parent().parent();
+          card.fadeOut(500);
+        });
 
       }
-     })
+    })
 
 
 
 
 
-}
-showCase(imageId: string) {
-  this.spinner.show(SpinnerType.SquareJellyBox);
+  }
+  showCase(imageId: string) {
+    this.spinner.show(SpinnerType.SquareJellyBox);
 
-  this.productService.changeShowcaseImage(imageId, this.data as string, () => {
-    this.spinner.hide(SpinnerType.SquareJellyBox);
-  });
-}
+    this.productService.changeShowcaseImage(imageId, this.data as string, () => {
+      this.spinner.hide(SpinnerType.SquareJellyBox);
+    });
+  }
 }
 
 export enum SelectProductImageState {

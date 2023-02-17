@@ -5,6 +5,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { List_Product } from 'src/app/contracts/list_product';
 import { firstValueFrom, Observable } from 'rxjs';
 import { List_Product_Image } from 'src/app/contracts/list_product_image';
+import { Update_Product } from 'src/app/contracts/product/update_product';
 
 
 declare var $: any
@@ -85,6 +86,20 @@ export class ProductService {
        
     return await promiseData;
      
+  }
+
+  async update(product: Update_Product, successCallBack?: () => void, errorCallBack?: (error) => void): Promise<void> {
+    const observable: Observable<any> = this.httpClientService.put({
+      controller: "products",
+      action: "put"
+    }, product);
+    
+
+    const promiseData =  firstValueFrom(observable);
+    promiseData.then(successCallBack)
+    .catch(errorCallBack);
+
+   return await promiseData ;
   }
 
   async delete(id: string) {
