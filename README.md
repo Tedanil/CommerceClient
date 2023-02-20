@@ -68,7 +68,8 @@ Libraries Used:
 "ngx-toastr": "^15.0.0",    
 
 
-#Architecture:
+<h2>Architecture:</h2>
+
 The project has been developed using the Onion Architecture pattern, which provides a clear separation of concerns between the layers of the application. The following sections provide detailed information on:
 
 -Data flow
