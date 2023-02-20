@@ -14,7 +14,7 @@ The project includes documentation to help developers understand the architectur
 Overall, this project provides a reliable and scalable solution for building an online shopping website with essential features for both customers and site administrators.
 
 
-<h2>Technologies and Tools Used:</h2>
+<h2>Technologies and Tools Used</h2>
 
 - .NET Core 6
 - Entity Framework Core 6.0.9
@@ -24,7 +24,7 @@ Overall, this project provides a reliable and scalable solution for building an 
 - Bootstrap 5.2.1
 
 
-<h2>Libraries Used:</h2>
+<h2>Libraries Used</h2>
 
 "BACKEND"
 - Azure.Storage.Blobs 12.13.1
@@ -70,11 +70,11 @@ Overall, this project provides a reliable and scalable solution for building an 
 
 <h2>Architecture</h2>
 
-The project has been developed using the Onion Architecture pattern, which provides a clear separation of concerns between the layers of the application. The following sections provide detailed information on:
+The project has been developed using the <strong> Onion </strong> Architecture pattern, which provides a clear separation of concerns between the layers of the application. The following sections provide detailed information on:
 
--Data flow
--Relationships
--Communication between modules
+-<strong>Data flow</strong>
+-<strong>Relationships</strong>
+-<strong>Communication between modules</strong>
 In the Onion Architecture, the application is divided into layers, each with a specific responsibility. The layers are organized in a way that the outer layers depend on the inner layers, but not vice versa. This allows for easy testing, maintenance, and scalability of the application.
 
 The three main layers of the Onion Architecture are the Presentation layer, the Application layer, and the Domain layer. The Presentation layer is responsible for handling user input and displaying output. The Application layer contains the business logic of the application, and the Domain layer defines the data model and the rules of the application.
