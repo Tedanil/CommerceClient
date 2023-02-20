@@ -66,6 +66,26 @@ Libraries Used:
 "ngx-scanner-qrcode": "^1.1.4",
 "ngx-spinner": "^14.0.0",
 "ngx-toastr": "^15.0.0",    
+
+
+#Architecture:
+The project has been developed using the Onion Architecture pattern, which provides a clear separation of concerns between the layers of the application. The following sections provide detailed information on:
+
+-Data flow
+-Relationships
+-Communication between modules
+In the Onion Architecture, the application is divided into layers, each with a specific responsibility. The layers are organized in a way that the outer layers depend on the inner layers, but not vice versa. This allows for easy testing, maintenance, and scalability of the application.
+
+The three main layers of the Onion Architecture are the Presentation layer, the Application layer, and the Domain layer. The Presentation layer is responsible for handling user input and displaying output. The Application layer contains the business logic of the application, and the Domain layer defines the data model and the rules of the application.
+
+The Onion Architecture also includes the Infrastructure layer, which provides access to external services and resources. This layer is isolated from the rest of the application, and changes in the infrastructure do not affect the other layers.
+
+The result of using the Onion Architecture is a flexible and maintainable application that is easy to modify and extend.
+
+
+
+
+
     
 
 
