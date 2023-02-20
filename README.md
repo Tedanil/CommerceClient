@@ -14,7 +14,7 @@ The project includes documentation to help developers understand the architectur
 Overall, this project provides a reliable and scalable solution for building an online shopping website with essential features for both customers and site administrators.
 
 
-Technologies and Tools Used:
+<h2>Technologies and Tools Used:</h2>
 
 - .NET Core 6
 - Entity Framework Core 6.0.9
@@ -24,7 +24,7 @@ Technologies and Tools Used:
 - Bootstrap 5.2.1
 
 
-Libraries Used:
+<h2>Libraries Used:</h2>
 
 "BACKEND"
 - Azure.Storage.Blobs 12.13.1
@@ -68,7 +68,7 @@ Libraries Used:
 "ngx-toastr": "^15.0.0",    
 
 
-<h2>Architecture:</h2>
+<h2>Architecture</h2>
 
 The project has been developed using the Onion Architecture pattern, which provides a clear separation of concerns between the layers of the application. The following sections provide detailed information on:
 
