@@ -1,5 +1,7 @@
 # eCommerceClient
 
+![image](https://user-images.githubusercontent.com/111522835/222251218-22c04f63-af64-42de-b4ca-3db8b91b6a83.png)
+
 Project Description:
 This project is an online shopping website where customers can register, browse products, and place orders. The website provides a platform for customers to purchase products from different categories. Customers can create an account to manage their personal information, view their order history, and track their orders.
 
