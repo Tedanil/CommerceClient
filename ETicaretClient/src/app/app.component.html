@@ -44,6 +44,11 @@
             </li> -->
 
       </ul>
+
+      <div>
+        <input type="text" #searchValue  (keyup.enter)="searchProducts(searchValue)">
+        <button (click)="searchProducts(searchValue)">Ara</button>
+      </div>
       <button mat-icon-button *ngIf="authService.isAuthenticated" [matMenuTriggerFor]="menu" style="margin-right: 70px !important;">
         <img src="../../../../assets/21-avatar-flat.gif" width="30px" height="30px"> Hesabım 
       </button>

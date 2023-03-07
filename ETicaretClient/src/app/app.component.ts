@@ -25,6 +25,9 @@ export class AppComponent  {
     authService.identityCheck();   
   }
 
+  searchProducts(searchValue: HTMLInputElement) {
+    this.router.navigateByUrl(`productSearch/${searchValue.value}`);
+  }
 
  
 

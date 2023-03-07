@@ -15,6 +15,7 @@ import { LayoutModule } from './my-account/layout/layout.module';
 import { AccountComponentsModule } from './my-account/components/account-components.module';
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { PaymentModule } from './payment/payment.module';
+import { ProductSearchModule } from './product-search/product-search.module';
 
 
 
@@ -40,7 +41,8 @@ import { PaymentModule } from './payment/payment.module';
     LayoutModule,
     AccountComponentsModule,
     ProductDetailModule,
-    PaymentModule
+    PaymentModule,
+    ProductSearchModule
     
     
     
