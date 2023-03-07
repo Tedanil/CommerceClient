@@ -53,6 +53,34 @@ namespace ETicaretAPI.Persistence.Services
             query.Count());
         }
 
+        public (object, int) GetProductsByKeyword(string keyword)
+        {
+            var query = _productReadRepository.GetAll(false);
+            IQueryable<Product> productsQuery = null;
+
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                productsQuery = query.Where(p => p.Name.Contains(keyword) || p.Description.Contains(keyword.Substring(0, Math.Min(keyword.Length, 3))));
+            }
+
+           
+
+            return (productsQuery.Include(p => p.ProductImageFiles)
+                .Select(p => new
+                {
+                    p.Id,
+                    p.Name,
+                    p.CategoryName,
+                    p.Description,
+                    p.Stock,
+                    p.Price,
+                    p.CreatedDate,
+                    p.UpdatedDate,
+                    p.ProductImageFiles
+                }),
+                productsQuery.Count());
+        }
+
         public object GetProductById(string id)
         {
             return _productReadRepository.GetAll(false)
@@ -127,6 +155,6 @@ namespace ETicaretAPI.Persistence.Services
             await _productWriteRepository.SaveAsync();
         }
 
-      
+        
     }
 }

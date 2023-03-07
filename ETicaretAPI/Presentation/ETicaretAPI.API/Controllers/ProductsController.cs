@@ -13,6 +13,7 @@ using ETicaretAPI.Application.Features.Commands.ProductImageFile.RemoveProductIm
 using ETicaretAPI.Application.Features.Commands.ProductImageFile.UploadProductImage;
 using ETicaretAPI.Application.Features.Queries.Product.GetAllCategoryProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct;
+using ETicaretAPI.Application.Features.Queries.Product.GetProductsByKeyword;
 using ETicaretAPI.Application.Features.Queries.ProductImageFile.GetProductImages;
 using ETicaretAPI.Application.Repositories;
 using ETicaretAPI.Application.RequestParameters;
@@ -56,6 +57,14 @@ namespace ETicaretAPI.API.Controllers
             GetAllCategoryProductQueryResponse response = await _mediator.Send(getAllCategoryProductQueryRequest);
             return Ok(response);
         }
+
+        [HttpGet("[action]/{keyword}")]
+        public async Task<IActionResult> GetProductsByKeyword([FromRoute] GetProductsByKeywordQueryRequest getProductsByKeywordQueryRequest)
+        {
+            GetProductsByKeywordQueryResponse response = await _mediator.Send(getProductsByKeywordQueryRequest);
+            return Ok(response);
+        }
+
 
         [HttpGet("qrcode/{productId}")]
         [Authorize(AuthenticationSchemes = "Admin")]
