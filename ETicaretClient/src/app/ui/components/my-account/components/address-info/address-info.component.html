@@ -1,4 +1,5 @@
-<a routerLink="/my-account/create-address" style="color: green;"> <img src="../../../../../../assets/plus-circle2.gif" width="40px" height="40px"> Yeni Adres Ekle  </a>
+<a routerLink="/my-account/create-address" style="color: green;"> <img src="../../../../../../assets/plus-circle2.gif"
+    width="40px" height="40px"> Yeni Adres Ekle </a>
 
 <div class="container">
   <div class="row">
@@ -11,16 +12,19 @@
           <h5 class="card-text">{{info.description}} </h5>
           <h5 class="card-text">{{info.district}}/{{info.city}} </h5>
           <h5 class="card-text">{{info.phoneNumber}} </h5>
-          <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25"
-              height="25" (click)="deleteAddress(info.id)"> </a>
+          <!-- <a> <img style="cursor:pointer; margin-right: 15px;" src="../../../../../assets/delete.gif" width="25"
+              height="25" (click)="deleteAddress(info.id)"> </a> -->
           <a routerLink="/my-account/edit-address/{{info.id}}" class="btn btn-success" style="margin-left: 15px;">Adresi
             Düzenle</a>
         </div>
       </div>
     </div>
     <div *ngIf="infos.length == 0"> Kayıtlı adresiniz bulunamadı.<br>
-      Siparişleriniz için kullanabileceğiniz adres eklemek için ekranın üstünden <br> “Yeni Adres Ekle” linkine tıklayarak adres oluşturabilirsiniz </div>
-      <div *ngIf="infos.length == 1"> <a routerLink="/payment" style="color: green; margin-top: 90px !important;"> ALIŞVERİŞE DEVAM ETMEK İÇİN TIKLAYINIZ <img src="../../../../../../assets/basjet.gif" width="40px" height="40px"> </a></div>
+      Siparişleriniz için kullanabileceğiniz adres eklemek için ekranın üstünden <br> “Yeni Adres Ekle” linkine
+      tıklayarak adres oluşturabilirsiniz </div>
+    <div *ngIf="infos.length == 1"> <a routerLink="/payment" style="color: green; margin-top: 90px !important;">
+        ALIŞVERİŞE DEVAM ETMEK İÇİN TIKLAYINIZ <img src="../../../../../../assets/basjet.gif" width="40px"
+          height="40px"> </a></div>
   </div>
-  
+
 </div>

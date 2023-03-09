@@ -26,6 +26,10 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxScannerQrcodeModule } from 'ngx-scanner-qrcode';
 import { UpdateOrderStatusDialogComponent } from './update-order-status-dialog/update-order-status-dialog.component';
 import { EditProductDialogComponent } from './edit-product-dialog/edit-product-dialog.component';
+import { PrivacyPolicyDialogComponent } from './privacy-policy-dialog/privacy-policy-dialog.component';
+import { CookiePolicyDialogComponent } from './cookie-policy-dialog/cookie-policy-dialog.component';
+import { ConditionsDialogComponent } from './conditions-dialog/conditions-dialog.component';
+import { PreInformationDialogComponent } from './pre-information-dialog/pre-information-dialog.component';
 
 
 
@@ -41,7 +45,11 @@ import { EditProductDialogComponent } from './edit-product-dialog/edit-product-d
   QrcodeDialogComponent,
   QrcodeReadingDialogComponent,
   UpdateOrderStatusDialogComponent,
-  EditProductDialogComponent],
+  EditProductDialogComponent,
+  PrivacyPolicyDialogComponent,
+  CookiePolicyDialogComponent,
+  ConditionsDialogComponent,
+  PreInformationDialogComponent],
   imports: [
     CommonModule,
     MatDialogModule, MatButtonModule, MatCardModule,

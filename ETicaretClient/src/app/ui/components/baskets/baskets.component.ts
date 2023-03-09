@@ -38,15 +38,33 @@ export class BasketsComponent extends BaseComponent implements OnInit {
     this.hideSpinner(SpinnerType.SquareLoader)
   }
 
+  getBasketTotal(): number {
+    let total = 0;
+    this.basketItems.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    return total;
+  }
+
   async changeQuantity(object: any) {
     this.showSpinner(SpinnerType.SquareLoader)
     const basketItemId: string = object.target.attributes["id"].value;
-    const quantity: number = object.target.value;
+    let quantity: number = parseInt(object.target.value);
+  
+  // Check if quantity is valid
+  if (quantity <= 0) {
+    this.toastrService.message("Lütfen geçerli bir adet giriniz!", "Hata! ", {
+      messageType: ToastrMessageType.Error,
+      position: ToastrPosition.TopRight
+    });
+    quantity = 1;
+  }
     const basketItem: Update_Basket_Item = new Update_Basket_Item();
     basketItem.basketItemId = basketItemId;
     basketItem.quantity = quantity;
     await this.basketService.updateQuantity(basketItem);
     this.hideSpinner(SpinnerType.SquareLoader)
+    this.ngOnInit();
   }
 
   removeBasketItem(basketItemId: string) {

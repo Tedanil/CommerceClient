@@ -4,11 +4,36 @@
     box-sizing: border-box;
   }
   
-  .container .row .col-3{
-    //background: radial-gradient(#AA9EFF, #9285FF, #FF94C1, #FF80CD);
-  
-  }
+
   
   .ng-star-inserted{
     margin: 0 !important;
   }
+
+  input[type=checkbox] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  input[type=checkbox]:checked {
+    border-color: #d1d1d1;
+    background-color: #05f455;
+  }
+  
+  input[type=checkbox]:checked::after {
+    content: "\2714";
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+  }
+
+  

@@ -12,9 +12,10 @@ export class DialogService {
   openDialog(dialogParameters: Partial<DialogParameters>): void {
     const dialogRef = this.dialog.open(dialogParameters.componentType, {
       width: dialogParameters.options?.width,
-      height: dialogParameters.options?.heigth,
+      height: dialogParameters.options?.height || '500px',
       position: dialogParameters.options?.position,
       data: dialogParameters.data,
+     
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -34,6 +35,7 @@ export class DialogParameters {
 
 export class DialogOptions {
   width?: string = "250px";
-  heigth?: string;
+  height?: string;
   position?: DialogPosition;
+  
 }

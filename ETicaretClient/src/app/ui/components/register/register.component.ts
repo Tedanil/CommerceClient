@@ -6,7 +6,9 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { BaseComponent } from 'src/app/base/base.component';
 import { Create_User } from 'src/app/contracts/users/create_user';
+import { PrivacyPolicyDialogComponent } from 'src/app/dialogs/privacy-policy-dialog/privacy-policy-dialog.component';
 import { User } from 'src/app/entities/user';
+import { DialogService } from 'src/app/services/common/dialog.service';
 import { UserService } from 'src/app/services/common/models/user.service';
 import { CustomToastrService, ToastrMessageType, ToastrPosition } from 'src/app/services/ui/custom-toastr.service';
 
@@ -19,7 +21,7 @@ export class RegisterComponent extends BaseComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService,
      private toastrService: CustomToastrService, private router: Router,
-    spinner: NgxSpinnerService) {
+    spinner: NgxSpinnerService, private dialogService: DialogService,) {
       super(spinner)
      }
 
@@ -79,6 +81,18 @@ async onSubmit(user: User)  {
    
 
 
+}
+
+showPolicy(){
+  this.dialogService.openDialog({
+    componentType: PrivacyPolicyDialogComponent,
+   
+    options: {
+      width: "750px",
+      
+      
+    }
+  });
 }
 
 }

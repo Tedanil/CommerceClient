@@ -1,30 +1,3 @@
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.deps.json
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.pdb
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Domain.dll
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Domain.pdb
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.AssemblyReference.cache
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.AssemblyInfoInputs.cache
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.AssemblyInfo.cs
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.CoreCompileInputs.cache
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.CopyComplete
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\refint\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.pdb
-C:\Users\anild\Desktop\ETicaretUygulamasi\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ref\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.deps.json
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Application.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Domain.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\bin\Debug\net6.0\ETicaretAPI.Domain.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.AssemblyReference.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.AssemblyInfoInputs.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.AssemblyInfo.cs
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.CoreCompileInputs.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.csproj.CopyComplete
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\refint\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ETicaretAPI.Application.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Core\ETicaretAPI.Application\obj\Debug\net6.0\ref\ETicaretAPI.Application.dll
+version https://git-lfs.github.com/spec/v1
+oid sha256:477a3cc71cd9f00f528542464aedcf13fc4420dee60b8add8cef5eb79df80223
+size 4151

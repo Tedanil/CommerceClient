@@ -1,17 +1,3 @@
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.deps.json
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.SignalR.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.Application.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.Domain.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.Application.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\bin\Debug\net6.0\ETicaretAPI.Domain.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.csproj.AssemblyReference.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.AssemblyInfoInputs.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.AssemblyInfo.cs
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.csproj.CoreCompileInputs.cache
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.csproj.CopyComplete
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\refint\ETicaretAPI.SignalR.dll
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ETicaretAPI.SignalR.pdb
-C:\Users\anild\Desktop\TEST\CommerceClient\ETicaretAPI\Infrastructure\ETicaretAPI.SignalR\obj\Debug\net6.0\ref\ETicaretAPI.SignalR.dll
+version https://git-lfs.github.com/spec/v1
+oid sha256:19ddddd07e00571b3845eb6c032f5f3f51f27e38b6f99ce003706862455dc59b
+size 2391

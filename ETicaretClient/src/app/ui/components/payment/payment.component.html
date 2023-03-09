@@ -24,6 +24,18 @@
     <div *ngIf="!basketItems.length" style="margin: 90px !important;">
       <h2>Alışverişi tamamlamak için sepetinize ürün ekleyiniz!</h2>
     </div>
+    <div style="margin-bottom: 10px; margin-top: 20px;">
+      “Kaydet ve Alışverişi Tamamla” butonunu tıklayarak kişisel bilgilerinizin doğru olduğunu onaylamış,  
+      <u style="cursor: pointer;" (click)="showConditions()">Hükümler,</u>
+      <u style="cursor: pointer;" (click)="showPolicy()">Gizlilik Politikası</u>
+      <u style="cursor: pointer;" (click)="showConditions()"> ve Koşulları </u>
+      kabul etmiş olursunuz.
+    </div> 
+    <div>
+      <input type="checkbox" id="acceptance" [(ngModel)]="isAccepted">
+      <label for="acceptance"> <u style="cursor: pointer;" (click)="showPreInformation()">Ön bilgilendirme formu, Satış Sözleşmesi ve Cayma Hakkını</u> okudum, kabul ediyorum.</label>
+    </div>
+    
 </div>
 
 <div class="modal-footer" >

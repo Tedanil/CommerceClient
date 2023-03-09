@@ -44,6 +44,9 @@
             </li> -->
 
       </ul>
+      
+       
+      
 
       <div>
         <input type="text" #searchValue  (keyup.enter)="searchProducts(searchValue)">
@@ -92,6 +95,17 @@
     <ng-template appDynamicLoadComponent></ng-template>
   </div>
 </div>
+
+<section id="cookie-banner" *ngIf="showCookieBanner">
+  <div class="cookie-banner-content">
+    <p>Ziyaretiniz sırasında kişisel verileriniz siteyi kullanımınızı analiz etmek, reklamları kişiselleştirmek ve sosyal medya özellikleri sağlamak amacıyla çerezler aracılığıyla işlenmektedir. Daha fazla bilgi için</p>
+    <u style="cursor: pointer;" (click)="showPolicy()">Çerez Aydınlatma Metni’ni</u> okuyabilirsiniz.
+  </div>
+  <div class="cookie-banner-button">
+    <button style="background-color: rgb(228, 225, 225); width: 100px; height: 40px;" (click)="acceptCookies()">Anladım</button>
+  </div>
+</section>
+
 
 <!--footer-->
 <div class="footer">
