@@ -16,6 +16,9 @@ namespace ETicaretAPI.Application.Abstractions.Services
         public Task RemoveProductAsync(string id);
         Task<byte[]> QrCodeToProductAsync(string productId);
         Task StockUpdateToProductAsync(string productId, int stock);
-        
+
+        (object, int) GetTopSellingProducts();
+
+
     }
 }
