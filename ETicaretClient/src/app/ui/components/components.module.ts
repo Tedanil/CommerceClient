@@ -16,6 +16,7 @@ import { AccountComponentsModule } from './my-account/components/account-compone
 import { ProductDetailModule } from './product-detail/product-detail.module';
 import { PaymentModule } from './payment/payment.module';
 import { ProductSearchModule } from './product-search/product-search.module';
+import { OrderDetailModule } from './order-detail/order-detail.module';
 
 
 
@@ -42,7 +43,8 @@ import { ProductSearchModule } from './product-search/product-search.module';
     AccountComponentsModule,
     ProductDetailModule,
     PaymentModule,
-    ProductSearchModule
+    ProductSearchModule,
+    OrderDetailModule
     
     
     

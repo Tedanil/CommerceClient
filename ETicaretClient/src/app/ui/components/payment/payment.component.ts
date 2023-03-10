@@ -105,6 +105,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
       },
 
       data: ShoppingCompleteState.Yes,
+      
 
       afterClosed: async () => {
         this.showSpinner(SpinnerType.SquareLoader);
@@ -120,8 +121,9 @@ export class PaymentComponent extends BaseComponent implements OnInit {
         this.router.navigate(["/"]);
 
       }
+      
     });
-
+    
 
 
 

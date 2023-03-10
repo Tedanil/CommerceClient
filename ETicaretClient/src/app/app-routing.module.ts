@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: "products/:categoryName", loadChildren: () => import("./ui/components/products/products.module").then(module => module.ProductsModule) },
   { path: "productDetail/:id", loadChildren: () => import("./ui/components/product-detail/product-detail.module").then(module => module.ProductDetailModule) },
   { path: "productSearch/:searchValue", loadChildren: () => import("./ui/components/product-search/product-search.module").then(module => module.ProductSearchModule) },
+  { path: "orderDetail/:id", loadChildren: () => import("./ui/components/order-detail/order-detail.module").then(module => module.OrderDetailModule) },
   { path: "register", loadChildren: () => import("./ui/components/register/register.module").then(module => module.RegisterModule) },
   { path: "login", loadChildren: () => import("./ui/components/login/login.module").then(module => module.LoginModule) },
   { path: "password-reset", loadChildren: () => import("./ui/components/password-reset/password-reset.module").then(module => module.PasswordResetModule) },
