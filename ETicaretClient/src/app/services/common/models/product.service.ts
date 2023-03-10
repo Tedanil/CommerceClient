@@ -85,6 +85,22 @@ export class ProductService {
     return await promiseData;
     
   }
+
+  async getTopSellingProducts( successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void) {
+    const observable: Observable<{totalProductCount: number;   products: List_Product[] }> = this.httpClientService.get<{totalProductCount: number;   products: List_Product[] }>({
+      controller: "products",
+      action: "gettopsellingproducts"
+    });
+
+    const promiseData = firstValueFrom(observable);
+    promiseData.then(value => successCallBack())
+      .catch(error => errorCallBack(error))
+      
+
+    return await promiseData;
+    
+  }
+
   async readCategory(categoryName: string, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{totalProductCount: number;   products: List_Product[] }> {
     const promiseData: Promise<{totalProductCount: number;   products: List_Product[] }> = this.httpClientService.get< {totalProductCount: number;   products: List_Product[] }>({
       controller: "products",

@@ -171,3 +171,10 @@ small{
     filter: grayscale(0);
 
 }
+
+.card:hover {
+    border: 2px solid #ff7f50;
+    transform: scale(1.1);
+    filter: grayscale(0);
+  }
+  
