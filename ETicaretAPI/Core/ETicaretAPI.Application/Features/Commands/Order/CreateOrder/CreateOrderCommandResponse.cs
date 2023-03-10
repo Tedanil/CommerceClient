@@ -2,5 +2,7 @@
 {
     public class CreateOrderCommandResponse
     {
+        public string Id { get; set; }
+
     }
 }

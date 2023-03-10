@@ -48,6 +48,7 @@ export class PaymentComponent extends BaseComponent implements OnInit {
   addressId: string;
   basketItems: List_Basket_Item[];
   isAccepted: boolean = false;
+  orderId: string;
 
 
 
@@ -112,13 +113,14 @@ export class PaymentComponent extends BaseComponent implements OnInit {
         const order: Create_Order = new Create_Order();
         order.address = this.addressId as string;
         order.description = "Falanca filanca...";
-        await this.orderService.create(order);
+       this.orderId = await this.orderService.create(order);
         this.hideSpinner(SpinnerType.SquareLoader);
         this.toastrService.message("Sipariş alınmıştır!", "Sipariş Oluşturuldu!", {
           messageType: ToastrMessageType.Info,
           position: ToastrPosition.TopRight
         })
-        this.router.navigate(["/"]);
+        this.router.navigateByUrl(`orderDetail/${this.orderId}`);
+
 
       }
       

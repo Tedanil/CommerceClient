@@ -24,7 +24,7 @@ namespace ETicaretAPI.Application.Features.Commands.Order.CreateOrder
 
         public async Task<CreateOrderCommandResponse> Handle(CreateOrderCommandRequest request, CancellationToken cancellationToken)
         {
-            await _orderService.CreateOrderAsync(new()
+          var orderId =  await _orderService.CreateOrderAsync(new()
             {
                 Address = request.Address,
                 Description = request.Description,
@@ -33,7 +33,10 @@ namespace ETicaretAPI.Application.Features.Commands.Order.CreateOrder
 
             await _orderHubService.OrderAddedMessageAsync("Heyy, yeni bir sipariş geldi! :) ");
 
-            return new();
+            return new()
+            {
+                Id = orderId,
+            };
         }
     }
 }

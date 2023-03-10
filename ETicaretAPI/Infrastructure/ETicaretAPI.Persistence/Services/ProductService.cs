@@ -17,12 +17,14 @@ namespace ETicaretAPI.Persistence.Services
         readonly IProductReadRepository _productReadRepository;
         readonly IProductWriteRepository _productWriteRepository;
         readonly IQRCodeService _qRCodeService;
+        readonly IBasketService _basketService;
 
-        public ProductService(IProductReadRepository productReadRepository, IQRCodeService qRCodeService, IProductWriteRepository productWriteRepository)
+        public ProductService(IProductReadRepository productReadRepository, IQRCodeService qRCodeService, IProductWriteRepository productWriteRepository, IBasketService basketService)
         {
             _productReadRepository = productReadRepository;
             _qRCodeService = qRCodeService;
             _productWriteRepository = productWriteRepository;
+            _basketService = basketService;
         }
 
         public (object, int) GetAllProducts(int page, int size)
@@ -155,6 +157,31 @@ namespace ETicaretAPI.Persistence.Services
             await _productWriteRepository.SaveAsync();
         }
 
-        
+        public (object, int) GetTopSellingProducts()
+        {
+            var topSellingProductIds = _basketService.GetTopSellingProductIdsAsync(4).Result;
+
+            var productsQuery = _productReadRepository.GetAll(false)
+                .Where(product => topSellingProductIds.Contains(product.Id.ToString()))
+                .Include(product => product.ProductImageFiles);
+
+            var products = productsQuery.Select(product => new
+            {
+                product.Id,
+                product.Name,
+                product.CategoryName,
+                product.Description,
+                product.Stock,
+                product.Price,
+                product.CreatedDate,
+                product.UpdatedDate,
+                product.ProductImageFiles
+            }).ToList();
+
+            return (products, products.Count);
+        }
+
+
+
     }
 }

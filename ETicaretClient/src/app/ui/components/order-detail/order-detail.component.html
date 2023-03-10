@@ -1,1 +1,85 @@
-<p>order-detail works!</p>
+<h2 style="color:rgb(8, 113, 26);">Siparişiniz için teşekkür ederiz. Siparişiniz tahmini 1-2 iş günü içerisinde kargo
+    firmasına verilecektir. Sipariş durumunuzu Hesabım -> siparişlerim kısmından kontrol edebilirsiniz.</h2>
+<h2 mat-dialog-title>Sipariş Detayı</h2>
+<mat-dialog-content class="mat-typography">
+
+
+
+
+
+    <mat-toolbar style="margin: 0;">
+        <span>Sipariş No : {{singleOrder.orderCode}}</span> <br> <span
+            style="margin-left: 40px; color:rgb(8, 113, 26)">Sipariş Durumu: Sipariş Alındı <img style="cursor:pointer"
+                src="../../../../../assets/completed.gif" width="55" height="55" /></span>
+    </mat-toolbar>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 order-detail-table">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Ürün Adı</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <!-- Price Column -->
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Fiyat</th>
+            <td mat-cell *matCellDef="let element">{{element.price | currency : '₺'}}</td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Adet</th>
+            <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+        </ng-container>
+
+        <!-- Total Price Column -->
+        <ng-container matColumnDef="totalPrice">
+            <th mat-header-cell *matHeaderCellDef>Toplam Fiyat</th>
+            <td mat-cell *matCellDef="let element" style="color:red;">{{(element.price * element.quantity) | currency :
+                '₺'}}</td>
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)="clickedRows.add(row)" [class.order-detail-row-is-clicked]="clickedRows.has(row)"
+            *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+
+    <table style="width:100%;">
+        <thead>
+            <tr>
+                <th colspan="4" style="text-align:right;">Toplam Fiyat</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align:right;color:red;font-size:20px;">{{totalPrice | currency : '₺'}}</td>
+            </tr>
+            <tr>
+                <td style="text-align:right;font-size:12px;"><strong>ADRES : {{singleOrder.addressNeighborhood}} mah.
+                        {{singleOrder.addressDescription}}</strong></td>
+            </tr>
+            <tr>
+                <td style="text-align:right;font-size:12px;">
+                    <strong>{{singleOrder.addressDistrict}}/{{singleOrder.addressCity}}</strong></td>
+            </tr>
+            <tr>
+                <!-- <td style="text-align:right;font-size:12px;"><strong>Description : {{singleOrder.description}}</strong></td> -->
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+</mat-dialog-content>

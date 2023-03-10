@@ -12,12 +12,14 @@ export class OrderService {
 
   constructor(private httpCLientService: HttpClientService) { }
 
-  async create(order: Create_Order): Promise<void> {
+  async create(order: Create_Order): Promise<string> {
     const observable: Observable<any> = this.httpCLientService.post({
       controller: "orders"
     }, order);
 
-    await firstValueFrom(observable);
+     const response = await firstValueFrom(observable);
+     return response.id;
+     
   }
 
   async getAllOrders(page: number = 0, size: number = 5, successCallBack?: () => void, errorCallBack?: (errorMessage: string) => void): Promise<{ totalOrderCount: number; orders: List_Order[] }> {

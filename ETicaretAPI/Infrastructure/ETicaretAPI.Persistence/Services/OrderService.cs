@@ -28,19 +28,23 @@ namespace ETicaretAPI.Persistence.Services
         }
 
 
-        public async Task CreateOrderAsync(CreateOrder createOrder)
+        public async Task<string> CreateOrderAsync(CreateOrder createOrder)
         {
             var orderCode = (new Random().NextDouble() * 10000).ToString();
             orderCode = orderCode.Substring(orderCode.IndexOf(".") + 1, orderCode.Length - orderCode.IndexOf(".") - 1);
-            await _orderWriteRepository.AddAsync(new()
+            var order = new Order
             {
                 AddressId = Guid.Parse(createOrder.Address),
                 Id = Guid.Parse(createOrder.BasketId),
                 Description = createOrder.Description,
                 OrderCode = orderCode,
                 Status = OrderStatus.Received
-            });
+            };
+            await _orderWriteRepository.AddAsync(order);
             await _orderWriteRepository.SaveAsync();
+
+            return order.Id.ToString();
+
         }
 
 

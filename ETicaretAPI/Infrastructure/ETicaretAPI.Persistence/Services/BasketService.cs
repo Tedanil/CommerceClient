@@ -119,6 +119,8 @@ namespace ETicaretAPI.Persistence.Services
                 await _basketItemWriteRepository.SaveAsync();
             }
         }
+
+
         public Basket? GetUserActiveBasket
         {
             get
@@ -127,5 +129,23 @@ namespace ETicaretAPI.Persistence.Services
                 return basket;
             }
         }
+
+        public async Task<string[]> GetTopSellingProductIdsAsync(int topCount)
+        {
+            var soldProductQuantities = await _basketItemReadRepository.GetAll()
+                .GroupBy(basketItem => basketItem.ProductId)
+                .Select(group => new
+                {
+                    ProductId = group.Key,
+                    SoldQuantity = group.Sum(basketItem => basketItem.Quantity)
+                })
+                .OrderByDescending(product => product.SoldQuantity)
+                .Take(topCount)
+                .ToListAsync();
+
+            return soldProductQuantities.Select(product => product.ProductId.ToString()).ToArray();
+        }
+
+
     }
 }
