@@ -24,61 +24,88 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   totalProductCount: number;
+  recentlyTotalProductCount: number;
   baseUrl: BaseUrl;
   products: List_Product[];
-
- async ngOnInit(){
-
-  this.baseUrl = await this.fileService.getBaseStorageUrl();
-
-  const data: { totalProductCount: number, products: List_Product[] } = await this.productService
-        .getTopSellingProducts(
-          () => {
-
-          },
-          errorMessage => {
-
-          });
-          
-
-      this.products = data.products;
-
-      
-      
+  recentlyProducts: List_Product[];
 
 
-     
-      
-      
+  async ngOnInit() {
+
+    this.baseUrl = await this.fileService.getBaseStorageUrl();
+
+    const data: { totalProductCount: number, products: List_Product[] } = await this.productService
+      .getTopSellingProducts(
+        () => {
+
+        },
+        errorMessage => {
+
+        });
 
 
+    this.products = data.products;
 
-      this.products = this.products.map<List_Product>(p => {
-        const listProduct: List_Product = {
-          id: p.id,
-          createdDate: p.createdDate,
-          imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path : "",
-          name: p.name,
-          price: p.price,
-          stock: p.stock,
-          updatedDate: p.updatedDate,
-          productImageFiles: p.productImageFiles,
-          description: p.description,
-          categoryName: p.categoryName
-        };
-        
+    this.products = this.products.map<List_Product>(p => {
+      const listProduct: List_Product = {
+        id: p.id,
+        createdDate: p.createdDate,
+        imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path : "",
+        name: p.name,
+        price: p.price,
+        stock: p.stock,
+        updatedDate: p.updatedDate,
+        productImageFiles: p.productImageFiles,
+        description: p.description,
+        categoryName: p.categoryName
+      };
 
 
 
 
-        return listProduct;
+
+      return listProduct;
+    });
+
+    const recentlyData: { recentlyTotalProductCount: number, recentlyProducts: List_Product[] } = await this.productService
+    .getRecentlyAddedProducts(
+      () => {
+
+      },
+      errorMessage => {
+
       });
+
+
+  this.recentlyProducts = recentlyData.recentlyProducts;
+  
+
+  this.recentlyProducts = this.recentlyProducts.map<List_Product>(p => {
+    const recentlyListProduct: List_Product = {
+      id: p.id,
+      createdDate: p.createdDate,
+      imagePath: p.productImageFiles.length ? p.productImageFiles.find(p => p.showcase).path : "",
+      name: p.name,
+      price: p.price,
+      stock: p.stock,
+      updatedDate: p.updatedDate,
+      productImageFiles: p.productImageFiles,
+      description: p.description,
+      categoryName: p.categoryName
+    };
+
+
+
+
+
+    return recentlyListProduct;
+  });
 
   }
 
   productView(product: List_Product) {
     //console.log(id);
-    
+
     this.router.navigateByUrl(`productDetail/${product.id}`);
   }
 

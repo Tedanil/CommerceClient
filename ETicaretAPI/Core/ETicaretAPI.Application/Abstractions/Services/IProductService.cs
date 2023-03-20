@@ -19,6 +19,9 @@ namespace ETicaretAPI.Application.Abstractions.Services
 
         (object, int) GetTopSellingProducts();
 
+        (object, int) GetRecentlyAddedProducts();
+
+
 
     }
 }

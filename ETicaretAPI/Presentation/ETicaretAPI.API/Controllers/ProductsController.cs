@@ -14,6 +14,7 @@ using ETicaretAPI.Application.Features.Commands.ProductImageFile.UploadProductIm
 using ETicaretAPI.Application.Features.Queries.Product.GetAllCategoryProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetByIdProduct;
 using ETicaretAPI.Application.Features.Queries.Product.GetProductsByKeyword;
+using ETicaretAPI.Application.Features.Queries.Product.GetRecentlyAddedProducts;
 using ETicaretAPI.Application.Features.Queries.Product.GetTopSellingProducts;
 using ETicaretAPI.Application.Features.Queries.ProductImageFile.GetProductImages;
 using ETicaretAPI.Application.Repositories;
@@ -72,6 +73,14 @@ namespace ETicaretAPI.API.Controllers
             GetTopSellingProductsQueryResponse response = await _mediator.Send(getTopSellingProductsQueryRequest);
             return Ok(response);
         }
+
+        [HttpGet("[action]")]
+        public async Task<IActionResult> GetRecentlyAddedProducts([FromRoute] GetRecentlyAddedProductsQueryRequest getRecentlyAddedProductsQueryRequest)
+        {
+            GetRecentlyAddedProductsQueryResponse response = await _mediator.Send(getRecentlyAddedProductsQueryRequest);
+            return Ok(response);
+        }
+
 
 
         [HttpGet("qrcode/{productId}")]

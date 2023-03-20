@@ -181,7 +181,27 @@ namespace ETicaretAPI.Persistence.Services
             return (products, products.Count);
         }
 
+        public (object, int) GetRecentlyAddedProducts()
+        {
+            var recentProductsQuery = _productReadRepository.GetAll(false)
+         .OrderByDescending(product => product.CreatedDate)
+         .Take(8)
+         .Include(product => product.ProductImageFiles);
 
+            var recentProducts = recentProductsQuery.Select(product => new
+            {
+                product.Id,
+                product.Name,
+                product.CategoryName,
+                product.Description,
+                product.Stock,
+                product.Price,
+                product.CreatedDate,
+                product.UpdatedDate,
+                product.ProductImageFiles
+            }).ToList();
 
+            return (recentProducts, recentProducts.Count);
+        }
     }
 }

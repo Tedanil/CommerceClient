@@ -79,7 +79,7 @@
     <h2 class="title">Öne Çıkan Ürünler</h2>
     <div class="row" style="display: flex; flex-wrap: wrap; transition: transform 0.5s;">
         <div class="card"
-            style="flex-basis: calc(25% - 2px); margin: 1px; display: flex; flex-direction: column; padding: 0;  "
+            style="flex-basis: calc(25% - 2px); margin: 1px; margin-bottom: 110px; display: flex; flex-direction: column; padding: 0;  "
             *ngFor="let product of products">
             <div class="image-container" style="flex: 1; height: 0; padding-bottom: 100%; position: relative; ">
                 <a style="cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0; "
@@ -105,46 +105,29 @@
 
 
     <h2 class="title">En Son Eklenen Ürünler</h2>
-    <div class="row">
-        <div class="col-4">
-            <img src="../../../../assets/images/product-5.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-6.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-7.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-8.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-9.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-10.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-11.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
-        </div>
-        <div class="col-4">
-            <img src="../../../../assets/images/product-12.jpg">
-            <h4>Red Printed Shirts</h4>
-            <p>50.00 ₺</p>
+    <div class="row" style="display: flex; flex-wrap: wrap; transition: transform 0.5s;">
+        <div class="card"
+            style="flex-basis: calc(25% - 2px); margin: 1px; margin-top: 45px; display: flex; flex-direction: column; padding: 0;  "
+            *ngFor="let product of recentlyProducts">
+            <div class="image-container" style="flex: 1; height: 0; padding-bottom: 100%; position: relative; ">
+                <a style="cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0; "
+                    (click)="productView(product)">
+                    <img style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
+                        *ngIf="!product.productImageFiles.length" src="../../../../assets/Dproduct.png"
+                        class="card-img-top" alt="...">
+                </a>
+
+                <a style="cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0;"
+                    (click)="productView(product)">
+                    <img style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;"
+                        *ngIf="product.productImageFiles.length" src="{{baseUrl.url}}/{{product.imagePath}}"
+                        class="card-img-top" alt="...">
+                </a>
+                <!-- <h4 style="color: orange;">{{product.name}}</h4>
+                <p>{{product.price | currency:'₺'}}</p> -->
+            </div>
+
+
         </div>
     </div>
 </div>
