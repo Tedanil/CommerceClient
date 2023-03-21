@@ -3,8 +3,7 @@
 
      ">
   <div class="container-fluid">
-    <a class="navbar-brand f-color" routerLink="">ERBAŞ-TİCARET <img src="../../../../assets/images/arcelik-logo.png"
-        width="60px" height="60px"></a>
+    <a class="navbar-brand f-color" routerLink=""><img src="../../../../assets/382.png" width="220px" height="50px"></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,18 +41,22 @@
                 
               </ul>
             </li> -->
+        <li>
+          <div>
+            <input type="text" class="searchDiv" #searchValue (keyup.enter)="searchProducts(searchValue)">
+            <button class="searchButton" style="color: orange;" (click)="searchProducts(searchValue)">Ürün Ara</button>
+          </div>
+        </li>
 
       </ul>
-      
-       
-      
 
-      <div>
-        <input type="text" #searchValue  (keyup.enter)="searchProducts(searchValue)">
-        <button (click)="searchProducts(searchValue)">Ara</button>
-      </div>
-      <button mat-icon-button *ngIf="authService.isAuthenticated" [matMenuTriggerFor]="menu" style="margin-right: 70px !important;">
-        <img src="../../../../assets/21-avatar-flat.gif" width="30px" height="30px"> Hesabım 
+
+
+
+
+      <button mat-icon-button *ngIf="authService.isAuthenticated" [matMenuTriggerFor]="menu"
+        style="margin-right: 70px !important;">
+        <img src="../../../../assets/21-avatar-flat.gif" width="30px" height="30px"> Hesabım
       </button>
 
       <mat-menu style="background:radial-gradient(#f7d4ac, #b35938, #fdf9fd, #ffffff);
@@ -69,9 +72,10 @@
       </mat-menu>
 
       <div class="d-flex nav-item">
-        
+
         <button class="btn btn-outline" data-bs-toggle="modal" data-bs-target="#basketModal" (click)="loadComponent()"
-          type="submit" mat-raised-button [disabled]="!authService.isAuthenticated">Sepetim <img src="../../../../assets/basjet.gif" width="30px" height="30px"></button>
+          type="submit" mat-raised-button [disabled]="!authService.isAuthenticated">Sepetim <img
+            src="../../../../assets/basjet.gif" width="30px" height="30px"></button>
       </div>
     </div>
   </div>
@@ -98,11 +102,13 @@
 
 <section id="cookie-banner" *ngIf="showCookieBanner">
   <div class="cookie-banner-content">
-    <p>Ziyaretiniz sırasında kişisel verileriniz siteyi kullanımınızı analiz etmek, reklamları kişiselleştirmek ve sosyal medya özellikleri sağlamak amacıyla çerezler aracılığıyla işlenmektedir. Daha fazla bilgi için</p>
+    <p>Ziyaretiniz sırasında kişisel verileriniz siteyi kullanımınızı analiz etmek, reklamları kişiselleştirmek ve
+      sosyal medya özellikleri sağlamak amacıyla çerezler aracılığıyla işlenmektedir. Daha fazla bilgi için</p>
     <u style="cursor: pointer;" (click)="showPolicy()">Çerez Aydınlatma Metni’ni</u> okuyabilirsiniz.
   </div>
   <div class="cookie-banner-button">
-    <button style="background-color: rgb(228, 225, 225); width: 100px; height: 40px;" (click)="acceptCookies()">Anladım</button>
+    <button style="background-color: rgb(228, 225, 225); width: 100px; height: 40px;"
+      (click)="acceptCookies()">Anladım</button>
   </div>
 </section>
 

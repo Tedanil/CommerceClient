@@ -17,8 +17,9 @@
 
             <div class="row">
                 <div class="col-2">
-                    <h1>Give Your Workout<br>A New Style!</h1>
-                    <p>Success isn't always about greatness. It's about consistency<br>Hard work gain success!</p>
+                    <h1>Erbaş e-Ticaret<br>1974'den Beri!</h1>
+                    <p>Erbaş Ticaret Resmi Online Test Alışveriş Sitesidir.<br>Elektrikli Süpürge Torbası ve
+                        Aksesuarları!</p>
                     <a href="http://localhost:4200/products/all" class="btn">Hemen Keşfet &#8594;</a>
                 </div>
                 <div class="col-2">
@@ -78,8 +79,8 @@
 <div class="small-container">
     <h2 class="title">Öne Çıkan Ürünler</h2>
     <div class="row" style="display: flex; flex-wrap: wrap; transition: transform 0.5s;">
-        <div class="card"
-            style="flex-basis: calc(25% - 2px); margin: 1px; margin-bottom: 110px; display: flex; flex-direction: column; padding: 0;  "
+        <div class="card" 
+            style="flex-basis: calc(25% - 2px); margin: 1px; margin-bottom: 110px; display: flex; flex-direction: column; padding: 0; max-height:250px;  "
             *ngFor="let product of products">
             <div class="image-container" style="flex: 1; height: 0; padding-bottom: 100%; position: relative; ">
                 <a style="cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0; "
@@ -98,16 +99,19 @@
                 <!-- <h4 style="color: orange;">{{product.name}}</h4>
                 <p>{{product.price | currency:'₺'}}</p> -->
             </div>
+            <div class="card-header" style="min-height: 80px;">
+                <h3>{{product.name}}</h3>
+            </div>
 
 
         </div>
     </div>
 
 
-    <h2 class="title">En Son Eklenen Ürünler</h2>
+    <h2 class="title" style="margin-bottom: 25px !important; margin-top: 150px !important;">En Son Eklenen Ürünler</h2>
     <div class="row" style="display: flex; flex-wrap: wrap; transition: transform 0.5s;">
         <div class="card"
-            style="flex-basis: calc(25% - 2px); margin: 1px; margin-top: 45px; display: flex; flex-direction: column; padding: 0;  "
+            style="flex-basis: calc(25% - 2px); margin: 1px; margin-top: 125px; margin-bottom: 20px; display: flex; flex-direction: column; padding: 0; max-height: 250px;  "
             *ngFor="let product of recentlyProducts">
             <div class="image-container" style="flex: 1; height: 0; padding-bottom: 100%; position: relative; ">
                 <a style="cursor: pointer; position: absolute; top: 0; left: 0; right: 0; bottom: 0; "
@@ -126,6 +130,10 @@
                 <!-- <h4 style="color: orange;">{{product.name}}</h4>
                 <p>{{product.price | currency:'₺'}}</p> -->
             </div>
+            <div class="card-header" style="min-height: 80px;">
+                <h3>{{product.name}}</h3>
+            </div>
+
 
 
         </div>
@@ -135,14 +143,14 @@
     <div class="small-container">
         <div class="row">
             <div class="col-2">
-                <img src="../../../../assets/images/exclusive.png" class="offer-img">
+                <img src="../../../../assets/images/346.png" class="offer-img">
             </div>
             <div class="col-2">
                 <p>Exclusive Avaible On ErbaşStore</p>
-                <h1>Smart Band 4</h1>
-                <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Sapiente culpa sunt id suscipit eligendi dolor dolores,
-                    cumque fugit deserunt. Dolorum?</small><br>
+                <h1>Dreo PowerLeap Cordless</h1>
+                <small>Digs deeper. Runs longer. Larger capacity, super suction power, and replaceable battery design
+                    remove low battery anxiety mid-clean, making Dreo PowerLeap Cordless Vacuum Cleaner an ideal choice
+                    for whole-home cleaning.</small><br>
                 <a href="" class="btn">Satın Al &#8594;</a>
             </div>
         </div>

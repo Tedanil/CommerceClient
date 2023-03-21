@@ -1,53 +1,63 @@
 <div class="container my-3">
-<div class="row">
-  <div class="col-3">
+  <div class="row">
+    <div class="col-3">
       <h2>Kategori Listesi</h2>
 
       <div class="list-group">
-          <a routerLink="/products/all" class="list-group-item list-group-item-action">
-            Tüm Ürünler
-          </a>
-          <a routerLink="/products/vacuum" class="list-group-item list-group-item-action">
-            Elektrikli Süpürgeler
-          </a>
-          <a routerLink="/products/brushes"  class="list-group-item list-group-item-action">
-            Fırçalar ve Süpürge Başlıkları
-          </a>
-          <a routerLink="/products/filters"  class="list-group-item list-group-item-action">
-            Filtreler ve Süpürge Aksesuarları
-          </a>
-          <a routerLink="/products/dustBag"  class="list-group-item list-group-item-action">
-            Toz Torbaları
-          </a>
-        </div>
+        <a routerLink="/products/all" class="list-group-item list-group-item-action">
+          Tüm Ürünler
+        </a>
+        <a routerLink="/products/vacuum" class="list-group-item list-group-item-action">
+          Elektrikli Süpürgeler
+        </a>
+        <a routerLink="/products/brushes" class="list-group-item list-group-item-action">
+          Fırçalar ve Süpürge Başlıkları
+        </a>
+        <a routerLink="/products/filters" class="list-group-item list-group-item-action">
+          Filtreler ve Süpürge Aksesuarları
+        </a>
+        <a routerLink="/products/dustBag" class="list-group-item list-group-item-action">
+          Toz Torbaları
+        </a>
+      </div>
 
-  </div>
-  <div class="col-9">
-    <div class="container" *ngIf="product.name" style="justify-content: space-around; flex: none; align-items: center; margin-left: 34px">
-      <div class="row">
-        <div class="card detail"  style="width: 30rem;float:left;margin:25px;">
-           <img width="250" height="400" *ngIf="product.productImageFiles.length" src="{{baseUrl.url}}/{{product.imagePath}}"
-            class="card-img-top" alt="..."> 
-          <img width="250" height="400" *ngIf="!product.productImageFiles.length" src="../../../../assets/Dproduct.png"
-            class="card-img-top" alt="...">
-    
-    
-    
-          <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text">Fiyat : {{product.price | currency:'₺'}} <br /> Stock : {{product.stock}} </p>
-            <a *ngIf="authService.isAuthenticated" class="btn btn-success" (click)="addToBasket(product)">Sepete Ekle</a>
-            <a *ngIf="!authService.isAuthenticated" class="btn btn-warning" routerLink="/login">Sepete ürün eklemek için giriş yapınız!</a>
+    </div>
+    <div class="col-6">
+      <div class="container" *ngIf="product.name"
+        style="justify-content: space-around; flex: none; align-items: center; margin-left: 34px">
+        <div class="row">
+          <div class="card detail" style="width: 30rem;float:left;margin:25px;">
+            <img width="250" height="400" *ngIf="product.productImageFiles.length"
+              src="{{baseUrl.url}}/{{product.imagePath}}" class="card-img-top" alt="...">
+            <img width="250" height="400" *ngIf="!product.productImageFiles.length"
+              src="../../../../assets/Dproduct.png" class="card-img-top" alt="...">
+
+
+
+
           </div>
         </div>
+
+
+
+
       </div>
-    
-    
-      <p>{{product.description}}</p>
-      
+
     </div>
-    
+    <div class="col-3" style="margin-top: 20px;">
+      <h2 class="card-title">{{product.name}}</h2>
+      <h2 style="color: green; text-decoration-style:solid" class="card-text"> {{product.price | currency:'₺'}} <br />
+        Stock : {{product.stock}} </h2>
+      <p style="color: green;"><img src="../../../../../assets/images/truck.gif" width="30" height="30">150 TL üzeri
+        kardo bedava</p>
+      <a style="margin-top: 10px; margin-bottom: 5px;" *ngIf="authService.isAuthenticated" class="btn"
+        (click)="addToBasket(product)">Sepete Ekle <img src="../../../../../assets/basjet.gif" width="30"
+          height="30"></a>
+      <h2 style="margin-top: 25px;">Ürün Özellikleri</h2>
+
+      <p style="margin-top: 10px;">{{product.description}}</p>
+      <a *ngIf="!authService.isAuthenticated" class="btn btn-warning" routerLink="/login">Sepete ürün eklemek için giriş
+        yapınız!</a>
+    </div>
+
   </div>
-</div>
-
-

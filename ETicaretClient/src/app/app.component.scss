@@ -9,8 +9,7 @@
 
 }
 .navbar-brand:hover{
-  color: white;
-  background-color: #f3a365c8;
+ 
   border: 2px solid #eee0d4;
   border-radius: 70px;
   transition: 0.3s ease;
@@ -111,5 +110,21 @@ ul{
   cursor: pointer;
 }
 
+.searchDiv{
+  margin-left: 5px;
+  width: 500px;
+  border-radius: 3px;
+  height: 40px;
+  color: orange;
+  border-color: orange;
+}
 
+.searchButton{
+  margin-left: 3px;
+  border-radius: 3px;
+  height: 40px;
+  color: white;
+  border-color: orange;
+
+}
 

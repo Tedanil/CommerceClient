@@ -24,6 +24,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -48,7 +49,7 @@ import { MatMenuModule } from '@angular/material/menu';
       }
     }),
     SocialLoginModule,
-    MatIconModule, MatBadgeModule, MatButtonModule,ReactiveFormsModule,MatMenuModule
+    MatIconModule, MatBadgeModule, MatButtonModule,ReactiveFormsModule,MatMenuModule,MatInputModule
    
 
   ],
